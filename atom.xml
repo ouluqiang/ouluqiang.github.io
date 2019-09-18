@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-18T10:18:30.726Z</updated>
+    <updated>2019-09-18T10:20:31.999Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -22,7 +22,8 @@
 <p>xxx.github.io  xxx必须是你的用户名，创建项目，我的已经存在了<br>
 <img src="https://upload-images.jianshu.io/upload_images/2025676-f5dc6de0a738e9d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <h2 id="创建一个-token"><a href="https://github.com/settings/tokens/new">创建一个 Token</a></h2>
-<p><img src="https://upload-images.jianshu.io/upload_images/2025676-e3424b29caa6e80c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>只勾选repo即可，防止token泄漏<br>
+<img src="https://upload-images.jianshu.io/upload_images/2025676-e3424b29caa6e80c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>拿到token填写到gridea的基础配置token里<br>
 <img src="https://upload-images.jianshu.io/upload_images/2025676-bc682cb96eb9469c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/2025676-e207df0087789a85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
@@ -459,10 +460,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-616472"><label class="task-list-item-label" for="task-item-616472"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6216562"><label class="task-list-item-label" for="task-item-6216562"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5863928"><label class="task-list-item-label" for="task-item-5863928"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7658520"><label class="task-list-item-label" for="task-item-7658520"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1509715"><label class="task-list-item-label" for="task-item-1509715"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5683869"><label class="task-list-item-label" for="task-item-5683869"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -471,8 +472,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-265049"><label class="task-list-item-label" for="task-item-265049"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4176083"><label class="task-list-item-label" for="task-item-4176083"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6636206"><label class="task-list-item-label" for="task-item-6636206"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8169286"><label class="task-list-item-label" for="task-item-8169286"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>
