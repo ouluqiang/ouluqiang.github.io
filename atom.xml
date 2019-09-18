@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-18T09:56:04.188Z</updated>
+    <updated>2019-09-18T10:18:30.726Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://ouluqiang.github.io//images/avatar.png</logo>
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
+    <entry>
+        <title type="html"><![CDATA[Gridea，GitHub配置使用]]></title>
+        <id>https://ouluqiang.github.io//post/grideagithub-pei-zhi-shi-yong</id>
+        <link href="https://ouluqiang.github.io//post/grideagithub-pei-zhi-shi-yong">
+        </link>
+        <updated>2019-09-18T10:17:55.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="创建github-博客项目">创建github 博客项目</h2>
+<p>创建一个repo，名称为 yourname.github.io, 其中yourname是你的github名称，按照这个规则创建才有用哦，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2025676-27cbc16d60b5378f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建项目"></p>
+<p>xxx.github.io  xxx必须是你的用户名，创建项目，我的已经存在了<br>
+<img src="https://upload-images.jianshu.io/upload_images/2025676-f5dc6de0a738e9d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="创建一个-token"><a href="https://github.com/settings/tokens/new">创建一个 Token</a></h2>
+<p><img src="https://upload-images.jianshu.io/upload_images/2025676-e3424b29caa6e80c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>拿到token填写到gridea的基础配置token里<br>
+<img src="https://upload-images.jianshu.io/upload_images/2025676-bc682cb96eb9469c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2025676-e207df0087789a85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>检测远程连接成功就可以了，如果确定都填对了，就关闭gridea软件再打开软件检测远程连接</p>
+<h2 id="创建一个-oauth"><a href="https://github.com/settings/applications/new">创建一个 OAuth</a></h2>
+<p><img src="https://upload-images.jianshu.io/upload_images/2025676-e341bbdab4dace89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>填写到Gridea的配置评论栏中<br>
+<img src="https://upload-images.jianshu.io/upload_images/2025676-8891c7ce7e2b3e5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2025676-8a3134f572db89f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[adb wifi 调试]]></title>
         <id>https://ouluqiang.github.io//post/adb-wifi-diao-shi</id>
@@ -435,10 +459,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7375091"><label class="task-list-item-label" for="task-item-7375091"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-616472"><label class="task-list-item-label" for="task-item-616472"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4422728"><label class="task-list-item-label" for="task-item-4422728"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7802559"><label class="task-list-item-label" for="task-item-7802559"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5863928"><label class="task-list-item-label" for="task-item-5863928"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7658520"><label class="task-list-item-label" for="task-item-7658520"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -447,8 +471,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9703283"><label class="task-list-item-label" for="task-item-9703283"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7420237"><label class="task-list-item-label" for="task-item-7420237"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-265049"><label class="task-list-item-label" for="task-item-265049"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4176083"><label class="task-list-item-label" for="task-item-4176083"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>
