@@ -1,0 +1,26 @@
+{
+  "config": {
+    "branch": "master",
+    "domain": "https://ouluqiang.github.io/",
+    "email": "632521056@qq.com",
+    "platform": "github",
+    "repository": "ouluqiang.github.io",
+    "token": "5382e1dae68acd5814b1eb001187869907f3fe6e",
+    "username": "ouluqiang"
+  },
+  "comment": {
+    "commentPlatform": "gitalk",
+    "disqusSetting": {
+      "api": "",
+      "apikey": "",
+      "shortname": ""
+    },
+    "gitalkSetting": {
+      "clientId": "e3474b3abd4f035bddca",
+      "clientSecret": "19817188cab41d2cae2b497847ec526f287eb234",
+      "owner": "ouluqiang",
+      "repository": "ouluqiang.github.io"
+    },
+    "showComment": true
+  }
+}
