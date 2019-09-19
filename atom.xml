@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-19T09:50:38.358Z</updated>
+    <updated>2019-09-19T09:59:58.307Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -43,27 +43,25 @@
         </link>
         <updated>2019-09-18T08:48:35.000Z</updated>
         <content type="html"><![CDATA[<h2 id="连接手机和电脑">连接手机和电脑</h2>
-<p>命令行 adb devices 查看连接<br>
-<img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></p>
+<p>命令行 adb devices 查看连接</p>
+<p><img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></p>
 <h2 id="设置5555端口">设置5555端口</h2>
-<pre><code>设置wifi调试端口 5555
-adb tcpip 5555
+<p>设置wifi调试端口 5555</p>
+<pre><code>    adb tcpip 5555
 </code></pre>
 <p><img src="https://ouluqiang.github.io//post-images/1568886196625.png" alt="端口"></p>
 <h2 id="查看手机ip">查看手机ip</h2>
-<pre><code>adb shell  ifconfig wlan0
+<pre><code>    adb shell  ifconfig wlan0
 </code></pre>
 <p><img src="https://ouluqiang.github.io//post-images/1568886240609.png" alt="ip"></p>
-<pre><code>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP
-</code></pre>
+<p>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP</p>
 <p><img src="https://ouluqiang.github.io//post-images/1568886275147.png" alt="ip"></p>
 <h2 id="连接手机">连接手机</h2>
-<pre><code>adb connect &lt;手机ip地址&gt;
+<pre><code>    adb connect &lt;手机ip地址&gt;
 </code></pre>
 <p><img src="https://ouluqiang.github.io//post-images/1568886318164.png" alt="连接"></p>
 <h2 id="成功">成功</h2>
-<pre><code>连接成功显示
-</code></pre>
+<p>连接成功显示</p>
 <p><img src="https://ouluqiang.github.io//post-images/1568886341285.png" alt="成功"></p>
 <p>锤子手机测试失败</p>
 ]]></content>
@@ -460,10 +458,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5784303"><label class="task-list-item-label" for="task-item-5784303"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6269678"><label class="task-list-item-label" for="task-item-6269678"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7191198"><label class="task-list-item-label" for="task-item-7191198"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9309330"><label class="task-list-item-label" for="task-item-9309330"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4181088"><label class="task-list-item-label" for="task-item-4181088"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5510515"><label class="task-list-item-label" for="task-item-5510515"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -472,8 +470,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5199028"><label class="task-list-item-label" for="task-item-5199028"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-117465"><label class="task-list-item-label" for="task-item-117465"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3062268"><label class="task-list-item-label" for="task-item-3062268"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8230663"><label class="task-list-item-label" for="task-item-8230663"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>

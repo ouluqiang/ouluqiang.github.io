@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://ouluqiang.github.io//favicon.ico?v=1568886636383">
+<link rel="shortcut icon" href="https://ouluqiang.github.io//favicon.ico?v=1568887177999">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://ouluqiang.github.io//styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://ouluqiang.github.io/">
-        <img src="https://ouluqiang.github.io//images/avatar.png?v=1568886636383" class="site-logo">
+        <img src="https://ouluqiang.github.io//images/avatar.png?v=1568887177999" class="site-logo">
         <h1 class="site-title">小白记忆屋</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -103,27 +103,25 @@
             
             <div class="post-content">
               <h2 id="连接手机和电脑">连接手机和电脑</h2>
-<p>命令行 adb devices 查看连接<br>
-<img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></p>
+<p>命令行 adb devices 查看连接</p>
+<p><img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></p>
 <h2 id="设置5555端口">设置5555端口</h2>
-<pre><code>设置wifi调试端口 5555
-adb tcpip 5555
+<p>设置wifi调试端口 5555</p>
+<pre><code>    adb tcpip 5555
 </code></pre>
 <p><img src="https://ouluqiang.github.io//post-images/1568886196625.png" alt="端口"></p>
 <h2 id="查看手机ip">查看手机ip</h2>
-<pre><code>adb shell  ifconfig wlan0
+<pre><code>    adb shell  ifconfig wlan0
 </code></pre>
 <p><img src="https://ouluqiang.github.io//post-images/1568886240609.png" alt="ip"></p>
-<pre><code>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP
-</code></pre>
+<p>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP</p>
 <p><img src="https://ouluqiang.github.io//post-images/1568886275147.png" alt="ip"></p>
 <h2 id="连接手机">连接手机</h2>
-<pre><code>adb connect &lt;手机ip地址&gt;
+<pre><code>    adb connect &lt;手机ip地址&gt;
 </code></pre>
 <p><img src="https://ouluqiang.github.io//post-images/1568886318164.png" alt="连接"></p>
 <h2 id="成功">成功</h2>
-<pre><code>连接成功显示
-</code></pre>
+<p>连接成功显示</p>
 <p><img src="https://ouluqiang.github.io//post-images/1568886341285.png" alt="成功"></p>
 <p>锤子手机测试失败</p>
 
