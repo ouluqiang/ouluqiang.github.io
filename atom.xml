@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-19T08:18:42.769Z</updated>
+    <updated>2019-09-19T09:12:39.185Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -45,7 +45,8 @@
         <content type="html"><![CDATA[<h2 id="连接手机和电脑">连接手机和电脑</h2>
 <pre><code>命令行 adb devices 查看连接
 </code></pre>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/5/1646a02e0977420b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="连接"></p>
+<p><img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"><br>
+<img src="https://user-gold-cdn.xitu.io/2018/7/5/1646a02e0977420b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="连接"></p>
 <h2 id="设置5555端口">设置5555端口</h2>
 <pre><code>设置wifi调试端口 5555
 adb tcpip 5555
@@ -461,10 +462,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3756061"><label class="task-list-item-label" for="task-item-3756061"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4714584"><label class="task-list-item-label" for="task-item-4714584"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1529765"><label class="task-list-item-label" for="task-item-1529765"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4229157"><label class="task-list-item-label" for="task-item-4229157"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-932366"><label class="task-list-item-label" for="task-item-932366"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8300969"><label class="task-list-item-label" for="task-item-8300969"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -473,8 +474,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8371800"><label class="task-list-item-label" for="task-item-8371800"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4781977"><label class="task-list-item-label" for="task-item-4781977"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9018932"><label class="task-list-item-label" for="task-item-9018932"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9057638"><label class="task-list-item-label" for="task-item-9057638"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>
