@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "content": "# 下载\r\n\r\n[jdk下载地址](https://www.oracle.com/technetwork/java/javase/downloads/index.html)\r\n\r\njdk下载  \r\n链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag \r\n提取码：t8ci \r\n\r\n\r\n\r\n[Android studio sdk 下载地址](http://www.android-studio.org/index.php)\r\n\r\n## jdk12\r\n\r\n安装JDK11或以上版本，安装过程中没有提示安装JRE，进入JDK安装路径下 shift+右键 在此处打开命令窗口\r\n\r\n  输入  \r\n  ```\r\n   bin\\jlink.exe --module-path jmods --add-modules java.desktop --output jre   \r\n  ```\r\n  执行完成就会生成JRE\r\n  \r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-092ee2d81fb4e15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## jdk8\r\n正常安装\r\n\r\n## 环境变量配置\r\n\r\n我的电脑右键，点击属性，点击高级系统设置，点击环境变量\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-80d9883df2172e7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n新建系统变量，变量名写 JAVA_HOME 变量值 填写你JDK安装的路径\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-14e4cad6e48b11de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n双击系统变量path编辑变量值 %JAVA_HOME%\\bin;%JAVA_HOME%\\jre\\bin\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-b05e6e5352c1876b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n在系统变量中新建 classpath 变量名，变量值为  %JAVA_HOME%\\lib\\dt.jar;%JAVA_HOME%\\lib\\tools.jar\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-84140d49e227ae06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nwin+R运行输入cmd，输入java -version查看JDK版本和JVM信息\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-b5bff947bcc4d526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n# sdk\r\n\r\n新建系统变量ANDROID_HOME，变量值D:\\xx\\sdk（以你安装目录为准,确认里面有tools和add-ons等多个文件夹）\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-7c4474ac5ea494cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n在系统变量PATH后面加上变量值;%ANDROID_HOME%\\platform-tools;\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-95aa820c636c3cd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nwin+R运行输入cmd，输入adb 查看\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-a43222dcc6f1aa70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)",
+      "data": {
+        "title": "jdk sdk环境配置 Android下载",
+        "date": "2019-09-24 17:16:07",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "jdk-sdk-huan-jing-pei-zhi-android-xia-zai"
+    },
+    {
       "content": "## type封装获取泛型的实际类型\r\n    \r\n> 通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type\r\n    \r\ngetClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type  \r\n然后将其转换ParameterizedType。。  \r\ngetActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。  \r\n[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。\r\n```\r\n        Type genericSuperclass = getClass().getGenericSuperclass();\r\n        if (genericSuperclass instanceof ParameterizedType) {\r\n            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];\r\n        } else {\r\n            this.type = Object.class; \r\n            // 基本不会走这个判断\r\n        }\r\n```     \r\n        \r\n        \r\n## 解决 gson反序列化自动将int类型转化成double类型\r\n```\r\n    private static Gson gson=new GsonBuilder().\r\n        registerTypeAdapter(Double.class, new JsonSerializer<Double>() {\r\n\r\n            @Override\r\n            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {\r\n                if (src == src.longValue())\r\n                    return new JsonPrimitive(src.longValue());\r\n                return new JsonPrimitive(src);\r\n            }\r\n        }).create();\r\n```",
       "data": {
         "title": "gson type封装泛型",
