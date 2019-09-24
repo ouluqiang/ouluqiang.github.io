@@ -1,7 +1,40 @@
 {
   "posts": [
     {
-      "content": "Android常用的开发工具\r\n<!-- more -->\r\n\r\n## Android stido，sdk，jdk\r\n[jdk下载地址](https://www.oracle.com/technetwork/java/javase/downloads/index.html)\r\n\r\njdk下载  \r\n```\r\n链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag \r\n提取码：t8ci \r\n```\r\n\r\n\r\n[Android studio sdk 下载地址](http://www.android-studio.org/index.php)\r\n\r\n## svn,git下载地址\r\n```\r\n链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA \r\n提取码：xktl \r\n```\r\n\r\n## 抓包工具charles学习版\r\n```\r\n链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ \r\n提取码：sj13 \r\n```\r\n\r\n## sqlite数据库工具\r\n```\r\n链接：https://pan.baidu.com/s/1I_w-rARDcKocKBXGOMbJdg \r\n提取码：trl1\r\n```\r\n\r\n## 颜色获取\r\n```\r\n链接：https://pan.baidu.com/s/1-sLi9-PVYksCiE-RHSXquw \r\n提取码：tyrw \r\n```\r\n\r\n## 获取SHA1值\r\n```\r\n链接：https://pan.baidu.com/s/15AvGDv-WjzU7jvLhJeLvhg \r\n提取码：081p \r\n```\r\n\r\n\r\n# idea 学习版\r\nhttp://idea.toocruel.net",
+      "content": "## type封装获取泛型的实际类型\r\n    \r\n> 通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type\r\n    \r\ngetClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type  \r\n然后将其转换ParameterizedType。。  \r\ngetActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。  \r\n[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。\r\n```\r\n        Type genericSuperclass = getClass().getGenericSuperclass();\r\n        if (genericSuperclass instanceof ParameterizedType) {\r\n            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];\r\n        } else {\r\n            this.type = Object.class; \r\n            // 基本不会走这个判断\r\n        }\r\n```     \r\n        \r\n        \r\n## 解决 gson反序列化自动将int类型转化成double类型\r\n```\r\n    private static Gson gson=new GsonBuilder().\r\n        registerTypeAdapter(Double.class, new JsonSerializer<Double>() {\r\n\r\n            @Override\r\n            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {\r\n                if (src == src.longValue())\r\n                    return new JsonPrimitive(src.longValue());\r\n                return new JsonPrimitive(src);\r\n            }\r\n        }).create();\r\n```",
+      "data": {
+        "title": "gson type封装泛型",
+        "date": "2019-09-24 16:33:44",
+        "tags": [
+          "Android",
+          "gson"
+        ],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "gson-type-feng-zhuang-fan-xing"
+    },
+    {
+      "content": "## 创建分支\r\n在GitHub的博客项目中新建一个分支\r\n\r\n![](https://ouluqiang.github.io//post-images/1569311927040.jpg)\r\n\r\n克隆项目到本地  \r\n```\r\ngit clone https://github.com/xxx/xxx.github.io.git\r\n```\r\n\r\n\r\n\r\n到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支\r\n```\r\n# 列出所有本地分支\r\n$ git branch\r\n\r\n# 列出所有远程分支\r\n$ git branch -r\r\n\r\n# 列出所有本地分支和远程分支\r\n$ git branch -a\r\n\r\n# 切换到指定分支，并更新工作区\r\n$ git checkout [branch-name]\r\n```\r\n![](https://ouluqiang.github.io//post-images/1569311864422.jpg)\r\n\r\n\r\n把源文件复制到分支项目,再打开Git Bash 提交代码\r\n![](https://ouluqiang.github.io//post-images/1569311872576.jpg)\r\n\r\n```\r\n# 添加当前目录的所有文件到暂存区\r\n$ git add .\r\n\r\n# 提交暂存区到仓库区\r\n$ git commit -m ‘修改说明，随便写’\r\n\r\n# 提交到远程仓库\r\ngit push\r\n```\r\n\r\n提交成功\r\n![](https://ouluqiang.github.io//post-images/1569311915447.jpg)",
+      "data": {
+        "title": "Gridea保存源文件",
+        "date": "2019-09-24 15:55:55",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "gridea-bao-cun-yuan-wen-jian"
+    },
+    {
+      "content": "Android常用的开发工具\r\n<!-- more -->\r\n\r\n## Android stido，sdk，jdk\r\n[jdk下载地址](https://www.oracle.com/technetwork/java/javase/downloads/index.html)\r\n\r\njdk下载  \r\n```\r\n链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag \r\n提取码：t8ci \r\n```\r\n\r\n\r\n[Android studio sdk 下载地址](http://www.android-studio.org/index.php)\r\n\r\n## svn,git下载地址\r\n[git下载](https://git-scm.com/downloads)\r\n\r\n```\r\n链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA \r\n提取码：xktl \r\n```\r\n\r\n## 抓包工具charles学习版\r\n```\r\n链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ \r\n提取码：sj13 \r\n```\r\n\r\n## sqlite数据库工具\r\n```\r\n链接：https://pan.baidu.com/s/1I_w-rARDcKocKBXGOMbJdg \r\n提取码：trl1\r\n```\r\n\r\n## 颜色获取\r\n```\r\n链接：https://pan.baidu.com/s/1-sLi9-PVYksCiE-RHSXquw \r\n提取码：tyrw \r\n```\r\n\r\n## 获取SHA1值\r\n```\r\n链接：https://pan.baidu.com/s/15AvGDv-WjzU7jvLhJeLvhg \r\n提取码：081p \r\n```\r\n\r\n\r\n# idea 学习版\r\nhttp://idea.toocruel.net",
       "data": {
         "title": "常用开发工具",
         "date": "2019-09-24 13:22:26",
@@ -150,6 +183,17 @@
   ],
   "tags": [
     {
+      "index": -1,
+      "name": "Android",
+      "slug": "uPl9IEkHz",
+      "used": true
+    },
+    {
+      "name": "gson",
+      "slug": "13AEsKm6N",
+      "used": true
+    },
+    {
       "name": "markdown",
       "slug": "EYP-kC9od",
       "used": true
@@ -181,14 +225,13 @@
       "used": true
     },
     {
-      "name": "代码管理",
-      "slug": "SbXoMJ1qwn",
+      "name": "github",
+      "slug": "TMR7yPO8w",
       "used": false
     },
     {
-      "index": -1,
-      "name": "Android",
-      "slug": "uPl9IEkHz",
+      "name": "代码管理",
+      "slug": "SbXoMJ1qwn",
       "used": false
     }
   ],

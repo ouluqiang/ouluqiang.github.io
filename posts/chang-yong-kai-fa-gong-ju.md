@@ -22,6 +22,8 @@ jdk下载
 [Android studio sdk 下载地址](http://www.android-studio.org/index.php)
 
 ## svn,git下载地址
+[git下载](https://git-scm.com/downloads)
+
 ```
 链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
 提取码：xktl 
