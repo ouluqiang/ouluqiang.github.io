@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>charles使用 | 小白记忆屋</title>
+<title>Android Studio 配置SVN，GIT | 小白记忆屋</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,78 +98,38 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">charles使用</h2>
-            <div class="post-date">2019-09-23</div>
+            <h2 class="post-title">Android Studio 配置SVN，GIT</h2>
+            <div class="post-date">2019-09-24</div>
             
             <div class="post-content">
-              <p>charles基本设置使用</p>
-<!-- more -->
-<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
-<pre><code>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ 
-提取码：sj13 
-</code></pre>
-<h2 id="http抓包">http抓包</h2>
-<p>代理 &gt; 代理设置中设置端口号 8888 ,勾选启用HTTP代理<br>
-<img src="https://ouluqiang.github.io//post-images/1569304039210.jpg" alt="代理设置"></p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569303949066.jpg" alt="端口"></figure>
-<p>帮助 &gt; 本地ip 查看电脑ip<br>
-<img src="https://ouluqiang.github.io//post-images/1569304145156.jpg" alt="帮助"></p>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569304186481.jpg" alt="ip"></figure>
-<p>手机和电脑在一个网段(连接同一个路由器)，在手机网络设置里面填写代理服务地址信息<br>
-电脑ip ,  端口号</p>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569304740083.jpg" alt="代理"></figure>
-<p>在使用手机进行网络请求时，charles会有一个提示，允许即可</p>
-<h2 id="https抓包">https抓包</h2>
-<p>https需要安装证书，注意电脑安装证书需要安装到受信任的颁发机构</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569305139356.jpg" alt="证书"></figure>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569305350226.jpg" alt="安装证书"></figure>
-<p>手机也需要安装证书，在浏览器下载证书,如果不识别，不能安装，建议用谷歌浏览器app下载安装</p>
-<pre><code>chls.pro/ssl
-</code></pre>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1569305456616.jpg" alt="手机证书"></figure>
-<p>勾选Windows代理，打开ssl代理设置<br>
-<img src="https://ouluqiang.github.io//post-images/1569305597175.jpg" alt="ssl设置"></p>
-<p>添加主机和端口号， 主机用*，端口号443抓取https，也可以用*<br>
-<img src="https://ouluqiang.github.io//post-images/1569305786428.jpg" alt=""></p>
-<h2 id="android-70抓https失败的解决方案">Android 7.0抓https失败的解决方案</h2>
-<p>新建network_security_config.xml文件<br>
-<img src="https://ouluqiang.github.io//post-images/1569302838764.png" alt="network_security_config"></p>
-<p>在network_security_config.xml文件写入以下代码</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;network-security-config&gt;
-    &lt;base-config cleartextTrafficPermitted=&quot;true&quot;&gt;
-        &lt;trust-anchors&gt;
-            &lt;certificates src=&quot;system&quot; overridePins=&quot;true&quot; /&gt;
-            &lt;certificates src=&quot;user&quot; overridePins=&quot;true&quot; /&gt;
-        &lt;/trust-anchors&gt;
-    &lt;/base-config&gt;
-&lt;/network-security-config&gt;
-</code></pre>
-<p>在AndroidManifest.xml添加配置</p>
-<figure data-type="image" tabindex="7"><img src="https://ouluqiang.github.io//post-images/1569302899586.png" alt="networkSecurityConfig"></figure>
-<pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
-</code></pre>
+              <h1 id="svngit下载地址">svn,git下载地址</h1>
+<p>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA<br>
+提取码：xktl</p>
+<h1 id="svn">SVN</h1>
+<h2 id="svn安装需注意安装-command-line功能">svn安装需注意安装 command line功能</h2>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/2025676-875677224511e5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>在studio的File &gt; Settings &gt; Version Control &gt; Subversion 添加svn路径<br>
+<img src="https://upload-images.jianshu.io/upload_images/2025676-1063553bbaad279d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="git">GIT</h1>
+<p>在studio的File &gt; Settings &gt; Version Control &gt; Git 添加git路径，Test测试git版本</p>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/2025676-2b13860cb3bd9ed0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>GitHub直接输入账号密码即可</p>
+<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/2025676-c26d45bc490eab23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<h2 id="androidstudio-看不到svn的工具小图标">androidstudio 看不到svn的工具小图标</h2>
+<p>先看androidstudio是否安装svn<br>
+File &gt; Settings &gt; Plugins 搜索Subversion Integration</p>
+<p>如果有Subversion Integration 则安装好svn工具；如果没有安装，则进行安装。</p>
+<figure data-type="image" tabindex="4"><img src="https://upload-images.jianshu.io/upload_images/2025676-0ecaebd7a65ea26d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>再选择Subversion即可</p>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://ouluqiang.github.io//tag/QXrdbuOAc" class="tag">
-                    Charles
-                  </a>
-                
-                  <a href="https://ouluqiang.github.io//tag/7Y0nywv1q" class="tag">
-                    工具
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://ouluqiang.github.io//post/zheng-ze-biao-da-shi">
+                <a href="https://ouluqiang.github.io//post/android-studio-chang-yong-she-zhi">
                   <h3 class="post-title">
-                    正则表达式
+                    Android studio常用设置
                   </h3>
                 </a>
               </div>
