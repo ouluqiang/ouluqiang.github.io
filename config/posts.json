@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "content": "# svn,git下载地址  \r\n链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA \r\n提取码：xktl \r\n\r\n\r\n# SVN\r\n## svn安装需注意安装 command line功能\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-875677224511e5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n在studio的File > Settings > Version Control > Subversion 添加svn路径\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-1063553bbaad279d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n# GIT\r\n\r\n在studio的File > Settings > Version Control > Git 添加git路径，Test测试git版本\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-2b13860cb3bd9ed0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nGitHub直接输入账号密码即可\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-c26d45bc490eab23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n## androidstudio 看不到svn的工具小图标\r\n\r\n先看androidstudio是否安装svn\r\nFile > Settings > Plugins 搜索Subversion Integration\r\n\r\n如果有Subversion Integration 则安装好svn工具；如果没有安装，则进行安装。\r\n\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-0ecaebd7a65ea26d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n再选择Subversion即可",
+      "data": {
+        "title": "Android Studio 配置SVN，GIT",
+        "date": "2019-09-24 17:56:27",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "android-studio-pei-zhi-svngit"
+    },
+    {
       "content": "## 1.设置编辑界面和代码主题\r\n\r\nFile > Settings > Appearance & Behavior > Appearance > Theme\"，默认可以选择Light和Darcula，分别为白色和黑色主题，选择之后点击Apply应用。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-f4a1ef76abed3b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 2.修改字体大小和字体样式\r\nFile > Settings > Editor > Color Scheme > Color Scheme Font，先选择一个Scheme主题，打勾设置size然后Apply就好了。在Font下可以选择各种字体。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-df82492419a296ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 3.设置文件注释模板\r\nFile > Settings > Editor > File and Code Templates，切换到Includes下，在File Header里面设置注释模板。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-70921575f0087fb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 4.默认文件编码\r\n\r\nFile > Settings > Editor > File Encodings。建议将 IDE Encoding 、 Project Encoding 、 Properties Fiels 都设置成统一的UTB-8编码。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-b0640b99b22c7493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 5.显示行号\r\nFile | Settings | Editor | General | Appearance，勾选show line numbers\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-07d17066e3f7cd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 6.自动导入\r\nFile > Settings > Editor > General > Auto Import,修改不区分大小写提示，勾选导包和删除无用包\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-0f0c585bbb85a72f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 鼠标悬停显示方法说明\r\nFile > Settings > Editor > General\r\n可修改悬停多久，才显示方法说明(单位：毫秒)。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-6b377dbff2bad4c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n## 删除的类的历史记录，与未修改前的类对比\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-1828151b723cc4fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 导出，导入studio设置属性\r\nFile > Export Settings 导出设置\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-326cd4eec04166c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nFile > Import Settings 导入设置\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-6b25d777f1bed0e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)",
       "data": {
         "title": "Android studio常用设置",
