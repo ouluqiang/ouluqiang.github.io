@@ -7,38 +7,46 @@ hideInList: false
 feature: 
 ---
 ## 连接手机和电脑
+命令行 adb devices 查看连接
 
-    命令行 adb devices 查看连接
+![连接](https://ouluqiang.github.io//post-images/1568884026016.png)
 
-![连接](https://user-gold-cdn.xitu.io/2018/7/5/1646a02e0977420b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
    
 ## 设置5555端口
-
-    设置wifi调试端口 5555
+设置wifi调试端口 5555
+```
     adb tcpip 5555
+```
 
-  ![端口](https://user-gold-cdn.xitu.io/2018/7/5/1646a02e09802302?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![端口](https://ouluqiang.github.io//post-images/1568886196625.png)
+
   
 ## 查看手机ip
-
+```
     adb shell  ifconfig wlan0
+```
 
- ![ip](https://user-gold-cdn.xitu.io/2018/7/5/1646a02e09607999?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![ip](https://ouluqiang.github.io//post-images/1568886240609.png)
+
  
-    手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP
+手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP
 
-![ip](https://user-gold-cdn.xitu.io/2018/7/5/1646a02e0bac8d18?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![ip](https://ouluqiang.github.io//post-images/1568886275147.png)
+
 
 ## 连接手机 
-
+```
     adb connect <手机ip地址>
-    
-![连接](https://user-gold-cdn.xitu.io/2018/7/5/1646a02e0bb32167?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+```
+
+![连接](https://ouluqiang.github.io//post-images/1568886318164.png)
+
 
 
 ## 成功
-    连接成功显示
+连接成功显示
 
-![成功](https://user-gold-cdn.xitu.io/2018/7/5/1646a02e5a3e35c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![成功](https://ouluqiang.github.io//post-images/1568886341285.png)
+
     
  锤子手机测试失败
