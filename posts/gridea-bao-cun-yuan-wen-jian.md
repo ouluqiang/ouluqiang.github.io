@@ -63,6 +63,8 @@ cat id_rsa.pub
 再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功
 ![](https://ouluqiang.github.io//post-images/1569315793106.jpg)
 
+
+
 把源文件复制到分支项目,再打开Git Bash 提交代码
 ![](https://ouluqiang.github.io//post-images/1569311872576.jpg)
 
@@ -80,3 +82,5 @@ git push
 
 提交成功
 ![](https://ouluqiang.github.io//post-images/1569311915447.jpg)
+
+有一个问题就是提交完会导致token失效
