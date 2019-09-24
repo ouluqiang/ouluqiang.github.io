@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-24T08:10:23.321Z</updated>
+    <updated>2019-09-24T08:34:12.813Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -10,6 +10,42 @@
     <logo>https://ouluqiang.github.io//images/avatar.png</logo>
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
+    <entry>
+        <title type="html"><![CDATA[gson type封装泛型]]></title>
+        <id>https://ouluqiang.github.io//post/gson-type-feng-zhuang-fan-xing</id>
+        <link href="https://ouluqiang.github.io//post/gson-type-feng-zhuang-fan-xing">
+        </link>
+        <updated>2019-09-24T08:33:44.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="type封装获取泛型的实际类型">type封装获取泛型的实际类型</h2>
+<blockquote>
+<p>通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type</p>
+</blockquote>
+<p>getClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type<br>
+然后将其转换ParameterizedType。。<br>
+getActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。<br>
+[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。</p>
+<pre><code>        Type genericSuperclass = getClass().getGenericSuperclass();
+        if (genericSuperclass instanceof ParameterizedType) {
+            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+        } else {
+            this.type = Object.class; 
+            // 基本不会走这个判断
+        }
+</code></pre>
+<h2 id="解决-gson反序列化自动将int类型转化成double类型">解决 gson反序列化自动将int类型转化成double类型</h2>
+<pre><code>    private static Gson gson=new GsonBuilder().
+        registerTypeAdapter(Double.class, new JsonSerializer&lt;Double&gt;() {
+
+            @Override
+            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {
+                if (src == src.longValue())
+                    return new JsonPrimitive(src.longValue());
+                return new JsonPrimitive(src);
+            }
+        }).create();
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Gridea保存源文件]]></title>
         <id>https://ouluqiang.github.io//post/gridea-bao-cun-yuan-wen-jian</id>
@@ -69,6 +105,7 @@ git push
 </code></pre>
 <p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
 <h2 id="svngit下载地址">svn,git下载地址</h2>
+<p><a href="https://git-scm.com/downloads">git下载</a></p>
 <pre><code>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
 提取码：xktl 
 </code></pre>
@@ -656,10 +693,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9261268"><label class="task-list-item-label" for="task-item-9261268"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-631733"><label class="task-list-item-label" for="task-item-631733"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3172737"><label class="task-list-item-label" for="task-item-3172737"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5411832"><label class="task-list-item-label" for="task-item-5411832"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-130540"><label class="task-list-item-label" for="task-item-130540"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2597251"><label class="task-list-item-label" for="task-item-2597251"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -668,8 +705,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8624396"><label class="task-list-item-label" for="task-item-8624396"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6644786"><label class="task-list-item-label" for="task-item-6644786"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5479060"><label class="task-list-item-label" for="task-item-5479060"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7589958"><label class="task-list-item-label" for="task-item-7589958"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>

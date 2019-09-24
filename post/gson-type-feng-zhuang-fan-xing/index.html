@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>adb wifi 调试 | 小白记忆屋</title>
+<title>gson type封装泛型 | 小白记忆屋</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,41 +98,59 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">adb wifi 调试</h2>
-            <div class="post-date">2019-09-18</div>
+            <h2 class="post-title">gson type封装泛型</h2>
+            <div class="post-date">2019-09-24</div>
             
             <div class="post-content">
-              <h2 id="连接手机和电脑">连接手机和电脑</h2>
-<p>命令行 adb devices 查看连接</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></figure>
-<h2 id="设置5555端口">设置5555端口</h2>
-<p>设置wifi调试端口 5555</p>
-<pre><code>    adb tcpip 5555
+              <h2 id="type封装获取泛型的实际类型">type封装获取泛型的实际类型</h2>
+<blockquote>
+<p>通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type</p>
+</blockquote>
+<p>getClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type<br>
+然后将其转换ParameterizedType。。<br>
+getActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。<br>
+[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。</p>
+<pre><code>        Type genericSuperclass = getClass().getGenericSuperclass();
+        if (genericSuperclass instanceof ParameterizedType) {
+            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+        } else {
+            this.type = Object.class; 
+            // 基本不会走这个判断
+        }
 </code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1568886196625.png" alt="端口"></figure>
-<h2 id="查看手机ip">查看手机ip</h2>
-<pre><code>    adb shell  ifconfig wlan0
+<h2 id="解决-gson反序列化自动将int类型转化成double类型">解决 gson反序列化自动将int类型转化成double类型</h2>
+<pre><code>    private static Gson gson=new GsonBuilder().
+        registerTypeAdapter(Double.class, new JsonSerializer&lt;Double&gt;() {
+
+            @Override
+            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {
+                if (src == src.longValue())
+                    return new JsonPrimitive(src.longValue());
+                return new JsonPrimitive(src);
+            }
+        }).create();
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1568886240609.png" alt="ip"></figure>
-<p>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1568886275147.png" alt="ip"></figure>
-<h2 id="连接手机">连接手机</h2>
-<pre><code>    adb connect &lt;手机ip地址&gt;
-</code></pre>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1568886318164.png" alt="连接"></figure>
-<h2 id="成功">成功</h2>
-<p>连接成功显示</p>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1568886341285.png" alt="成功"></figure>
-<p>锤子手机测试失败</p>
 
             </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://ouluqiang.github.io//tag/uPl9IEkHz" class="tag">
+                    Android
+                  </a>
+                
+                  <a href="https://ouluqiang.github.io//tag/13AEsKm6N" class="tag">
+                    gson
+                  </a>
+                
+              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://ouluqiang.github.io//post/git-ming-ling">
+                <a href="https://ouluqiang.github.io//post/gridea-bao-cun-yuan-wen-jian">
                   <h3 class="post-title">
-                    git命令
+                    Gridea保存源文件
                   </h3>
                 </a>
               </div>
