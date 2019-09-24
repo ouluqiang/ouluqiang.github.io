@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>常用开发工具 | 小白记忆屋</title>
+<title>jdk sdk环境配置 Android下载 | 小白记忆屋</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,59 +98,52 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">常用开发工具</h2>
+            <h2 class="post-title">jdk sdk环境配置 Android下载</h2>
             <div class="post-date">2019-09-24</div>
             
             <div class="post-content">
-              <p>Android常用的开发工具</p>
-<!-- more -->
-<h2 id="android-stidosdkjdk">Android stido，sdk，jdk</h2>
+              <h1 id="下载">下载</h1>
 <p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">jdk下载地址</a></p>
-<p>jdk下载</p>
-<pre><code>链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag 
-提取码：t8ci 
-</code></pre>
+<p>jdk下载<br>
+链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag<br>
+提取码：t8ci</p>
 <p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
-<h2 id="svngit下载地址">svn,git下载地址</h2>
-<p><a href="https://git-scm.com/downloads">git下载</a></p>
-<pre><code>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
-提取码：xktl 
+<h2 id="jdk12">jdk12</h2>
+<p>安装JDK11或以上版本，安装过程中没有提示安装JRE，进入JDK安装路径下 shift+右键 在此处打开命令窗口</p>
+<p>输入</p>
+<pre><code> bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre   
 </code></pre>
-<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
-<pre><code>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ 
-提取码：sj13 
-</code></pre>
-<h2 id="sqlite数据库工具">sqlite数据库工具</h2>
-<pre><code>链接：https://pan.baidu.com/s/1I_w-rARDcKocKBXGOMbJdg 
-提取码：trl1
-</code></pre>
-<h2 id="颜色获取">颜色获取</h2>
-<pre><code>链接：https://pan.baidu.com/s/1-sLi9-PVYksCiE-RHSXquw 
-提取码：tyrw 
-</code></pre>
-<h2 id="获取sha1值">获取SHA1值</h2>
-<pre><code>链接：https://pan.baidu.com/s/15AvGDv-WjzU7jvLhJeLvhg 
-提取码：081p 
-</code></pre>
-<h1 id="idea-学习版">idea 学习版</h1>
-<p>http://idea.toocruel.net</p>
+<p>执行完成就会生成JRE</p>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/2025676-092ee2d81fb4e15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<h2 id="jdk8">jdk8</h2>
+<p>正常安装</p>
+<h2 id="环境变量配置">环境变量配置</h2>
+<p>我的电脑右键，点击属性，点击高级系统设置，点击环境变量</p>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/2025676-80d9883df2172e7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>新建系统变量，变量名写 JAVA_HOME 变量值 填写你JDK安装的路径</p>
+<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/2025676-14e4cad6e48b11de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>双击系统变量path编辑变量值 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
+<figure data-type="image" tabindex="4"><img src="https://upload-images.jianshu.io/upload_images/2025676-b05e6e5352c1876b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>在系统变量中新建 classpath 变量名，变量值为  %JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</p>
+<figure data-type="image" tabindex="5"><img src="https://upload-images.jianshu.io/upload_images/2025676-84140d49e227ae06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>win+R运行输入cmd，输入java -version查看JDK版本和JVM信息</p>
+<figure data-type="image" tabindex="6"><img src="https://upload-images.jianshu.io/upload_images/2025676-b5bff947bcc4d526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<h1 id="sdk">sdk</h1>
+<p>新建系统变量ANDROID_HOME，变量值D:\xx\sdk（以你安装目录为准,确认里面有tools和add-ons等多个文件夹）</p>
+<figure data-type="image" tabindex="7"><img src="https://upload-images.jianshu.io/upload_images/2025676-7c4474ac5ea494cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>在系统变量PATH后面加上变量值;%ANDROID_HOME%\platform-tools;</p>
+<figure data-type="image" tabindex="8"><img src="https://upload-images.jianshu.io/upload_images/2025676-95aa820c636c3cd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<p>win+R运行输入cmd，输入adb 查看</p>
+<figure data-type="image" tabindex="9"><img src="https://upload-images.jianshu.io/upload_images/2025676-a43222dcc6f1aa70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://ouluqiang.github.io//tag/7Y0nywv1q" class="tag">
-                    工具
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://ouluqiang.github.io//post/charles-shi-yong">
+                <a href="https://ouluqiang.github.io//post/gson-type-feng-zhuang-fan-xing">
                   <h3 class="post-title">
-                    charles使用
+                    gson type封装泛型
                   </h3>
                 </a>
               </div>
