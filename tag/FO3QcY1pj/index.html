@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>adb wifi 调试 | 小白记忆屋</title>
+<title>blog | 小白记忆屋</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -13,12 +13,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://ouluqiang.github.io//styles/main.css">
 
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -97,56 +91,29 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">adb wifi 调试</h2>
-            <div class="post-date">2019-09-18</div>
-            
-            <div class="post-content">
-              <h2 id="连接手机和电脑">连接手机和电脑</h2>
-<p>命令行 adb devices 查看连接</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></figure>
-<h2 id="设置5555端口">设置5555端口</h2>
-<p>设置wifi调试端口 5555</p>
-<pre><code>    adb tcpip 5555
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1568886196625.png" alt="端口"></figure>
-<h2 id="查看手机ip">查看手机ip</h2>
-<pre><code>    adb shell  ifconfig wlan0
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1568886240609.png" alt="ip"></figure>
-<p>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1568886275147.png" alt="ip"></figure>
-<h2 id="连接手机">连接手机</h2>
-<pre><code>    adb connect &lt;手机ip地址&gt;
-</code></pre>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1568886318164.png" alt="连接"></figure>
-<h2 id="成功">成功</h2>
-<p>连接成功显示</p>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1568886341285.png" alt="成功"></figure>
-<p>锤子手机测试失败</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://ouluqiang.github.io//post/git-ming-ling">
-                  <h3 class="post-title">
-                    git命令
-                  </h3>
+          <h2 class="current-tag">标签: blog</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://ouluqiang.github.io//post/grideagithub-pei-zhi-shi-yong">
+                  <h2 class="post-title">Gridea，GitHub配置使用</h2>
                 </a>
+                <div class="post-date">
+                  2019-09-18
+                </div>
+                <div class="post-abstract">
+                  <p>写博客的工具与GitHub的基本配置</p>
+
+                </div>
               </div>
-            
-
-            
               
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
+            </article>
+          
 
-              
-            
-
-          </div>
+          <div class="pagination-container">
+  
+  
+</div>
 
         </div>
       </div>
@@ -168,29 +135,6 @@ var app = new Vue({
 })
 
 </script>
-
-
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-
-      var gitalk = new Gitalk({
-        clientID: '4cb03ab310ad62ef1078',
-        clientSecret: '8c04030bf365023e81c4ae9481977a50a8bd4765',
-        repo: 'ouluqiang.github.io',
-        owner: 'ouluqiang',
-        admin: ['ouluqiang'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
 
 
 
