@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-24T08:34:12.813Z</updated>
+    <updated>2019-09-24T09:05:43.900Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -58,6 +58,7 @@ getActualTypeArguments()返回表示此类型实际类型参数的 Type 对象�
 <p>克隆项目到本地</p>
 <pre><code>git clone https://github.com/xxx/xxx.github.io.git
 </code></pre>
+<h2 id="切换分支">切换分支</h2>
 <p>到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支</p>
 <pre><code># 列出所有本地分支
 $ git branch
@@ -72,6 +73,25 @@ $ git branch -a
 $ git checkout [branch-name]
 </code></pre>
 <figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569311864422.jpg" alt=""></figure>
+<h2 id="生成ssh-key的私钥和公钥">生成ssh-key的私钥和公钥</h2>
+<p>生成key,看C盘用户目录SSH</p>
+<pre><code>ssh-keygen -t rsa      //一路回车下来
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569314857492.jpg" alt=""></figure>
+<p>测试是否能连接上GitHub服务器</p>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p>输出是.........<br>
+Permission denied (publickey).<br>
+需要将上面生成的public key(id_rsa.pub文件内容)拷贝到github服务器的SSH Keys中，<br>
+再.ssh目录下打开终端输入下面代码查看内容，或者直接记事本打开查看</p>
+<pre><code>cat id_rsa.pub
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569315446419.jpg" alt=""></figure>
+<p>头像 &gt; settings &gt; ssh<br>
+<img src="https://ouluqiang.github.io//post-images/1569315521381.jpg" alt=""></p>
+<p>再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功<br>
+<img src="https://ouluqiang.github.io//post-images/1569315793106.jpg" alt=""></p>
 <p>把源文件复制到分支项目,再打开Git Bash 提交代码<br>
 <img src="https://ouluqiang.github.io//post-images/1569311872576.jpg" alt=""></p>
 <pre><code># 添加当前目录的所有文件到暂存区
@@ -693,10 +713,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-631733"><label class="task-list-item-label" for="task-item-631733"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4155208"><label class="task-list-item-label" for="task-item-4155208"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-130540"><label class="task-list-item-label" for="task-item-130540"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2597251"><label class="task-list-item-label" for="task-item-2597251"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3880911"><label class="task-list-item-label" for="task-item-3880911"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3656100"><label class="task-list-item-label" for="task-item-3656100"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -705,8 +725,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5479060"><label class="task-list-item-label" for="task-item-5479060"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7589958"><label class="task-list-item-label" for="task-item-7589958"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2549522"><label class="task-list-item-label" for="task-item-2549522"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6470678"><label class="task-list-item-label" for="task-item-6470678"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>
