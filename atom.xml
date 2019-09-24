@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-24T05:33:39.909Z</updated>
+    <updated>2019-09-24T06:19:26.066Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -60,6 +60,29 @@
         <content type="html"><![CDATA[<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
 <p>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ</p>
 <p>提取码：sj13</p>
+<h2 id="http抓包">http抓包</h2>
+<p>代理 &gt; 代理设置中设置端口号 8888<br>
+<img src="https://ouluqiang.github.io//post-images/1569304039210.jpg" alt="代理设置"></p>
+<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569303949066.jpg" alt="端口"></figure>
+<p>帮助 &gt; 本地ip 查看电脑ip<br>
+<img src="https://ouluqiang.github.io//post-images/1569304145156.jpg" alt="帮助"></p>
+<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569304186481.jpg" alt="ip"></figure>
+<p>手机和电脑在一个网段(连接同一个路由器)，在手机网络设置里面填写代理服务地址信息<br>
+电脑ip ,  端口号<br>
+<img src="https://ouluqiang.github.io//post-images/1569304740083.jpg" alt="代理"></p>
+<p>在使用手机进行网络请求时，charles会有一个提示，允许即可</p>
+<h2 id="https抓包">https抓包</h2>
+<p>https需要安装证书，注意电脑安装证书需要安装到受信任的颁发机构</p>
+<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569305139356.jpg" alt="证书"></figure>
+<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569305350226.jpg" alt="安装证书"></figure>
+<p>手机也需要安装证书，在浏览器下载证书,如果不识别，不能安装，建议用谷歌浏览器app下载安装</p>
+<pre><code>chls.pro/ssl
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569305456616.jpg" alt="手机证书"></figure>
+<p>勾选Windows代理，打开ssl代理设置<br>
+<img src="https://ouluqiang.github.io//post-images/1569305597175.jpg" alt="ssl设置"></p>
+<p>添加主机和端口号， 主机用*，端口号443抓取https，也可以用*<br>
+<img src="https://ouluqiang.github.io//post-images/1569305786428.jpg" alt=""></p>
 <h2 id="android-70抓https失败的解决方案">Android 7.0抓https失败的解决方案</h2>
 <p>新建network_security_config.xml文件<br>
 <img src="https://ouluqiang.github.io//post-images/1569302838764.png" alt="network_security_config"></p>
@@ -75,7 +98,7 @@
 &lt;/network-security-config&gt;
 </code></pre>
 <p>在AndroidManifest.xml添加配置</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569302899586.png" alt=""></figure>
+<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1569302899586.png" alt="networkSecurityConfig"></figure>
 <pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
 </code></pre>
 ]]></content>
@@ -585,10 +608,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7138036"><label class="task-list-item-label" for="task-item-7138036"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9099282"><label class="task-list-item-label" for="task-item-9099282"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9754870"><label class="task-list-item-label" for="task-item-9754870"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6743832"><label class="task-list-item-label" for="task-item-6743832"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3154771"><label class="task-list-item-label" for="task-item-3154771"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9918529"><label class="task-list-item-label" for="task-item-9918529"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -597,8 +620,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3458018"><label class="task-list-item-label" for="task-item-3458018"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9194165"><label class="task-list-item-label" for="task-item-9194165"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2204921"><label class="task-list-item-label" for="task-item-2204921"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9002239"><label class="task-list-item-label" for="task-item-9002239"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>
