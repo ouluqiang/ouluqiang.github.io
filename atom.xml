@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-23T10:32:23.958Z</updated>
+    <updated>2019-09-24T05:33:39.909Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -10,6 +10,76 @@
     <logo>https://ouluqiang.github.io//images/avatar.png</logo>
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
+    <entry>
+        <title type="html"><![CDATA[常用开发工具]]></title>
+        <id>https://ouluqiang.github.io//post/chang-yong-kai-fa-gong-ju</id>
+        <link href="https://ouluqiang.github.io//post/chang-yong-kai-fa-gong-ju">
+        </link>
+        <updated>2019-09-24T05:22:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>Android常用的开发工具</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Android常用的开发工具</p>
+<!-- more -->
+<h2 id="android-stidosdkjdk">Android stido，sdk，jdk</h2>
+<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">jdk下载地址</a></p>
+<p>jdk下载</p>
+<pre><code>链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag 
+提取码：t8ci 
+</code></pre>
+<p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
+<h2 id="svngit下载地址">svn,git下载地址</h2>
+<pre><code>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
+提取码：xktl 
+</code></pre>
+<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
+<pre><code>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ 
+提取码：sj13 
+</code></pre>
+<h2 id="sqlite数据库工具">sqlite数据库工具</h2>
+<pre><code>链接：https://pan.baidu.com/s/1I_w-rARDcKocKBXGOMbJdg 
+提取码：trl1
+</code></pre>
+<h2 id="颜色获取">颜色获取</h2>
+<pre><code>链接：https://pan.baidu.com/s/1-sLi9-PVYksCiE-RHSXquw 
+提取码：tyrw 
+</code></pre>
+<h2 id="获取sha1值">获取SHA1值</h2>
+<pre><code>链接：https://pan.baidu.com/s/15AvGDv-WjzU7jvLhJeLvhg 
+提取码：081p 
+</code></pre>
+<h1 id="idea-学习版">idea 学习版</h1>
+<p>http://idea.toocruel.net</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[charles使用]]></title>
+        <id>https://ouluqiang.github.io//post/charles-shi-yong</id>
+        <link href="https://ouluqiang.github.io//post/charles-shi-yong">
+        </link>
+        <updated>2019-09-23T10:38:43.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
+<p>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ</p>
+<p>提取码：sj13</p>
+<h2 id="android-70抓https失败的解决方案">Android 7.0抓https失败的解决方案</h2>
+<p>新建network_security_config.xml文件<br>
+<img src="https://ouluqiang.github.io//post-images/1569302838764.png" alt="network_security_config"></p>
+<p>在network_security_config.xml文件写入以下代码</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;network-security-config&gt;
+    &lt;base-config cleartextTrafficPermitted=&quot;true&quot;&gt;
+        &lt;trust-anchors&gt;
+            &lt;certificates src=&quot;system&quot; overridePins=&quot;true&quot; /&gt;
+            &lt;certificates src=&quot;user&quot; overridePins=&quot;true&quot; /&gt;
+        &lt;/trust-anchors&gt;
+    &lt;/base-config&gt;
+&lt;/network-security-config&gt;
+</code></pre>
+<p>在AndroidManifest.xml添加配置</p>
+<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569302899586.png" alt=""></figure>
+<pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[正则表达式]]></title>
         <id>https://ouluqiang.github.io//post/zheng-ze-biao-da-shi</id>
@@ -515,10 +585,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4515528"><label class="task-list-item-label" for="task-item-4515528"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7138036"><label class="task-list-item-label" for="task-item-7138036"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7652015"><label class="task-list-item-label" for="task-item-7652015"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5344169"><label class="task-list-item-label" for="task-item-5344169"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9754870"><label class="task-list-item-label" for="task-item-9754870"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6743832"><label class="task-list-item-label" for="task-item-6743832"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -527,8 +597,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8007590"><label class="task-list-item-label" for="task-item-8007590"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5145036"><label class="task-list-item-label" for="task-item-5145036"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3458018"><label class="task-list-item-label" for="task-item-3458018"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9194165"><label class="task-list-item-label" for="task-item-9194165"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>

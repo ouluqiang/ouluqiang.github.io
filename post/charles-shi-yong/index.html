@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>正则表达式 | 小白记忆屋</title>
+<title>charles使用 | 小白记忆屋</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,56 +98,30 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">正则表达式</h2>
+            <h2 class="post-title">charles使用</h2>
             <div class="post-date">2019-09-23</div>
             
             <div class="post-content">
-              <p>一些常用正则表达式</p>
-<!-- more -->
-<h2 id="搜索中文">搜索中文</h2>
-<pre><code>^((?!(\*|//)).)+[\u4e00-\u9fa5]
+              <h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
+<p>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ</p>
+<p>提取码：sj13</p>
+<h2 id="android-70抓https失败的解决方案">Android 7.0抓https失败的解决方案</h2>
+<p>新建network_security_config.xml文件<br>
+<img src="https://ouluqiang.github.io//post-images/1569302838764.png" alt="network_security_config"></p>
+<p>在network_security_config.xml文件写入以下代码</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;network-security-config&gt;
+    &lt;base-config cleartextTrafficPermitted=&quot;true&quot;&gt;
+        &lt;trust-anchors&gt;
+            &lt;certificates src=&quot;system&quot; overridePins=&quot;true&quot; /&gt;
+            &lt;certificates src=&quot;user&quot; overridePins=&quot;true&quot; /&gt;
+        &lt;/trust-anchors&gt;
+    &lt;/base-config&gt;
+&lt;/network-security-config&gt;
 </code></pre>
-<h2 id="验证密码首位为字母或数字">验证密码首位为字母或数字</h2>
-<pre><code>[0-9 a-z A-Z]\w*
-</code></pre>
-<h2 id="验证email">验证Email</h2>
-<pre><code>\w+@\w+\.[a-z]+(\.[a-z]+)?
-</code></pre>
-<h2 id="验证身份证号码">验证身份证号码</h2>
-<pre><code>(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)
-</code></pre>
-<h2 id="验证手机号码">验证手机号码</h2>
-<pre><code>(\+\d+)?1[3456789]\d{9}$
-</code></pre>
-<h2 id="验证固定电话号码">验证固定电话号码</h2>
-<pre><code>(\+\d+)?(\d{3,4}\-?)?\d{7,8}$
-</code></pre>
-<h2 id="验证整数正整数和负整数">验证整数（正整数和负整数）</h2>
-<pre><code>\-?[1-9]\d+
-</code></pre>
-<h2 id="验证整数和浮点数正负整数和正负浮点数">验证整数和浮点数（正负整数和正负浮点数）</h2>
-<pre><code>\-?[1-9]\d+(\.\d+)?
-</code></pre>
-<h2 id="验证空白字符">验证空白字符</h2>
-<pre><code>\\s+
-</code></pre>
-<h2 id="验证中文">验证中文</h2>
-<pre><code>^[\u4E00-\u9FA5]+$
-</code></pre>
-<h2 id="验证日期年月日">验证日期（年月日）</h2>
-<pre><code>[1-9]{4}([-./])\d{1,2}\1\d{1,2}
-</code></pre>
-<h2 id="验证url地址">验证URL地址</h2>
-<pre><code>(https?://(w{3}\.)?)?\w+\.\w+(\.[a-zA-Z]+)*(:\d{1,5})?(/\w*)*(\??(.+=.*)?(&amp;.+=.*)?)?
-</code></pre>
-<h2 id="获取网址-url-的一级域名">获取网址 URL 的一级域名</h2>
-<pre><code>(?&lt;=http://|\.)[^.]*?\.(com|cn|net|org|biz|info|cc|tv)
-</code></pre>
-<h2 id="匹配中国邮政编码">匹配中国邮政编码</h2>
-<pre><code>[1-9]\d{5}
-</code></pre>
-<h2 id="匹配ip地址简单匹配格式如19216811127001没有匹配ip段的大小">匹配IP地址(简单匹配，格式，如：192.168.1.1，127.0.0.1，没有匹配IP段的大小)</h2>
-<pre><code>[1-9](\d{1,2})?\.(0|([1-9](\d{1,2})?))\.(0|([1-9](\d{1,2})?))\.(0|([1-9](\d{1,2})?))
+<p>在AndroidManifest.xml添加配置</p>
+<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569302899586.png" alt=""></figure>
+<pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
 </code></pre>
 
             </div>
@@ -155,9 +129,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://ouluqiang.github.io//post/grideagithub-pei-zhi-shi-yong">
+                <a href="https://ouluqiang.github.io//post/zheng-ze-biao-da-shi">
                   <h3 class="post-title">
-                    Gridea，GitHub配置使用
+                    正则表达式
                   </h3>
                 </a>
               </div>
