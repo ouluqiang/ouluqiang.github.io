@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-24T08:00:20.389Z</updated>
+    <updated>2019-09-24T08:08:53.907Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -17,10 +17,11 @@
         </link>
         <updated>2019-09-24T07:55:55.000Z</updated>
         <content type="html"><![CDATA[<h2 id="创建分支">创建分支</h2>
-<p>在GitHub的博客项目中新建一个分支，克隆项目到本地</p>
+<p>在GitHub的博客项目中新建一个分支</p>
+<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569311927040.jpg" alt=""></figure>
+<p>克隆项目到本地</p>
 <pre><code>git clone https://github.com/xxx/xxx.github.io.git
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569311927040.jpg" alt=""></figure>
 <p>到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支</p>
 <pre><code># 列出所有本地分支
 $ git branch
@@ -48,47 +49,6 @@ git push
 </code></pre>
 <p>提交成功<br>
 <img src="https://ouluqiang.github.io//post-images/1569311915447.jpg" alt=""></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[。。。]]></title>
-        <id>https://ouluqiang.github.io//post/</id>
-        <link href="https://ouluqiang.github.io//post/">
-        </link>
-        <updated>2019-09-24T07:20:57.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="创建分支">创建分支</h2>
-<p>在GitHub的博客项目中新建一个分支</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569309783837.jpg" alt=""></figure>
-<p>克隆项目到本地</p>
-<pre><code>git clone https://github.com/xxx/xxx.github.io.git
-</code></pre>
-<p>到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支</p>
-<pre><code># 列出所有本地分支
-$ git branch
-
-# 列出所有远程分支
-$ git branch -r
-
-# 列出所有本地分支和远程分支
-$ git branch -a
-
-# 切换到指定分支，并更新工作区
-$ git checkout [branch-name]
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569310296908.jpg" alt=""></figure>
-<p>把源文件复制到分支项目,再打开Git Bash 提交代码</p>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569310473981.jpg" alt=""></figure>
-<pre><code># 添加当前目录的所有文件到暂存区
-$ git add .
-
-# 提交暂存区到仓库区
-$ git commit -m ‘修改说明，随便写’
-
-# 提交到远程仓库
-git push
-</code></pre>
-<p>提交成功<br>
-<img src="https://ouluqiang.github.io//post-images/1569310933173.jpg" alt=""></p>
 ]]></content>
     </entry>
     <entry>
@@ -696,10 +656,10 @@ $ git archive
   - [x] 已完成  
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5475942"><label class="task-list-item-label" for="task-item-5475942"> 已完成</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7543465"><label class="task-list-item-label" for="task-item-7543465"> 已完成</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2187615"><label class="task-list-item-label" for="task-item-2187615"> 已完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9336588"><label class="task-list-item-label" for="task-item-9336588"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4637158"><label class="task-list-item-label" for="task-item-4637158"> 已完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5874523"><label class="task-list-item-label" for="task-item-5874523"> 已完成</label></li>
 </ul>
 </li>
 </ul>
@@ -708,8 +668,8 @@ $ git archive
 - [ ] 未完成
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2894517"><label class="task-list-item-label" for="task-item-2894517"> 未完成</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3473370"><label class="task-list-item-label" for="task-item-3473370"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7807712"><label class="task-list-item-label" for="task-item-7807712"> 未完成</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2204494"><label class="task-list-item-label" for="task-item-2204494"> 未完成</label></li>
 </ul>
 <h2 id="高效绘制-流程图-序列图-甘特图-表格">高效绘制 流程图、序列图、甘特图、表格</h2>
 <h3 id="流程图">流程图</h3>
