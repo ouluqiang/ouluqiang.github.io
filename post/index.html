@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>adb wifi 调试 | 小白记忆屋</title>
+<title>。。。 | 小白记忆屋</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,41 +98,68 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">adb wifi 调试</h2>
-            <div class="post-date">2019-09-18</div>
+            <h2 class="post-title">。。。</h2>
+            <div class="post-date">2019-09-24</div>
             
             <div class="post-content">
-              <h2 id="连接手机和电脑">连接手机和电脑</h2>
-<p>命令行 adb devices 查看连接</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></figure>
-<h2 id="设置5555端口">设置5555端口</h2>
-<p>设置wifi调试端口 5555</p>
-<pre><code>    adb tcpip 5555
+              <h2 id="创建分支">创建分支</h2>
+<p>在GitHub的博客项目中新建一个分支</p>
+<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569309783837.jpg" alt=""></figure>
+<p>克隆项目到本地</p>
+<pre><code>git clone https://github.com/xxx/xxx.github.io.git
 </code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1568886196625.png" alt="端口"></figure>
-<h2 id="查看手机ip">查看手机ip</h2>
-<pre><code>    adb shell  ifconfig wlan0
+<p>到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支</p>
+<pre><code># 列出所有本地分支
+$ git branch
+
+# 列出所有远程分支
+$ git branch -r
+
+# 列出所有本地分支和远程分支
+$ git branch -a
+
+# 切换到指定分支，并更新工作区
+$ git checkout [branch-name]
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1568886240609.png" alt="ip"></figure>
-<p>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1568886275147.png" alt="ip"></figure>
-<h2 id="连接手机">连接手机</h2>
-<pre><code>    adb connect &lt;手机ip地址&gt;
+<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569310296908.jpg" alt=""></figure>
+<p>把源文件复制到分支项目,再打开Git Bash 提交代码</p>
+<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569310473981.jpg" alt=""></figure>
+<pre><code># 添加当前目录的所有文件到暂存区
+$ git add .
+
+# 提交暂存区到仓库区
+$ git commit -m ‘修改说明，随便写’
+
+# 提交到远程仓库
+git push
 </code></pre>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1568886318164.png" alt="连接"></figure>
-<h2 id="成功">成功</h2>
-<p>连接成功显示</p>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1568886341285.png" alt="成功"></figure>
-<p>锤子手机测试失败</p>
+<p>提交成功<br>
+<img src="https://ouluqiang.github.io//post-images/1569310933173.jpg" alt=""></p>
 
             </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://ouluqiang.github.io//tag/TMR7yPO8w" class="tag">
+                    github
+                  </a>
+                
+                  <a href="https://ouluqiang.github.io//tag/FO3QcY1pj" class="tag">
+                    blog
+                  </a>
+                
+                  <a href="https://ouluqiang.github.io//tag/ea4LAVIav" class="tag">
+                    Gridea
+                  </a>
+                
+              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://ouluqiang.github.io//post/git-ming-ling">
+                <a href="https://ouluqiang.github.io//post/chang-yong-kai-fa-gong-ju">
                   <h3 class="post-title">
-                    git命令
+                    常用开发工具
                   </h3>
                 </a>
               </div>
