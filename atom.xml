@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-24T09:57:07.083Z</updated>
+    <updated>2019-09-27T03:26:38.316Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -178,25 +178,6 @@ $ git branch -a
 $ git checkout [branch-name]
 </code></pre>
 <figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569311864422.jpg" alt=""></figure>
-<h2 id="生成ssh-key的私钥和公钥">生成ssh-key的私钥和公钥</h2>
-<p>生成key,看C盘用户目录SSH</p>
-<pre><code>ssh-keygen -t rsa      //一路回车下来
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569314857492.jpg" alt=""></figure>
-<p>测试是否能连接上GitHub服务器</p>
-<pre><code>ssh -T git@github.com
-</code></pre>
-<p>输出是.........<br>
-Permission denied (publickey).<br>
-需要将上面生成的public key(id_rsa.pub文件内容)拷贝到github服务器的SSH Keys中，<br>
-再.ssh目录下打开终端输入下面代码查看内容，或者直接记事本打开查看</p>
-<pre><code>cat id_rsa.pub
-</code></pre>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569315446419.jpg" alt=""></figure>
-<p>头像 &gt; settings &gt; ssh<br>
-<img src="https://ouluqiang.github.io//post-images/1569315521381.jpg" alt=""></p>
-<p>再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功<br>
-<img src="https://ouluqiang.github.io//post-images/1569315793106.jpg" alt=""></p>
 <p>把源文件复制到分支项目,再打开Git Bash 提交代码<br>
 <img src="https://ouluqiang.github.io//post-images/1569311872576.jpg" alt=""></p>
 <pre><code># 添加当前目录的所有文件到暂存区
@@ -210,7 +191,35 @@ git push
 </code></pre>
 <p>提交成功<br>
 <img src="https://ouluqiang.github.io//post-images/1569311915447.jpg" alt=""></p>
-<p>有一个问题就是提交完会导致token失效</p>
+<p>但是提交完会因为提交的源文件有token，GitHub会给你发邮件token泄漏，将原先生成的token移除，原先的token已经失效了，你需要重新申请token,在Gridea的配置修改token,后续如果要提交源文件有1种方法就是不提交有token的文件，也就是源文件/config/setting.json，不提交这个文件就即可</p>
+<!-- ## 生成ssh-key的私钥和公钥
+生成key,看C盘用户目录SSH
+
+```
+ssh-keygen -t rsa      //一路回车下来
+```
+![](https://ouluqiang.github.io//post-images/1569314857492.jpg)
+
+测试是否能连接上GitHub服务器
+```
+ssh -T git@github.com
+```
+输出是.........
+Permission denied (publickey).
+需要将上面生成的public key(id_rsa.pub文件内容)拷贝到github服务器的SSH Keys中，
+再.ssh目录下打开终端输入下面代码查看内容，或者直接记事本打开查看
+
+```
+cat id_rsa.pub
+```
+
+![](https://ouluqiang.github.io//post-images/1569315446419.jpg)
+
+头像 > settings > ssh
+![](https://ouluqiang.github.io//post-images/1569315521381.jpg)
+
+再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功
+![](https://ouluqiang.github.io//post-images/1569315793106.jpg) -->
 ]]></content>
     </entry>
     <entry>
