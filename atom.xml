@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-27T05:27:19.277Z</updated>
+    <updated>2019-09-27T07:19:55.829Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -508,19 +508,19 @@ println(text.toString())
 提取码：xktl</p>
 <h1 id="svn">SVN</h1>
 <h2 id="svn安装需注意安装-command-line功能">svn安装需注意安装 command line功能</h2>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/2025676-875677224511e5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
-<p>在studio的File &gt; Settings &gt; Version Control &gt; Subversion 添加svn路径<br>
-<img src="https://upload-images.jianshu.io/upload_images/2025676-1063553bbaad279d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569568588046.png" alt=""></figure>
+<p>在studio的File &gt; Settings &gt; Version Control &gt; Subversion 添加svn路径</p>
+<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569568609300.png" alt=""></figure>
 <h1 id="git">GIT</h1>
 <p>在studio的File &gt; Settings &gt; Version Control &gt; Git 添加git路径，Test测试git版本</p>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/2025676-2b13860cb3bd9ed0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569568633842.png" alt=""></figure>
 <p>GitHub直接输入账号密码即可</p>
-<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/2025676-c26d45bc490eab23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569568657529.png" alt=""></figure>
 <h2 id="androidstudio-看不到svn的工具小图标">androidstudio 看不到svn的工具小图标</h2>
 <p>先看androidstudio是否安装svn<br>
 File &gt; Settings &gt; Plugins 搜索Subversion Integration</p>
 <p>如果有Subversion Integration 则安装好svn工具；如果没有安装，则进行安装。</p>
-<figure data-type="image" tabindex="4"><img src="https://upload-images.jianshu.io/upload_images/2025676-0ecaebd7a65ea26d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569568783281.png" alt=""></figure>
 <p>再选择Subversion即可</p>
 ]]></content>
     </entry>
