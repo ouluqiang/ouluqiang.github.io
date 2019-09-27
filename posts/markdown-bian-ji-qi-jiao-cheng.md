@@ -1,7 +1,7 @@
 ---
 title: 'markdown编辑器教程'
 date: 2019-08-09 17:51:21
-tags: [Blog]
+tags: [Blog,markdown]
 published: true
 hideInList: false
 feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
@@ -12,26 +12,23 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 
 **标题，只需要在这段文字前面加上 #，再在 # 后加一个空格  
 增加一个 # ，标题字号相应降低一级**
-
-![标题](https://upload-images.jianshu.io/upload_images/2025676-8d8f001685f10376.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![标题](https://ouluqiang.github.io//post-images/1569307892987.png)
 
 ```
-
 # 一级标题
 ## 二级标题
 ### 三级标题
 #### 四级标题
 ```
-![标题效果](https://upload-images.jianshu.io/upload_images/2025676-58343e9277ea2b44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![标题效果](https://ouluqiang.github.io//post-images/1569307931761.png)
 
 ## 列表  
 
 ### 无序列表  
 
 **你只需要在文字前面加上 - 就可以了；如果你希望是有序列表，在文字前面加上 1. 2. 3. 即可。**
+![无序列表](https://ouluqiang.github.io//post-images/1569307967486.png)
 
-![无序列表](https://upload-images.jianshu.io/upload_images/2025676-07cceafd441cd920.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
 - 列表1
@@ -50,7 +47,8 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 
 ### 有序列表
 
-![有序列表](https://upload-images.jianshu.io/upload_images/2025676-ebd8f26e1987f583.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![有序列表](https://ouluqiang.github.io//post-images/1569308007512.png)
+
 
 ```
 1. 列表1
@@ -72,7 +70,7 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 **如果你需要在文稿中引用一段别处的句子，那么就要用到「引用」格式。  
 在引用文字前加上 > 并与文字保留一个字符的空格**
 
-![引用](https://upload-images.jianshu.io/upload_images/2025676-308c2da04c0a7c93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![引用](https://ouluqiang.github.io//post-images/1569308041174.png)
 
 ```
 	> 记录，成为更好的自己。--有道云笔记 
@@ -89,7 +87,7 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 **用一个 * 包含一段文本就是斜体的语法。**  
 ***注意：字符与文本之间无须空格***
 
-![斜体](https://upload-images.jianshu.io/upload_images/2025676-8ff7819393bf126a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![斜体](https://ouluqiang.github.io//post-images/1569308084185.png)
 
 ```
 *这是斜体*
@@ -97,7 +95,7 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 
 *这是斜体*
 
-![粗体](https://upload-images.jianshu.io/upload_images/2025676-46a4a7fa4760dbc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![粗体](https://ouluqiang.github.io//post-images/1569308112324.png)
 
 ```
 **这是粗体**
@@ -112,22 +110,21 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 **图片：在 Markdown 中，插入图片只需要使用 ![显示文本] (图片链接地址)即可。**  
 ***注：插入图片的语法和链接的语法很像，只是前面多了一个！***  
 
-![链接](https://upload-images.jianshu.io/upload_images/2025676-e89b224292641ac3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![链接](https://ouluqiang.github.io//post-images/1569308139421.png)
 
 ```
-[链接](https://note.youdao.com/)
+[链接](https://ouluqiang.github.io)
 ```
 
-[链接](https://note.youdao.com/)
+[链接](https://ouluqiang.github.io)
 
-![图片](https://upload-images.jianshu.io/upload_images/2025676-68cec4f8f6fe50e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-```
-![图片连接演示](https://note.youdao.com/favicon.ico)
+![图片](https://ouluqiang.github.io//post-images/1569308339148.png)
 
 ```
+![图片连接演示](https://ouluqiang.github.io//images/avatar.png?v=1569307577738)
+```
 
-![图片连接演示](https://note.youdao.com/favicon.ico)
+![图片连接演示](https://ouluqiang.github.io//images/avatar.png?v=1569307577738)
 
 
 ## 分割线
@@ -156,11 +153,10 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 
 
 ## 代码高亮
-![代码高亮](https://upload-images.jianshu.io/upload_images/2025676-4567952819601eff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![代码高亮代码](https://upload-images.jianshu.io/upload_images/2025676-0637292775ce2762.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![代码高亮](https://ouluqiang.github.io//post-images/1569308458877.png)
 
-
+![代码高亮代码](https://ouluqiang.github.io//post-images/1569308483292.png)
 
 ```
 代码高亮
@@ -173,7 +169,7 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
 
 ***注：键入字符与字符之间都要保留一个字符的空格。***
 
-![已完成](https://upload-images.jianshu.io/upload_images/2025676-ab5840336eb854c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![已完成](https://ouluqiang.github.io//post-images/1569308519075.png)
 
 ```
 - [x] 已完成
@@ -185,7 +181,7 @@ feature: /post-images/markdown-bian-ji-qi-jiao-cheng.jpg
   - [x] 已完成
   - [x] 已完成  
 
-![未完成](https://upload-images.jianshu.io/upload_images/2025676-2bf11ee3af40589a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![未完成](https://ouluqiang.github.io//post-images/1569308546303.png)
 
 ```
 - [ ] 未完成
@@ -206,9 +202,10 @@ BT - bottom top（自下而上）
 RL - right left（从右到左）  
 LR - left right（从左到右）  
 
-![流程图](https://upload-images.jianshu.io/upload_images/2025676-43319c747228a4b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![流程图](https://ouluqiang.github.io//post-images/1569308580136.png)
 
-![流程图效果](https://upload-images.jianshu.io/upload_images/2025676-7860cc705cd86a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![流程图效果](https://ouluqiang.github.io//post-images/1569308601497.png)
+
 
 
 ```
@@ -222,9 +219,10 @@ C -->|插入文本|F
 
 ### 序列图
 
-![序列图](https://upload-images.jianshu.io/upload_images/2025676-b3350d5f58325148.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![序列图](https://ouluqiang.github.io//post-images/1569308625091.png)
 
-![序列图效果](https://upload-images.jianshu.io/upload_images/2025676-a10ae40c580ae389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![序列图效果](https://ouluqiang.github.io//post-images/1569308658344.png)
+
 
 ```
 sequenceDiagram
@@ -240,9 +238,10 @@ end
 dateFormat YYYY-MM-DD规定了时间轴，title （标题文本）表示甘特图标题。
 需键入section，空一个字符，再输入项目名称的文本（一个section和另一个section之间要空行）。
 
-![甘特图](https://upload-images.jianshu.io/upload_images/2025676-642f5fc1f1e0a58f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![甘特图](https://ouluqiang.github.io//post-images/1569308684380.png)
 
-![甘特图效果](https://upload-images.jianshu.io/upload_images/2025676-5a0821ca3e0c5eba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![甘特图效果](https://ouluqiang.github.io//post-images/1569308707886.png)
+
 
 ```
 gantt
@@ -258,7 +257,8 @@ section 后期阶段
 
 ### 表格
 
-![表格](https://upload-images.jianshu.io/upload_images/2025676-a920709eb24e62a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![表格](https://ouluqiang.github.io//post-images/1569308736274.png)
+
 
 ```
     header 1    | header 2    | 第三
@@ -275,9 +275,9 @@ row 2 col 1 | row 2 col 2 | 第三个
 
 ## 书写数学公式
 
-![公式](https://upload-images.jianshu.io/upload_images/2025676-f3a8f9ee5bed4371.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![公式](https://ouluqiang.github.io//post-images/1569308765985.png)
 
-![公式图](https://upload-images.jianshu.io/upload_images/2025676-5724b2d4632ee21a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
+![公式图](https://ouluqiang.github.io//post-images/1569308783976.png)
 
 ```math
 E = mc^2

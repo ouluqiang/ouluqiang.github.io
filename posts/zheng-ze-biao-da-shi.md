@@ -10,6 +10,11 @@ feature:
 
 <!-- more -->
 
+## 正则判断函数
+```
+Pattern.matches(regex, pass);
+```
+
 ## 搜索中文
 ```
 ^((?!(\*|//)).)+[\u4e00-\u9fa5]

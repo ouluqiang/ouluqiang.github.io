@@ -34,7 +34,30 @@ $ git checkout [branch-name]
 ```
 ![](https://ouluqiang.github.io//post-images/1569311864422.jpg)
 
-## 生成ssh-key的私钥和公钥
+
+把源文件复制到分支项目,再打开Git Bash 提交代码
+![](https://ouluqiang.github.io//post-images/1569311872576.jpg)
+
+
+```
+# 添加当前目录的所有文件到暂存区
+$ git add .
+
+# 提交暂存区到仓库区
+$ git commit -m ‘修改说明，随便写’
+
+# 提交到远程仓库
+git push
+```
+
+提交成功
+![](https://ouluqiang.github.io//post-images/1569311915447.jpg)
+
+
+但是提交完会因为提交的源文件有token，GitHub会给你发邮件token泄漏，将原先生成的token移除，原先的token已经失效了，你需要重新申请token,在Gridea的配置修改token,后续如果要提交源文件有1种方法就是不提交有token的文件，也就是源文件/config/setting.json，不提交这个文件就即可
+
+
+<!-- ## 生成ssh-key的私钥和公钥
 生成key,看C盘用户目录SSH
 
 ```
@@ -61,26 +84,4 @@ cat id_rsa.pub
 ![](https://ouluqiang.github.io//post-images/1569315521381.jpg)
 
 再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功
-![](https://ouluqiang.github.io//post-images/1569315793106.jpg)
-
-
-
-把源文件复制到分支项目,再打开Git Bash 提交代码
-![](https://ouluqiang.github.io//post-images/1569311872576.jpg)
-
-
-```
-# 添加当前目录的所有文件到暂存区
-$ git add .
-
-# 提交暂存区到仓库区
-$ git commit -m ‘修改说明，随便写’
-
-# 提交到远程仓库
-git push
-```
-
-提交成功
-![](https://ouluqiang.github.io//post-images/1569311915447.jpg)
-
-有一个问题就是提交完会导致token失效
+![](https://ouluqiang.github.io//post-images/1569315793106.jpg) -->

@@ -1,10 +1,27 @@
 {
   "posts": [
     {
-      "content": "## 创建github 博客项目\n\n创建一个repo，名称为 yourname.github.io, 其中yourname是你的github名称，按照这个规则创建才有用哦，如下：\n\n![创建项目](https://upload-images.jianshu.io/upload_images/2025676-27cbc16d60b5378f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\nxxx.github.io  xxx必须是你的用户名，创建项目，我的已经存在了\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-f5dc6de0a738e9d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n\n\n## [创建一个 Token](https://github.com/settings/tokens/new)\n\n只勾选repo即可，防止token泄漏\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-e3424b29caa6e80c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n拿到token填写到gridea的基础配置token里\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-bc682cb96eb9469c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-e207df0087789a85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n检测远程连接成功就可以了，如果确定都填对了，就关闭gridea软件再打开软件检测远程连接\n\n## [创建一个 OAuth](https://github.com/settings/applications/new)\n\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-e341bbdab4dace89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n填写到Gridea的配置评论栏中\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-8891c7ce7e2b3e5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-126a89e6e3214e35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n再博客中测试评论，成功即可",
+      "content": "### kotlin函数\r\n\r\nmain函数  \r\n\r\n    fun main(args:array<String>){\r\n        \r\n    }\r\n\r\n带参数带返回值\r\n\r\n    fun sum(a:Int,b:Int):Int{\r\n        return a+b\r\n    }\r\n    \r\n表达式做函数体，返回值类型自动推断的函数\r\n\r\n    fun sum(a:Int,b:Int)=a+b\r\n    \r\n函数无返回值\r\n    \r\n    fun sum(a:Int,b:Int){\r\n        println(\"sun is ${a+b}\")\r\n    }\r\n    \r\n变量\r\n\r\nval 只读\r\n   \r\n    val a:Int=1 //立即赋值\r\n    val b=2 //自动推断出int类型\r\n    val c:Int //类型\r\n    c=3  //明确赋值\r\n    \r\nvar 读写\r\n    \r\n    var a=5\r\n    a+=1\r\n    \r\n注释跟java一样\r\n\r\n表达式\r\n\r\n    fun sum(a:Int,b:Int):Int{\r\n        if(a>b){\r\n            return a\r\n        }else{\r\n            return b\r\n        }\r\n    }\r\n    \r\nif作为表达式\r\n\r\n    fun sum(a:Int,b:Int)=if(a>b) a else b\r\n    \r\n可空值 null检测\r\n\r\n变量的值可以为null，必须在声明处的类型后添加?标识该引用可以为空\r\n    \r\nstr的值不是数字返回null\r\n    \r\n    fun parseInt(str:String):Int?{\r\n        \r\n    }\r\n\r\n使用返回可空值的函数\r\n\r\n    fun parseInt(str:String):Int?{\r\n        return str.toIntOrNull()\r\n    }\r\n    \r\n    fun printInt(a:String,b:String){\r\n        val x=parseInt(a)\r\n        val y=parseInt(b)\r\n        \r\n        \r\n        //直接使用x y 可能会报错，因为可能为空\r\n        if(x!=null&&y!=null){\r\n            println(x*y)\r\n        }else{\r\n            println(\"error\")    \r\n        }\r\n        \r\n        //或者检测空值，x y会自动转换成非空值\r\n        if(x==null){\r\n            println(\"error\")\r\n            return\r\n        }\r\n        if(y==null){\r\n            println(\"error\")\r\n            return\r\n        }\r\n        println(x*y)\r\n    }\r\n    \r\n    \r\n使用类型检测及自动类型转换\r\n\r\nis运算符检测一个表达式是否某类型的一个实例，如果一个不可变的局部变量或属性已经判断出为某类型，检测后的分支中可以直接当作该类型使用，不需显示转换：\r\n\r\n    fun getStringLength(obj:Any):Int?{\r\n        if(obj is String){\r\n            return obj.length\r\n        }\r\n        return null\r\n    }\r\n    \r\n或者\r\n\r\n    fun getStringLength(obj:Any):Int?{\r\n            if(obj !is String){\r\n                return null\r\n            }\r\n            //自动转换为 string\r\n            return obj.length\r\n        }\r\n        \r\n    fun getStringLength(obj:Any):Int?{\r\n        if(obj is String&&obj.length>0){\r\n            return obj.length\r\n        }\r\n        return null\r\n    }\r\n    \r\n\r\nfor循环.\r\n\r\n\r\n    val list= listOf<String>(\"a\",\"b\",\"c\")\r\n    \r\n    //直接循环\r\n    for (l in list){\r\n        println(l)\r\n    }\r\n    \r\n    //根据下标找数据  \r\n    for (index in list.indices){\r\n        println(\"index ${list[index]}\")\r\n    }\r\n\r\n    //while循环  \r\n    var i=0\r\n    while (i<list.size){\r\n        println(\"while ${list[i]}\")\r\n        i++\r\n    }\r\n    \r\n\r\nwhen表达式\r\n\r\n类似java的  \r\n\r\n        switch (){\r\n            case 0:\r\n                break;\r\n        }\r\n\r\n    fun getWhen(s:String):String?{\r\n        when(s){\r\n            \"a\"-> return \"a1\"\r\n            \"b\"-> return \"b1\"\r\n            \"c\"-> return \"c1\"\r\n        }\r\n        return null\r\n    }\r\n\r\nrange 使用区间  \r\n\r\n    val x=1\r\n    val y=10\r\n    if (x in 1..y+1){\r\n        println(\"range\")\r\n    }\r\n    \r\n检测某个数字是否在区间内  \r\n\r\n    val list= arrayListOf<String>(\"a\",\"b\",\"c\")\r\n    val i=-1\r\n    if (i !in 0..list.lastIndex){\r\n        println(\"${i}\")\r\n    }\r\n    \r\n    //list.indices 指list 0..list.size-1的长度\r\n    if (list.size !in list.indices){\r\n        println(\"${list.indices}---${list.size}\")\r\n    }\r\n    \r\n    //打印 0-10的数\r\n    //包含10\r\n    for (x in 0..10){\r\n        println(x)\r\n    }\r\n    //不包含10\r\n     for (x in  0 until 10){\r\n        println(x)\r\n    }\r\n\r\n    //0-10中,顺序隔3个打印\r\n    for (x in 0..11 step 3){\r\n        println(x)\r\n    }\r\n\r\n    //倒叙隔4个排序\r\n    for (x in 11 downTo 0 step 4){\r\n        println(x)\r\n    }\r\n    \r\n循环迭代  \r\n\r\n    for (x in list){\r\n        println(x)\r\n    }\r\n    \r\n用in判断集合是否包含实例\r\n\r\n    //如果包含set就进判断，不走后续判断，类似java switch ()\r\n    val set= setOf<String>(\"aa\",\"bb\",\"cc\")\r\n    when{\r\n        \"a\" in set -> println(\"这是 a\")\r\n        \"bb\" in set -> println(\"这是 b\")\r\n        \"cc\" in set -> println(\"这是 c\")\r\n    }\r\n    \r\n用lambada过滤（filter）,映射（map）\r\n  \r\n    list.filter { it.startsWith(\"a\") }\r\n            .sortedBy { it }\r\n            .map { it.toUpperCase() }\r\n            .forEach { println(it) }\r\n\r\n\r\n创建数据类\r\n\r\n    data class UserBean(val uid:Int=0,var username:String?=null,var password:String?=null)\r\n\r\n包含  get ,  set ,   toString , equals , hashCode , copy\r\n\r\n    \r\n函数参数默认值\r\n    \r\n    fun getWhen(s:String=\"\",i:Int=0){}\r\n    \r\n过滤list\r\n\r\n    val list= arrayListOf<Int>(1,2,3,41,5,16,5,3,21,1)\r\n    //val s=list.filter { x-> x > 9 }\r\n    val s=list.filter { it>3}\r\n    for (l in s){\r\n        println(l)\r\n    }\r\n    \r\nString内插\r\n\r\n    println(\"${list.indices}---${list.size}\")\r\n    \r\n类型判断\r\n    \r\n    when(s){\r\n       is UserBean -> return \"a1\"\r\n        \"b\" -> return \"b1\"\r\n       is BaseBean<*> -> return \"c1\"\r\n    }\r\n\r\nmap 遍历map\r\n\r\n    val map= mapOf(\"a\" to \"aa\",\"b\" to \"bb\",\"c\" to \"cc\")\r\n    for ((k,v) in map){\r\n        println(\"${k}-----${v}\")\r\n    }\r\n\r\n    //打印map的value\r\n    println(map[\"a\"])\r\n    //给map赋值\r\n    var map= HashMap<String,String>()\r\n    map[\"a\"]=\"asdfas\"\r\n    println(map[\"a\"])\r\n    \r\n    \r\nlateinit 和 lazy 是 Kotlin 中的两种不同的延迟初始化的实现\r\n\r\n    lateinit 只用于变量 var，而 lazy 只用于常量 val\r\n\r\n创建单例模式\r\n\r\n    //object修改类，为单例模式\r\n    object Bean{}\r\n    \r\n用 ? 修饰代表可以为null\r\n\r\n    val file=File(\"T\").listFiles()\r\n    println(file?.size)\r\n    \r\nkotlin 类型\r\n\r\n    Double\r\n    Float\r\n    Long\r\n    Int\r\n    Short\r\n    Byte\r\n    \r\n    Long类型在后面加L：  123L\r\n    Float类型在后面加F： 123F\r\n    \r\nkotlin 1.1起\r\n使用下划线使常量易读\r\n\r\n    val a=1_000_000\r\n    val b=1_0000_0000L\r\n    val c=1_000.000_001\r\n    \r\n显式转换\r\n\r\n    //a为int,b为long类型,编译不通过需要显式转换\r\n    if (a==b)\r\n    \r\n    if (a==b.toInt()){}\r\n    \r\n    \r\n运算\r\n\r\n    位运算符只用 Int Long:\r\n    \r\n    shl(bits) -有符号左移（java的<<）\r\n    shr(bits) -有符号右移（java的>>）\r\n    ushr(bits) -无符号右移（java的>>>）\r\n    and(bits) -位与\r\n    or(bits) -位或\r\n    xor(bits) -位异或\r\n    inv() -位非\r\n    \r\n字符 char\r\n    \r\n    //char显示转换 int\r\n    val s='1'\r\n    s.toInt()\r\n\r\nBoolean\r\n\r\n    ||    或\r\n    &&    与\r\n    !     非\r\n\r\n数组\r\n    \r\n    Array\r\n    \r\n字符串\r\n    \r\n    //字符串添加转义字符\r\n    val s=\"hello\\nworld\"\r\n\r\n字符串模板\r\n\r\n    // $\r\n     val s=\"hello\\nworld\"\r\n    val sa=\"x= ${s}\"\r\n    println(sa)\r\n\r\nif 表达式\r\n\r\n    if(true){\r\n        \r\n    }elese{\r\n        \r\n    }\r\n\r\nwhen 表达式\r\n\r\n    val s=1\r\n    //when取代了switch操作符\r\n    when(s){\r\n        1 -> println(\"aa\")\r\n        //多个分支放一起，用,分隔\r\n        2,3 -> println(\"bb\")\r\n        //用表达式做条件\r\n        getInt() -> println(\"cc\")\r\n        //检测是否在区间\r\n        in 5..10 -> println(\"dd\")\r\n        //其他分支不满足进else\r\n        else ->{\r\n            println(\"else\")\r\n        }\r\n    }\r\n\r\nfor循环\r\n\r\nwhile , do while\r\n\r\n    while(s>0){\r\n\r\n    }\r\n\r\n    do{\r\n        val y=1\r\n    }while(y!=null)\r\n    \r\n返回和跳转\r\n\r\n    return: 从最直接包围他的函数或匿名函数返回\r\n    break:终止直接包围他的循环\r\n    continue:继续下一次直接包围他的循环\r\n\r\n类\r\n    \r\n    class修饰\r\n    \r\n构造函数\r\n    \r\n    //constructor主构造函数，一个或多个次构造函数  \r\n    //主构造函数有注解或可见性修饰符，不可以省略\r\n    //主构造函数可以省略，主构造函数不能包含任何代码\r\n    class Test constructor(string: String){\r\n\r\n        //初始化块代码，主构造参数可以在init中使用\r\n        init {\r\n\r\n        }\r\n    \r\n    \r\n    class Test(val string: String,age:Int) {\r\n\r\n        //初始化块代码，主构造参数可以在init中使用\r\n        init {\r\n    \r\n        }\r\n    \r\n        //次级构造函数,次级构造函数委托给主构造函数需要添加this\r\n        constructor(s: String):this(s,0)\r\n        }\r\n    }\r\n\r\n创建类的实例\r\n\r\n    //调用构造函数，kotlin没有new\r\n    val text=Test(\"a\",0)\r\n    \r\n继承\r\n    \r\n    覆盖函数\r\n    覆盖属性\r\n    覆盖规则\r\n    下次再学    \r\n    \r\n    \r\n抽象类\r\n    \r\n    abstract修饰\r\n    \r\n伴生对象\r\n\r\n\r\n属性和字段\r\n\r\n    属性用var是可变，val是只读\r\n    \r\n    class Test(var string: String?=null,var age:Int?=0) \r\n    \r\n    //用其中某个属性，用名称引用他\r\n    val text=Test()\r\n    text.age\r\n    \r\nget set\r\n\r\n幕后字段， 幕后属性，编译器常量，惰性初始化属性，覆盖属性，委托属性\r\n\r\n\r\n接口\r\n\r\n    用interface修饰\r\n    一个类或对象可以实现一个或多个接口\r\n\r\n接口中的属性\r\n解决覆盖冲突\r\n\r\n    interface A{\r\n        fun getA(){\r\n            println(\"a\")\r\n        }\r\n    }\r\n    \r\n    interface B{\r\n        fun getA(){\r\n            println(\"ba\")\r\n        }\r\n        fun getB(){\r\n            println(\"bb\")\r\n        }\r\n    }\r\n    \r\n    class C:A,B{\r\n        override fun getA() {\r\n            //TODO(\"not implemented\") //To change body of created functions use File | Settings | File Templates.\r\n            //指定实现哪个父类的接口\r\n            super<A>.getA()\r\n            super<B>.getA()\r\n        }\r\n    \r\n        override fun getB() {\r\n            super.getB()\r\n        }\r\n    \r\n    }\r\n\r\n可见性修饰符 \r\n    \r\n    默认是public\r\n    prublic 声明随处可见\r\n    private 声明的文件内可见，类内部可见\r\n    protected 不适用于顶层声明，和private一样+在子类中可见\r\n    internal 相同模块随处可见\r\n    \r\n构造函数\r\n\r\n    //指定类的主构造函数的可见性，必须添加显示的 constrector\r\n    \r\n    class Test private constructor(var string: String?=null,var age:Int?=0) \r\n\r\n默认所有构造函数是public\r\n\r\n局部声明\r\n\r\n    局部变量，函数和类不能有可见性修饰符\r\n\r\n模块\r\n\r\n    可见性修饰符 internal 只在相同模块内可见，一个模块是编译在一起的一套kotlin文件\r\n    一个idea模块\r\n    一个maven或者gradle项目\r\n    一次<kotlinc>Ant人物执行所编译的一套文件\r\n\r\n扩展\r\n\r\n扩展函数\r\n\r\n扩展是静态解析  \r\n    \r\n    （有空在学吧）\r\n\r\n可空接收者\r\n\r\n扩展属性\r\n\r\n伴生对象的扩展\r\n\r\n扩展的作用\r\n\r\n扩展声明为成员\r\n\r\n动机\r\n\r\n    下次学\r\n    \r\n数据类\r\n\r\n生成的类含有一个无参的构造函数，所有的属性必须指定默认值\r\n\r\n    数据类标记为 data\r\n    data class Test (var string: String?=null,var age:Int?=0) \r\n    \r\n复制    \r\n\r\n复制一个对象改变一些属性，保持其他属性不变\r\n    \r\n    var text=Test()\r\n    text.string=\"as\"\r\n    text.age=11\r\n    text=text.copy(age = 14)\r\n    println(text.toString())\r\n    \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
       "data": {
-        "title": "Gridea，GitHub配置使用",
-        "date": "2019-09-18 18:17:55",
+        "title": "kotlin基础",
+        "date": "2019-09-27 13:17:32",
+        "tags": [
+          "kotlin"
+        ],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "kotlin-ji-chu"
+    },
+    {
+      "content": "# svn,git下载地址  \r\n链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA \r\n提取码：xktl \r\n\r\n\r\n# SVN\r\n## svn安装需注意安装 command line功能\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-875677224511e5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n在studio的File > Settings > Version Control > Subversion 添加svn路径\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-1063553bbaad279d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n# GIT\r\n\r\n在studio的File > Settings > Version Control > Git 添加git路径，Test测试git版本\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-2b13860cb3bd9ed0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nGitHub直接输入账号密码即可\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-c26d45bc490eab23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n## androidstudio 看不到svn的工具小图标\r\n\r\n先看androidstudio是否安装svn\r\nFile > Settings > Plugins 搜索Subversion Integration\r\n\r\n如果有Subversion Integration 则安装好svn工具；如果没有安装，则进行安装。\r\n\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-0ecaebd7a65ea26d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n再选择Subversion即可",
+      "data": {
+        "title": "Android Studio 配置SVN，GIT",
+        "date": "2019-09-24 17:56:27",
         "tags": [],
         "published": true,
         "hideInList": false,
@@ -13,6 +30,136 @@
       "isEmpty": false,
       "excerpt": "",
       "abstract": "",
+      "fileName": "android-studio-pei-zhi-svngit"
+    },
+    {
+      "content": "## 1.设置编辑界面和代码主题\r\n\r\nFile > Settings > Appearance & Behavior > Appearance > Theme\"，默认可以选择Light和Darcula，分别为白色和黑色主题，选择之后点击Apply应用。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-f4a1ef76abed3b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 2.修改字体大小和字体样式\r\nFile > Settings > Editor > Color Scheme > Color Scheme Font，先选择一个Scheme主题，打勾设置size然后Apply就好了。在Font下可以选择各种字体。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-df82492419a296ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 3.设置文件注释模板\r\nFile > Settings > Editor > File and Code Templates，切换到Includes下，在File Header里面设置注释模板。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-70921575f0087fb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 4.默认文件编码\r\n\r\nFile > Settings > Editor > File Encodings。建议将 IDE Encoding 、 Project Encoding 、 Properties Fiels 都设置成统一的UTB-8编码。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-b0640b99b22c7493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 5.显示行号\r\nFile | Settings | Editor | General | Appearance，勾选show line numbers\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-07d17066e3f7cd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 6.自动导入\r\nFile > Settings > Editor > General > Auto Import,修改不区分大小写提示，勾选导包和删除无用包\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-0f0c585bbb85a72f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 鼠标悬停显示方法说明\r\nFile > Settings > Editor > General\r\n可修改悬停多久，才显示方法说明(单位：毫秒)。\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-6b377dbff2bad4c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n## 删除的类的历史记录，与未修改前的类对比\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-1828151b723cc4fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## 导出，导入studio设置属性\r\nFile > Export Settings 导出设置\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-326cd4eec04166c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nFile > Import Settings 导入设置\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-6b25d777f1bed0e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)",
+      "data": {
+        "title": "Android studio常用设置",
+        "date": "2019-09-24 17:19:41",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "android-studio-chang-yong-she-zhi"
+    },
+    {
+      "content": "# 下载\r\n\r\n[jdk下载地址](https://www.oracle.com/technetwork/java/javase/downloads/index.html)\r\n\r\njdk下载  \r\n链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag \r\n提取码：t8ci \r\n\r\n\r\n\r\n[Android studio sdk 下载地址](http://www.android-studio.org/index.php)\r\n\r\n## jdk12\r\n\r\n安装JDK11或以上版本，安装过程中没有提示安装JRE，进入JDK安装路径下 shift+右键 在此处打开命令窗口\r\n\r\n  输入  \r\n  ```\r\n   bin\\jlink.exe --module-path jmods --add-modules java.desktop --output jre   \r\n  ```\r\n  执行完成就会生成JRE\r\n  \r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-092ee2d81fb4e15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n## jdk8\r\n正常安装\r\n\r\n## 环境变量配置\r\n\r\n我的电脑右键，点击属性，点击高级系统设置，点击环境变量\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-80d9883df2172e7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n新建系统变量，变量名写 JAVA_HOME 变量值 填写你JDK安装的路径\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-14e4cad6e48b11de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n双击系统变量path编辑变量值 %JAVA_HOME%\\bin;%JAVA_HOME%\\jre\\bin\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-b05e6e5352c1876b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n在系统变量中新建 classpath 变量名，变量值为  %JAVA_HOME%\\lib\\dt.jar;%JAVA_HOME%\\lib\\tools.jar\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-84140d49e227ae06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nwin+R运行输入cmd，输入java -version查看JDK版本和JVM信息\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-b5bff947bcc4d526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n\r\n# sdk\r\n\r\n新建系统变量ANDROID_HOME，变量值D:\\xx\\sdk（以你安装目录为准,确认里面有tools和add-ons等多个文件夹）\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-7c4474ac5ea494cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\n在系统变量PATH后面加上变量值;%ANDROID_HOME%\\platform-tools;\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-95aa820c636c3cd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\r\n\r\nwin+R运行输入cmd，输入adb 查看\r\n\r\n![image.png](https://upload-images.jianshu.io/upload_images/2025676-a43222dcc6f1aa70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)",
+      "data": {
+        "title": "jdk sdk环境配置 Android下载",
+        "date": "2019-09-24 17:16:07",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "jdk-sdk-huan-jing-pei-zhi-android-xia-zai"
+    },
+    {
+      "content": "## type封装获取泛型的实际类型\r\n    \r\n> 通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type\r\n    \r\ngetClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type  \r\n然后将其转换ParameterizedType。。  \r\ngetActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。  \r\n[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。\r\n```\r\n        Type genericSuperclass = getClass().getGenericSuperclass();\r\n        if (genericSuperclass instanceof ParameterizedType) {\r\n            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];\r\n        } else {\r\n            this.type = Object.class; \r\n            // 基本不会走这个判断\r\n        }\r\n```     \r\n        \r\n        \r\n## 解决 gson反序列化自动将int类型转化成double类型\r\n```\r\n    private static Gson gson=new GsonBuilder().\r\n        registerTypeAdapter(Double.class, new JsonSerializer<Double>() {\r\n\r\n            @Override\r\n            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {\r\n                if (src == src.longValue())\r\n                    return new JsonPrimitive(src.longValue());\r\n                return new JsonPrimitive(src);\r\n            }\r\n        }).create();\r\n```",
+      "data": {
+        "title": "gson type封装泛型",
+        "date": "2019-09-24 16:33:44",
+        "tags": [
+          "Android",
+          "gson"
+        ],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "gson-type-feng-zhuang-fan-xing"
+    },
+    {
+      "content": "## 创建分支\r\n在GitHub的博客项目中新建一个分支\r\n\r\n![](https://ouluqiang.github.io//post-images/1569311927040.jpg)\r\n\r\n克隆项目到本地  \r\n```\r\ngit clone https://github.com/xxx/xxx.github.io.git\r\n```\r\n\r\n## 切换分支\r\n\r\n到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支\r\n```\r\n# 列出所有本地分支\r\n$ git branch\r\n\r\n# 列出所有远程分支\r\n$ git branch -r\r\n\r\n# 列出所有本地分支和远程分支\r\n$ git branch -a\r\n\r\n# 切换到指定分支，并更新工作区\r\n$ git checkout [branch-name]\r\n```\r\n![](https://ouluqiang.github.io//post-images/1569311864422.jpg)\r\n\r\n\r\n把源文件复制到分支项目,再打开Git Bash 提交代码\r\n![](https://ouluqiang.github.io//post-images/1569311872576.jpg)\r\n\r\n\r\n```\r\n# 添加当前目录的所有文件到暂存区\r\n$ git add .\r\n\r\n# 提交暂存区到仓库区\r\n$ git commit -m ‘修改说明，随便写’\r\n\r\n# 提交到远程仓库\r\ngit push\r\n```\r\n\r\n提交成功\r\n![](https://ouluqiang.github.io//post-images/1569311915447.jpg)\r\n\r\n\r\n但是提交完会因为提交的源文件有token，GitHub会给你发邮件token泄漏，将原先生成的token移除，原先的token已经失效了，你需要重新申请token,在Gridea的配置修改token,后续如果要提交源文件有1种方法就是不提交有token的文件，也就是源文件/config/setting.json，不提交这个文件就即可\r\n\r\n\r\n<!-- ## 生成ssh-key的私钥和公钥\r\n生成key,看C盘用户目录SSH\r\n\r\n```\r\nssh-keygen -t rsa      //一路回车下来\r\n```\r\n![](https://ouluqiang.github.io//post-images/1569314857492.jpg)\r\n\r\n测试是否能连接上GitHub服务器\r\n```\r\nssh -T git@github.com\r\n```\r\n输出是.........\r\nPermission denied (publickey).\r\n需要将上面生成的public key(id_rsa.pub文件内容)拷贝到github服务器的SSH Keys中，\r\n再.ssh目录下打开终端输入下面代码查看内容，或者直接记事本打开查看\r\n\r\n```\r\ncat id_rsa.pub\r\n```\r\n\r\n![](https://ouluqiang.github.io//post-images/1569315446419.jpg)\r\n\r\n头像 > settings > ssh\r\n![](https://ouluqiang.github.io//post-images/1569315521381.jpg)\r\n\r\n再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功\r\n![](https://ouluqiang.github.io//post-images/1569315793106.jpg) -->\r\n",
+      "data": {
+        "title": "Gridea保存源文件",
+        "date": "2019-09-24 15:55:55",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "gridea-bao-cun-yuan-wen-jian"
+    },
+    {
+      "content": "Android常用的开发工具\r\n<!-- more -->\r\n\r\n## Android stido，sdk，jdk\r\n[jdk下载地址](https://www.oracle.com/technetwork/java/javase/downloads/index.html)\r\n\r\njdk下载  \r\n```\r\n链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag \r\n提取码：t8ci \r\n```\r\n\r\n\r\n[Android studio sdk 下载地址](http://www.android-studio.org/index.php)\r\n\r\n## svn,git下载地址\r\n[git下载](https://git-scm.com/downloads)\r\n\r\n```\r\n链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA \r\n提取码：xktl \r\n```\r\n\r\n## 抓包工具charles学习版\r\n```\r\n链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ \r\n提取码：sj13 \r\n```\r\n\r\n## sqlite数据库工具\r\n```\r\n链接：https://pan.baidu.com/s/1I_w-rARDcKocKBXGOMbJdg \r\n提取码：trl1\r\n```\r\n\r\n## 颜色获取\r\n```\r\n链接：https://pan.baidu.com/s/1-sLi9-PVYksCiE-RHSXquw \r\n提取码：tyrw \r\n```\r\n\r\n## 获取SHA1值\r\n```\r\n链接：https://pan.baidu.com/s/15AvGDv-WjzU7jvLhJeLvhg \r\n提取码：081p \r\n```\r\n\r\n\r\n# idea 学习版\r\nhttp://idea.toocruel.net",
+      "data": {
+        "title": "常用开发工具",
+        "date": "2019-09-24 13:22:26",
+        "tags": [
+          "工具"
+        ],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "Android常用的开发工具\r",
+      "fileName": "chang-yong-kai-fa-gong-ju"
+    },
+    {
+      "content": "charles基本设置使用\r\n\r\n<!-- more -->\r\n\r\n\r\n## 抓包工具charles学习版\r\n```\r\n链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ \r\n提取码：sj13 \r\n```\r\n\r\n## http抓包\r\n代理 > 代理设置中设置端口号 8888 ,勾选启用HTTP代理\r\n![代理设置](https://ouluqiang.github.io//post-images/1569304039210.jpg)\r\n\r\n![端口](https://ouluqiang.github.io//post-images/1569303949066.jpg)\r\n\r\n帮助 > 本地ip 查看电脑ip\r\n![帮助](https://ouluqiang.github.io//post-images/1569304145156.jpg)\r\n\r\n![ip](https://ouluqiang.github.io//post-images/1569304186481.jpg)\r\n\r\n手机和电脑在一个网段(连接同一个路由器)，在手机网络设置里面填写代理服务地址信息\r\n电脑ip ,  端口号\r\n\r\n![代理](https://ouluqiang.github.io//post-images/1569304740083.jpg)\r\n\r\n在使用手机进行网络请求时，charles会有一个提示，允许即可\r\n\r\n## https抓包\r\nhttps需要安装证书，注意电脑安装证书需要安装到受信任的颁发机构\r\n\r\n![证书](https://ouluqiang.github.io//post-images/1569305139356.jpg)\r\n\r\n![安装证书](https://ouluqiang.github.io//post-images/1569305350226.jpg)\r\n\r\n手机也需要安装证书，在浏览器下载证书,如果不识别，不能安装，建议用谷歌浏览器app下载安装\r\n```\r\nchls.pro/ssl\r\n```\r\n![手机证书](https://ouluqiang.github.io//post-images/1569305456616.jpg)\r\n\r\n勾选Windows代理，打开ssl代理设置\r\n![ssl设置](https://ouluqiang.github.io//post-images/1569305597175.jpg)\r\n\r\n添加主机和端口号， 主机用*，端口号443抓取https，也可以用*\r\n![](https://ouluqiang.github.io//post-images/1569305786428.jpg)\r\n\r\n## Android 7.0抓https失败的解决方案\r\n\r\n新建network_security_config.xml文件\r\n![network_security_config](https://ouluqiang.github.io//post-images/1569302838764.png)\r\n\r\n在network_security_config.xml文件写入以下代码\r\n\r\n```\r\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<network-security-config>\r\n    <base-config cleartextTrafficPermitted=\"true\">\r\n        <trust-anchors>\r\n            <certificates src=\"system\" overridePins=\"true\" />\r\n            <certificates src=\"user\" overridePins=\"true\" />\r\n        </trust-anchors>\r\n    </base-config>\r\n</network-security-config>\r\n```\r\n\r\n在AndroidManifest.xml添加配置  \r\n\r\n![networkSecurityConfig](https://ouluqiang.github.io//post-images/1569302899586.png)\r\n\r\n\r\n```\r\nandroid:networkSecurityConfig=\"@xml/network_security_config\"\r\n```",
+      "data": {
+        "title": "charles使用",
+        "date": "2019-09-23 18:38:43",
+        "tags": [
+          "工具",
+          "Charles"
+        ],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "charles基本设置使用\r",
+      "fileName": "charles-shi-yong"
+    },
+    {
+      "content": "一些常用正则表达式 \r\n\r\n<!-- more -->\r\n\r\n## 正则判断函数\r\n```\r\nPattern.matches(regex, pass);\r\n```\r\n\r\n## 搜索中文\r\n```\r\n^((?!(\\*|//)).)+[\\u4e00-\\u9fa5]\r\n```\r\n\r\n## 验证密码首位为字母或数字\r\n```\r\n[0-9 a-z A-Z]\\w*\r\n```\r\n\r\n## 验证Email\r\n```\r\n\\w+@\\w+\\.[a-z]+(\\.[a-z]+)?\r\n```\r\n\r\n## 验证身份证号码\r\n```\r\n(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)\r\n```\r\n\r\n## 验证手机号码\r\n```\r\n(\\+\\d+)?1[3456789]\\d{9}$\r\n```\r\n\r\n## 验证固定电话号码\r\n```\r\n(\\+\\d+)?(\\d{3,4}\\-?)?\\d{7,8}$\r\n```\r\n\r\n## 验证整数（正整数和负整数）\r\n```\r\n\\-?[1-9]\\d+\r\n```\r\n\r\n## 验证整数和浮点数（正负整数和正负浮点数）\r\n```\r\n\\-?[1-9]\\d+(\\.\\d+)?\r\n```\r\n\r\n## 验证空白字符\r\n```\r\n\\\\s+\r\n```\r\n\r\n## 验证中文\r\n```\r\n^[\\u4E00-\\u9FA5]+$\r\n```\r\n\r\n## 验证日期（年月日）\r\n```\r\n[1-9]{4}([-./])\\d{1,2}\\1\\d{1,2}\r\n```\r\n\r\n## 验证URL地址\r\n```\r\n(https?://(w{3}\\.)?)?\\w+\\.\\w+(\\.[a-zA-Z]+)*(:\\d{1,5})?(/\\w*)*(\\??(.+=.*)?(&.+=.*)?)?\r\n```\r\n\r\n## 获取网址 URL 的一级域名\r\n```\r\n(?<=http://|\\.)[^.]*?\\.(com|cn|net|org|biz|info|cc|tv)\r\n```\r\n\r\n## 匹配中国邮政编码\r\n```\r\n[1-9]\\d{5}\r\n```\r\n\r\n## 匹配IP地址(简单匹配，格式，如：192.168.1.1，127.0.0.1，没有匹配IP段的大小)\r\n```\r\n[1-9](\\d{1,2})?\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))\r\n```\r\n\r\n",
+      "data": {
+        "title": "正则表达式",
+        "date": "2019-09-23 18:29:08",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "一些常用正则表达式 \r",
+      "fileName": "zheng-ze-biao-da-shi"
+    },
+    {
+      "content": "写博客的工具与GitHub的基本配置\n\n<!-- more -->\n\n## 创建github 博客项目\n\n创建一个repo，名称为 yourname.github.io, 其中yourname是你的github名称，按照这个规则创建才有用哦，如下：\n\n![创建项目](https://ouluqiang.github.io//post-images/1569307197693.jpg)\n\n\nxxx.github.io  xxx必须是你的用户名，创建项目，我的已经存在了\n\n![](https://ouluqiang.github.io//post-images/1569307241793.jpg)\n\n\n\n\n## [创建一个 Token](https://github.com/settings/tokens/new)\n\n只勾选repo即可，防止token泄漏\n\n![](https://ouluqiang.github.io//post-images/1569307352985.png)\n\n拿到token填写到gridea的基础配置token里\n\n![](https://ouluqiang.github.io//post-images/1569307358531.png)\n\n![](https://ouluqiang.github.io//post-images/1569307416363.png)\n\n检测远程连接成功就可以了，如果确定都填对了，就关闭gridea软件再打开软件检测远程连接\n\n## [创建一个 OAuth](https://github.com/settings/applications/new)\n\n![](https://ouluqiang.github.io//post-images/1569307480431.png)\n\n填写到Gridea的配置评论栏中\n\n![](https://ouluqiang.github.io//post-images/1569307505346.png)\n\n![](https://ouluqiang.github.io//post-images/1569307563455.png)\n\n\n再博客中测试评论，成功即可",
+      "data": {
+        "title": "Gridea，GitHub配置使用",
+        "date": "2019-09-18 18:17:55",
+        "tags": [
+          "blog"
+        ],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "写博客的工具与GitHub的基本配置",
       "fileName": "grideagithub-pei-zhi-shi-yong"
     },
     {
@@ -46,12 +193,13 @@
       "fileName": "git-ming-ling"
     },
     {
-      "content": "[简明版教程](http://note.youdao.com/iyoudao/?p=2411)  \n[进阶版教程](http://note.youdao.com/iyoudao/?p=2445)\n## 标题  \n\n**标题，只需要在这段文字前面加上 #，再在 # 后加一个空格  \n增加一个 # ，标题字号相应降低一级**\n\n![标题](https://upload-images.jianshu.io/upload_images/2025676-8d8f001685f10376.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n\n# 一级标题\n## 二级标题\n### 三级标题\n#### 四级标题\n```\n![标题效果](https://upload-images.jianshu.io/upload_images/2025676-58343e9277ea2b44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n\n## 列表  \n\n### 无序列表  \n\n**你只需要在文字前面加上 - 就可以了；如果你希望是有序列表，在文字前面加上 1. 2. 3. 即可。**\n\n![无序列表](https://upload-images.jianshu.io/upload_images/2025676-07cceafd441cd920.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n- 列表1\n  - 列表1.1\n  - 列表1.2\n- 列表2\n- 列表3\n```\n\n- 列表1\n  - 列表1.1\n  - 列表1.2\n- 列表2\n- 列表3\n\n\n### 有序列表\n\n![有序列表](https://upload-images.jianshu.io/upload_images/2025676-ebd8f26e1987f583.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n1. 列表1\n    1. 列表1.1\n    2. 列表1.2\n2. 列表2\n3. 列表3\n```\n\n1. 列表1\n    1. 列表1.1\n    2. 列表1.2\n2. 列表2\n3. 列表3\n\n\n\n## 引用\n**如果你需要在文稿中引用一段别处的句子，那么就要用到「引用」格式。  \n在引用文字前加上 > 并与文字保留一个字符的空格**\n\n![引用](https://upload-images.jianshu.io/upload_images/2025676-308c2da04c0a7c93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n\t> 记录，成为更好的自己。--有道云笔记 \n```\n\n> 记录，成为更好的自己。--有道云笔记 \n\n\n\n\n## 粗体和斜体\n\n**用两个 * 包含一段文本就是粗体的语法；**    \n**用一个 * 包含一段文本就是斜体的语法。**  \n***注意：字符与文本之间无须空格***\n\n![斜体](https://upload-images.jianshu.io/upload_images/2025676-8ff7819393bf126a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n*这是斜体*\n```\n\n*这是斜体*\n\n![粗体](https://upload-images.jianshu.io/upload_images/2025676-46a4a7fa4760dbc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n**这是粗体**\n```\n\n**这是粗体**\n\n\n## 链接与图片\n\n**链接：在 Markdown 中，插入链接只需要使用 [显示文本] (链接地址) 即可。**  \n**图片：在 Markdown 中，插入图片只需要使用 ![显示文本] (图片链接地址)即可。**  \n***注：插入图片的语法和链接的语法很像，只是前面多了一个！***  \n\n![链接](https://upload-images.jianshu.io/upload_images/2025676-e89b224292641ac3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n[链接](https://note.youdao.com/)\n```\n\n[链接](https://note.youdao.com/)\n\n![图片](https://upload-images.jianshu.io/upload_images/2025676-68cec4f8f6fe50e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n![图片连接演示](https://note.youdao.com/favicon.ico)\n\n```\n\n![图片连接演示](https://note.youdao.com/favicon.ico)\n\n\n## 分割线\n\n**只需要另起一行，连续输入三个星号** ***  **即可分割两段文字内容。**\n\n```\n\t第一段\n\t***\n\t第二段\n\n\t第一段\n\t---\n\t第二段\n```\n\n第一段\n***\n第二段\n\n第一段\n---\n第二段\n\n\n\n\n## 代码高亮\n![代码高亮](https://upload-images.jianshu.io/upload_images/2025676-4567952819601eff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n![代码高亮代码](https://upload-images.jianshu.io/upload_images/2025676-0637292775ce2762.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n\n\n```\n代码高亮\n```\n\n## 制作待办事项To-do List\n你只需要在待办的事项文本或者清单文本前加上- [ ]、- [x]即可。\n\n**- [] 表示未完成，- [x] 表示已完成。**\n\n***注：键入字符与字符之间都要保留一个字符的空格。***\n\n![已完成](https://upload-images.jianshu.io/upload_images/2025676-ab5840336eb854c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n- [x] 已完成\n  - [x] 已完成\n  - [x] 已完成  \n```\n\n- [x] 已完成\n  - [x] 已完成\n  - [x] 已完成  \n\n![未完成](https://upload-images.jianshu.io/upload_images/2025676-2bf11ee3af40589a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n- [ ] 未完成\n- [ ] 未完成\n```\n\n- [ ] 未完成\n- [ ] 未完成\n\n## 高效绘制 流程图、序列图、甘特图、表格\n### 流程图\n书写graph XX，用以确定将要绘制的流程图及其类型（XX表示流程图类型）。\n流程图分为竖向和横向两大类，竖向包括自上而下和自下而上两种顺序，横向包括从右到左和从左到右两种顺序。  \n其对应语法分别为：graph TB/graph BT/graph RL/graph LR。\n\nTB - top bottom（自上而下）  \nBT - bottom top（自下而上）  \nRL - right left（从右到左）  \nLR - left right（从左到右）  \n\n![流程图](https://upload-images.jianshu.io/upload_images/2025676-43319c747228a4b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n![流程图效果](https://upload-images.jianshu.io/upload_images/2025676-7860cc705cd86a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n\n```\ngraph TD\nA[直角四边形]---B{菱形}\nB --> C((圆形))\nC --> D\nC --> E\nC -->|插入文本|F\n```\n\n### 序列图\n\n![序列图](https://upload-images.jianshu.io/upload_images/2025676-b3350d5f58325148.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n![序列图效果](https://upload-images.jianshu.io/upload_images/2025676-a10ae40c580ae389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\nsequenceDiagram\nloop every day\n    A->>B: How are you?\n\n    B->>A: Great!\nend\n```\n\n### 甘特图\n书写 gantt ，用以确定将要绘制的是甘特图。\ndateFormat YYYY-MM-DD规定了时间轴，title （标题文本）表示甘特图标题。\n需键入section，空一个字符，再输入项目名称的文本（一个section和另一个section之间要空行）。\n\n![甘特图](https://upload-images.jianshu.io/upload_images/2025676-642f5fc1f1e0a58f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n![甘特图效果](https://upload-images.jianshu.io/upload_images/2025676-5a0821ca3e0c5eba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\ngantt\ndateFormat YYYY-MM-DD\ntitle 产品计划书\nsection 初期阶段\n明确需求: 2018-07-01, 9d\nsection 中期阶段\n跟进开发: 2018-07-11, 9d\nsection 后期阶段\n走查测试: 2018-07-22, 9d\n```\n\n### 表格\n\n![表格](https://upload-images.jianshu.io/upload_images/2025676-a920709eb24e62a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n```\n    header 1    | header 2    | 第三\n    ---         |---          | ---\n    row 1 col 1 | row 1 col 2 | 第三个 \n    row 2 col 1 | row 2 col 2 | 第三个\n```\n\nheader 1    | header 2    | 第三\n---         |---          | ---\nrow 1 col 1 | row 1 col 2 | 第三个 \nrow 2 col 1 | row 2 col 2 | 第三个\n\n\n## 书写数学公式\n\n![公式](https://upload-images.jianshu.io/upload_images/2025676-f3a8f9ee5bed4371.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)\n\n![公式图](https://upload-images.jianshu.io/upload_images/2025676-5724b2d4632ee21a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) \n\n```math\nE = mc^2\n```\n\n\n\n",
+      "content": "[简明版教程](http://note.youdao.com/iyoudao/?p=2411)  \n[进阶版教程](http://note.youdao.com/iyoudao/?p=2445)\n## 标题  \n\n**标题，只需要在这段文字前面加上 #，再在 # 后加一个空格  \n增加一个 # ，标题字号相应降低一级**\n![标题](https://ouluqiang.github.io//post-images/1569307892987.png)\n\n```\n# 一级标题\n## 二级标题\n### 三级标题\n#### 四级标题\n```\n![标题效果](https://ouluqiang.github.io//post-images/1569307931761.png)\n\n## 列表  \n\n### 无序列表  \n\n**你只需要在文字前面加上 - 就可以了；如果你希望是有序列表，在文字前面加上 1. 2. 3. 即可。**\n![无序列表](https://ouluqiang.github.io//post-images/1569307967486.png)\n\n\n```\n- 列表1\n  - 列表1.1\n  - 列表1.2\n- 列表2\n- 列表3\n```\n\n- 列表1\n  - 列表1.1\n  - 列表1.2\n- 列表2\n- 列表3\n\n\n### 有序列表\n\n![有序列表](https://ouluqiang.github.io//post-images/1569308007512.png)\n\n\n```\n1. 列表1\n    1. 列表1.1\n    2. 列表1.2\n2. 列表2\n3. 列表3\n```\n\n1. 列表1\n    1. 列表1.1\n    2. 列表1.2\n2. 列表2\n3. 列表3\n\n\n\n## 引用\n**如果你需要在文稿中引用一段别处的句子，那么就要用到「引用」格式。  \n在引用文字前加上 > 并与文字保留一个字符的空格**\n\n![引用](https://ouluqiang.github.io//post-images/1569308041174.png)\n\n```\n\t> 记录，成为更好的自己。--有道云笔记 \n```\n\n> 记录，成为更好的自己。--有道云笔记 \n\n\n\n\n## 粗体和斜体\n\n**用两个 * 包含一段文本就是粗体的语法；**    \n**用一个 * 包含一段文本就是斜体的语法。**  \n***注意：字符与文本之间无须空格***\n\n![斜体](https://ouluqiang.github.io//post-images/1569308084185.png)\n\n```\n*这是斜体*\n```\n\n*这是斜体*\n\n![粗体](https://ouluqiang.github.io//post-images/1569308112324.png)\n\n```\n**这是粗体**\n```\n\n**这是粗体**\n\n\n## 链接与图片\n\n**链接：在 Markdown 中，插入链接只需要使用 [显示文本] (链接地址) 即可。**  \n**图片：在 Markdown 中，插入图片只需要使用 ![显示文本] (图片链接地址)即可。**  \n***注：插入图片的语法和链接的语法很像，只是前面多了一个！***  \n\n![链接](https://ouluqiang.github.io//post-images/1569308139421.png)\n\n```\n[链接](https://ouluqiang.github.io)\n```\n\n[链接](https://ouluqiang.github.io)\n\n![图片](https://ouluqiang.github.io//post-images/1569308339148.png)\n\n```\n![图片连接演示](https://ouluqiang.github.io//images/avatar.png?v=1569307577738)\n```\n\n![图片连接演示](https://ouluqiang.github.io//images/avatar.png?v=1569307577738)\n\n\n## 分割线\n\n**只需要另起一行，连续输入三个星号** ***  **即可分割两段文字内容。**\n\n```\n\t第一段\n\t***\n\t第二段\n\n\t第一段\n\t---\n\t第二段\n```\n\n第一段\n***\n第二段\n\n第一段\n---\n第二段\n\n\n\n\n## 代码高亮\n\n![代码高亮](https://ouluqiang.github.io//post-images/1569308458877.png)\n\n![代码高亮代码](https://ouluqiang.github.io//post-images/1569308483292.png)\n\n```\n代码高亮\n```\n\n## 制作待办事项To-do List\n你只需要在待办的事项文本或者清单文本前加上- [ ]、- [x]即可。\n\n**- [] 表示未完成，- [x] 表示已完成。**\n\n***注：键入字符与字符之间都要保留一个字符的空格。***\n\n![已完成](https://ouluqiang.github.io//post-images/1569308519075.png)\n\n```\n- [x] 已完成\n  - [x] 已完成\n  - [x] 已完成  \n```\n\n- [x] 已完成\n  - [x] 已完成\n  - [x] 已完成  \n\n![未完成](https://ouluqiang.github.io//post-images/1569308546303.png)\n\n```\n- [ ] 未完成\n- [ ] 未完成\n```\n\n- [ ] 未完成\n- [ ] 未完成\n\n## 高效绘制 流程图、序列图、甘特图、表格\n### 流程图\n书写graph XX，用以确定将要绘制的流程图及其类型（XX表示流程图类型）。\n流程图分为竖向和横向两大类，竖向包括自上而下和自下而上两种顺序，横向包括从右到左和从左到右两种顺序。  \n其对应语法分别为：graph TB/graph BT/graph RL/graph LR。\n\nTB - top bottom（自上而下）  \nBT - bottom top（自下而上）  \nRL - right left（从右到左）  \nLR - left right（从左到右）  \n\n![流程图](https://ouluqiang.github.io//post-images/1569308580136.png)\n\n![流程图效果](https://ouluqiang.github.io//post-images/1569308601497.png)\n\n\n\n```\ngraph TD\nA[直角四边形]---B{菱形}\nB --> C((圆形))\nC --> D\nC --> E\nC -->|插入文本|F\n```\n\n### 序列图\n\n![序列图](https://ouluqiang.github.io//post-images/1569308625091.png)\n\n![序列图效果](https://ouluqiang.github.io//post-images/1569308658344.png)\n\n\n```\nsequenceDiagram\nloop every day\n    A->>B: How are you?\n\n    B->>A: Great!\nend\n```\n\n### 甘特图\n书写 gantt ，用以确定将要绘制的是甘特图。\ndateFormat YYYY-MM-DD规定了时间轴，title （标题文本）表示甘特图标题。\n需键入section，空一个字符，再输入项目名称的文本（一个section和另一个section之间要空行）。\n\n![甘特图](https://ouluqiang.github.io//post-images/1569308684380.png)\n\n![甘特图效果](https://ouluqiang.github.io//post-images/1569308707886.png)\n\n\n```\ngantt\ndateFormat YYYY-MM-DD\ntitle 产品计划书\nsection 初期阶段\n明确需求: 2018-07-01, 9d\nsection 中期阶段\n跟进开发: 2018-07-11, 9d\nsection 后期阶段\n走查测试: 2018-07-22, 9d\n```\n\n### 表格\n\n![表格](https://ouluqiang.github.io//post-images/1569308736274.png)\n\n\n```\n    header 1    | header 2    | 第三\n    ---         |---          | ---\n    row 1 col 1 | row 1 col 2 | 第三个 \n    row 2 col 1 | row 2 col 2 | 第三个\n```\n\nheader 1    | header 2    | 第三\n---         |---          | ---\nrow 1 col 1 | row 1 col 2 | 第三个 \nrow 2 col 1 | row 2 col 2 | 第三个\n\n\n## 书写数学公式\n\n![公式](https://ouluqiang.github.io//post-images/1569308765985.png)\n\n![公式图](https://ouluqiang.github.io//post-images/1569308783976.png)\n\n```math\nE = mc^2\n```\n\n\n\n",
       "data": {
         "title": "markdown编辑器教程",
         "date": "2019-08-09 17:51:21",
         "tags": [
-          "Blog"
+          "Blog",
+          "markdown"
         ],
         "published": true,
         "hideInList": false,
@@ -97,6 +245,42 @@
   ],
   "tags": [
     {
+      "name": "kotlin",
+      "slug": "oC2Angq_X",
+      "used": true
+    },
+    {
+      "index": -1,
+      "name": "Android",
+      "slug": "uPl9IEkHz",
+      "used": true
+    },
+    {
+      "name": "gson",
+      "slug": "13AEsKm6N",
+      "used": true
+    },
+    {
+      "name": "markdown",
+      "slug": "EYP-kC9od",
+      "used": true
+    },
+    {
+      "name": "blog",
+      "slug": "FO3QcY1pj",
+      "used": true
+    },
+    {
+      "name": "Charles",
+      "slug": "QXrdbuOAc",
+      "used": true
+    },
+    {
+      "name": "工具",
+      "slug": "7Y0nywv1q",
+      "used": true
+    },
+    {
       "index": -1,
       "name": "Blog",
       "slug": "wowhDkgzJ",
@@ -108,14 +292,13 @@
       "used": true
     },
     {
-      "name": "代码管理",
-      "slug": "SbXoMJ1qwn",
+      "name": "github",
+      "slug": "TMR7yPO8w",
       "used": false
     },
     {
-      "index": -1,
-      "name": "Android",
-      "slug": "uPl9IEkHz",
+      "name": "代码管理",
+      "slug": "SbXoMJ1qwn",
       "used": false
     }
   ],
