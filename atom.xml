@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-27T03:27:34.633Z</updated>
+    <updated>2019-09-27T05:27:19.277Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -10,6 +10,493 @@
     <logo>https://ouluqiang.github.io//images/avatar.png</logo>
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
+    <entry>
+        <title type="html"><![CDATA[kotlin基础]]></title>
+        <id>https://ouluqiang.github.io//post/kotlin-ji-chu</id>
+        <link href="https://ouluqiang.github.io//post/kotlin-ji-chu">
+        </link>
+        <updated>2019-09-27T05:17:32.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="kotlin函数">kotlin函数</h3>
+<p>main函数</p>
+<pre><code>fun main(args:array&lt;String&gt;){
+    
+}
+</code></pre>
+<p>带参数带返回值</p>
+<pre><code>fun sum(a:Int,b:Int):Int{
+    return a+b
+}
+</code></pre>
+<p>表达式做函数体，返回值类型自动推断的函数</p>
+<pre><code>fun sum(a:Int,b:Int)=a+b
+</code></pre>
+<p>函数无返回值</p>
+<pre><code>fun sum(a:Int,b:Int){
+    println(&quot;sun is ${a+b}&quot;)
+}
+</code></pre>
+<p>变量</p>
+<p>val 只读</p>
+<pre><code>val a:Int=1 //立即赋值
+val b=2 //自动推断出int类型
+val c:Int //类型
+c=3  //明确赋值
+</code></pre>
+<p>var 读写</p>
+<pre><code>var a=5
+a+=1
+</code></pre>
+<p>注释跟java一样</p>
+<p>表达式</p>
+<pre><code>fun sum(a:Int,b:Int):Int{
+    if(a&gt;b){
+        return a
+    }else{
+        return b
+    }
+}
+</code></pre>
+<p>if作为表达式</p>
+<pre><code>fun sum(a:Int,b:Int)=if(a&gt;b) a else b
+</code></pre>
+<p>可空值 null检测</p>
+<p>变量的值可以为null，必须在声明处的类型后添加?标识该引用可以为空</p>
+<p>str的值不是数字返回null</p>
+<pre><code>fun parseInt(str:String):Int?{
+    
+}
+</code></pre>
+<p>使用返回可空值的函数</p>
+<pre><code>fun parseInt(str:String):Int?{
+    return str.toIntOrNull()
+}
+
+fun printInt(a:String,b:String){
+    val x=parseInt(a)
+    val y=parseInt(b)
+    
+    
+    //直接使用x y 可能会报错，因为可能为空
+    if(x!=null&amp;&amp;y!=null){
+        println(x*y)
+    }else{
+        println(&quot;error&quot;)    
+    }
+    
+    //或者检测空值，x y会自动转换成非空值
+    if(x==null){
+        println(&quot;error&quot;)
+        return
+    }
+    if(y==null){
+        println(&quot;error&quot;)
+        return
+    }
+    println(x*y)
+}
+</code></pre>
+<p>使用类型检测及自动类型转换</p>
+<p>is运算符检测一个表达式是否某类型的一个实例，如果一个不可变的局部变量或属性已经判断出为某类型，检测后的分支中可以直接当作该类型使用，不需显示转换：</p>
+<pre><code>fun getStringLength(obj:Any):Int?{
+    if(obj is String){
+        return obj.length
+    }
+    return null
+}
+</code></pre>
+<p>或者</p>
+<pre><code>fun getStringLength(obj:Any):Int?{
+        if(obj !is String){
+            return null
+        }
+        //自动转换为 string
+        return obj.length
+    }
+    
+fun getStringLength(obj:Any):Int?{
+    if(obj is String&amp;&amp;obj.length&gt;0){
+        return obj.length
+    }
+    return null
+}
+</code></pre>
+<p>for循环.</p>
+<pre><code>val list= listOf&lt;String&gt;(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
+
+//直接循环
+for (l in list){
+    println(l)
+}
+
+//根据下标找数据  
+for (index in list.indices){
+    println(&quot;index ${list[index]}&quot;)
+}
+
+//while循环  
+var i=0
+while (i&lt;list.size){
+    println(&quot;while ${list[i]}&quot;)
+    i++
+}
+</code></pre>
+<p>when表达式</p>
+<p>类似java的</p>
+<pre><code>    switch (){
+        case 0:
+            break;
+    }
+
+fun getWhen(s:String):String?{
+    when(s){
+        &quot;a&quot;-&gt; return &quot;a1&quot;
+        &quot;b&quot;-&gt; return &quot;b1&quot;
+        &quot;c&quot;-&gt; return &quot;c1&quot;
+    }
+    return null
+}
+</code></pre>
+<p>range 使用区间</p>
+<pre><code>val x=1
+val y=10
+if (x in 1..y+1){
+    println(&quot;range&quot;)
+}
+</code></pre>
+<p>检测某个数字是否在区间内</p>
+<pre><code>val list= arrayListOf&lt;String&gt;(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
+val i=-1
+if (i !in 0..list.lastIndex){
+    println(&quot;${i}&quot;)
+}
+
+//list.indices 指list 0..list.size-1的长度
+if (list.size !in list.indices){
+    println(&quot;${list.indices}---${list.size}&quot;)
+}
+
+//打印 0-10的数
+//包含10
+for (x in 0..10){
+    println(x)
+}
+//不包含10
+ for (x in  0 until 10){
+    println(x)
+}
+
+//0-10中,顺序隔3个打印
+for (x in 0..11 step 3){
+    println(x)
+}
+
+//倒叙隔4个排序
+for (x in 11 downTo 0 step 4){
+    println(x)
+}
+</code></pre>
+<p>循环迭代</p>
+<pre><code>for (x in list){
+    println(x)
+}
+</code></pre>
+<p>用in判断集合是否包含实例</p>
+<pre><code>//如果包含set就进判断，不走后续判断，类似java switch ()
+val set= setOf&lt;String&gt;(&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;)
+when{
+    &quot;a&quot; in set -&gt; println(&quot;这是 a&quot;)
+    &quot;bb&quot; in set -&gt; println(&quot;这是 b&quot;)
+    &quot;cc&quot; in set -&gt; println(&quot;这是 c&quot;)
+}
+</code></pre>
+<p>用lambada过滤（filter）,映射（map）</p>
+<pre><code>list.filter { it.startsWith(&quot;a&quot;) }
+        .sortedBy { it }
+        .map { it.toUpperCase() }
+        .forEach { println(it) }
+</code></pre>
+<p>创建数据类</p>
+<pre><code>data class UserBean(val uid:Int=0,var username:String?=null,var password:String?=null)
+</code></pre>
+<p>包含  get ,  set ,   toString , equals , hashCode , copy</p>
+<p>函数参数默认值</p>
+<pre><code>fun getWhen(s:String=&quot;&quot;,i:Int=0){}
+</code></pre>
+<p>过滤list</p>
+<pre><code>val list= arrayListOf&lt;Int&gt;(1,2,3,41,5,16,5,3,21,1)
+//val s=list.filter { x-&gt; x &gt; 9 }
+val s=list.filter { it&gt;3}
+for (l in s){
+    println(l)
+}
+</code></pre>
+<p>String内插</p>
+<pre><code>println(&quot;${list.indices}---${list.size}&quot;)
+</code></pre>
+<p>类型判断</p>
+<pre><code>when(s){
+   is UserBean -&gt; return &quot;a1&quot;
+    &quot;b&quot; -&gt; return &quot;b1&quot;
+   is BaseBean&lt;*&gt; -&gt; return &quot;c1&quot;
+}
+</code></pre>
+<p>map 遍历map</p>
+<pre><code>val map= mapOf(&quot;a&quot; to &quot;aa&quot;,&quot;b&quot; to &quot;bb&quot;,&quot;c&quot; to &quot;cc&quot;)
+for ((k,v) in map){
+    println(&quot;${k}-----${v}&quot;)
+}
+
+//打印map的value
+println(map[&quot;a&quot;])
+//给map赋值
+var map= HashMap&lt;String,String&gt;()
+map[&quot;a&quot;]=&quot;asdfas&quot;
+println(map[&quot;a&quot;])
+</code></pre>
+<p>lateinit 和 lazy 是 Kotlin 中的两种不同的延迟初始化的实现</p>
+<pre><code>lateinit 只用于变量 var，而 lazy 只用于常量 val
+</code></pre>
+<p>创建单例模式</p>
+<pre><code>//object修改类，为单例模式
+object Bean{}
+</code></pre>
+<p>用 ? 修饰代表可以为null</p>
+<pre><code>val file=File(&quot;T&quot;).listFiles()
+println(file?.size)
+</code></pre>
+<p>kotlin 类型</p>
+<pre><code>Double
+Float
+Long
+Int
+Short
+Byte
+
+Long类型在后面加L：  123L
+Float类型在后面加F： 123F
+</code></pre>
+<p>kotlin 1.1起<br>
+使用下划线使常量易读</p>
+<pre><code>val a=1_000_000
+val b=1_0000_0000L
+val c=1_000.000_001
+</code></pre>
+<p>显式转换</p>
+<pre><code>//a为int,b为long类型,编译不通过需要显式转换
+if (a==b)
+
+if (a==b.toInt()){}
+</code></pre>
+<p>运算</p>
+<pre><code>位运算符只用 Int Long:
+
+shl(bits) -有符号左移（java的&lt;&lt;）
+shr(bits) -有符号右移（java的&gt;&gt;）
+ushr(bits) -无符号右移（java的&gt;&gt;&gt;）
+and(bits) -位与
+or(bits) -位或
+xor(bits) -位异或
+inv() -位非
+</code></pre>
+<p>字符 char</p>
+<pre><code>//char显示转换 int
+val s='1'
+s.toInt()
+</code></pre>
+<p>Boolean</p>
+<pre><code>||    或
+&amp;&amp;    与
+!     非
+</code></pre>
+<p>数组</p>
+<pre><code>Array
+</code></pre>
+<p>字符串</p>
+<pre><code>//字符串添加转义字符
+val s=&quot;hello\nworld&quot;
+</code></pre>
+<p>字符串模板</p>
+<pre><code>// $
+ val s=&quot;hello\nworld&quot;
+val sa=&quot;x= ${s}&quot;
+println(sa)
+</code></pre>
+<p>if 表达式</p>
+<pre><code>if(true){
+    
+}elese{
+    
+}
+</code></pre>
+<p>when 表达式</p>
+<pre><code>val s=1
+//when取代了switch操作符
+when(s){
+    1 -&gt; println(&quot;aa&quot;)
+    //多个分支放一起，用,分隔
+    2,3 -&gt; println(&quot;bb&quot;)
+    //用表达式做条件
+    getInt() -&gt; println(&quot;cc&quot;)
+    //检测是否在区间
+    in 5..10 -&gt; println(&quot;dd&quot;)
+    //其他分支不满足进else
+    else -&gt;{
+        println(&quot;else&quot;)
+    }
+}
+</code></pre>
+<p>for循环</p>
+<p>while , do while</p>
+<pre><code>while(s&gt;0){
+
+}
+
+do{
+    val y=1
+}while(y!=null)
+</code></pre>
+<p>返回和跳转</p>
+<pre><code>return: 从最直接包围他的函数或匿名函数返回
+break:终止直接包围他的循环
+continue:继续下一次直接包围他的循环
+</code></pre>
+<p>类</p>
+<pre><code>class修饰
+</code></pre>
+<p>构造函数</p>
+<pre><code>//constructor主构造函数，一个或多个次构造函数  
+//主构造函数有注解或可见性修饰符，不可以省略
+//主构造函数可以省略，主构造函数不能包含任何代码
+class Test constructor(string: String){
+
+    //初始化块代码，主构造参数可以在init中使用
+    init {
+
+    }
+
+
+class Test(val string: String,age:Int) {
+
+    //初始化块代码，主构造参数可以在init中使用
+    init {
+
+    }
+
+    //次级构造函数,次级构造函数委托给主构造函数需要添加this
+    constructor(s: String):this(s,0)
+    }
+}
+</code></pre>
+<p>创建类的实例</p>
+<pre><code>//调用构造函数，kotlin没有new
+val text=Test(&quot;a&quot;,0)
+</code></pre>
+<p>继承</p>
+<pre><code>覆盖函数
+覆盖属性
+覆盖规则
+下次再学    
+</code></pre>
+<p>抽象类</p>
+<pre><code>abstract修饰
+</code></pre>
+<p>伴生对象</p>
+<p>属性和字段</p>
+<pre><code>属性用var是可变，val是只读
+
+class Test(var string: String?=null,var age:Int?=0) 
+
+//用其中某个属性，用名称引用他
+val text=Test()
+text.age
+</code></pre>
+<p>get set</p>
+<p>幕后字段， 幕后属性，编译器常量，惰性初始化属性，覆盖属性，委托属性</p>
+<p>接口</p>
+<pre><code>用interface修饰
+一个类或对象可以实现一个或多个接口
+</code></pre>
+<p>接口中的属性<br>
+解决覆盖冲突</p>
+<pre><code>interface A{
+    fun getA(){
+        println(&quot;a&quot;)
+    }
+}
+
+interface B{
+    fun getA(){
+        println(&quot;ba&quot;)
+    }
+    fun getB(){
+        println(&quot;bb&quot;)
+    }
+}
+
+class C:A,B{
+    override fun getA() {
+        //TODO(&quot;not implemented&quot;) //To change body of created functions use File | Settings | File Templates.
+        //指定实现哪个父类的接口
+        super&lt;A&gt;.getA()
+        super&lt;B&gt;.getA()
+    }
+
+    override fun getB() {
+        super.getB()
+    }
+
+}
+</code></pre>
+<p>可见性修饰符</p>
+<pre><code>默认是public
+prublic 声明随处可见
+private 声明的文件内可见，类内部可见
+protected 不适用于顶层声明，和private一样+在子类中可见
+internal 相同模块随处可见
+</code></pre>
+<p>构造函数</p>
+<pre><code>//指定类的主构造函数的可见性，必须添加显示的 constrector
+
+class Test private constructor(var string: String?=null,var age:Int?=0) 
+</code></pre>
+<p>默认所有构造函数是public</p>
+<p>局部声明</p>
+<pre><code>局部变量，函数和类不能有可见性修饰符
+</code></pre>
+<p>模块</p>
+<pre><code>可见性修饰符 internal 只在相同模块内可见，一个模块是编译在一起的一套kotlin文件
+一个idea模块
+一个maven或者gradle项目
+一次&lt;kotlinc&gt;Ant人物执行所编译的一套文件
+</code></pre>
+<p>扩展</p>
+<p>扩展函数</p>
+<p>扩展是静态解析</p>
+<pre><code>（有空在学吧）
+</code></pre>
+<p>可空接收者</p>
+<p>扩展属性</p>
+<p>伴生对象的扩展</p>
+<p>扩展的作用</p>
+<p>扩展声明为成员</p>
+<p>动机</p>
+<pre><code>下次学
+</code></pre>
+<p>数据类</p>
+<p>生成的类含有一个无参的构造函数，所有的属性必须指定默认值</p>
+<pre><code>数据类标记为 data
+data class Test (var string: String?=null,var age:Int?=0) 
+</code></pre>
+<p>复制</p>
+<p>复制一个对象改变一些属性，保持其他属性不变</p>
+<pre><code>var text=Test()
+text.string=&quot;as&quot;
+text.age=11
+text=text.copy(age = 14)
+println(text.toString())
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Android Studio 配置SVN，GIT]]></title>
         <id>https://ouluqiang.github.io//post/android-studio-pei-zhi-svngit</id>
@@ -331,6 +818,9 @@ cat id_rsa.pub
 ]]></summary>
         <content type="html"><![CDATA[<p>一些常用正则表达式</p>
 <!-- more -->
+<h2 id="正则判断函数">正则判断函数</h2>
+<pre><code>Pattern.matches(regex, pass);
+</code></pre>
 <h2 id="搜索中文">搜索中文</h2>
 <pre><code>^((?!(\*|//)).)+[\u4e00-\u9fa5]
 </code></pre>
@@ -406,36 +896,6 @@ cat id_rsa.pub
 <figure data-type="image" tabindex="7"><img src="https://ouluqiang.github.io//post-images/1569307505346.png" alt=""></figure>
 <figure data-type="image" tabindex="8"><img src="https://ouluqiang.github.io//post-images/1569307563455.png" alt=""></figure>
 <p>再博客中测试评论，成功即可</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[adb wifi 调试]]></title>
-        <id>https://ouluqiang.github.io//post/adb-wifi-diao-shi</id>
-        <link href="https://ouluqiang.github.io//post/adb-wifi-diao-shi">
-        </link>
-        <updated>2019-09-18T08:48:35.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="连接手机和电脑">连接手机和电脑</h2>
-<p>命令行 adb devices 查看连接</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1568884026016.png" alt="连接"></figure>
-<h2 id="设置5555端口">设置5555端口</h2>
-<p>设置wifi调试端口 5555</p>
-<pre><code>    adb tcpip 5555
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1568886196625.png" alt="端口"></figure>
-<h2 id="查看手机ip">查看手机ip</h2>
-<pre><code>    adb shell  ifconfig wlan0
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1568886240609.png" alt="ip"></figure>
-<p>手机操作，打开 设置-WLAN-配置 页面，可看到当前 IP</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1568886275147.png" alt="ip"></figure>
-<h2 id="连接手机">连接手机</h2>
-<pre><code>    adb connect &lt;手机ip地址&gt;
-</code></pre>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1568886318164.png" alt="连接"></figure>
-<h2 id="成功">成功</h2>
-<p>连接成功显示</p>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1568886341285.png" alt="成功"></figure>
-<p>锤子手机测试失败</p>
 ]]></content>
     </entry>
 </feed>
