@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-09-27T08:16:24.795Z</updated>
+    <updated>2019-09-27T08:47:16.354Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -570,9 +570,10 @@ File &gt; Settings &gt; Plugins 搜索Subversion Integration</p>
         <updated>2019-09-24T09:16:07.000Z</updated>
         <content type="html"><![CDATA[<h1 id="下载">下载</h1>
 <p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">jdk下载地址</a></p>
-<p>jdk下载<br>
-链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag<br>
-提取码：t8ci</p>
+<p>jdk下载</p>
+<pre><code>链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag 
+提取码：t8ci 
+</code></pre>
 <p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
 <h2 id="jdk12">jdk12</h2>
 <p>安装JDK11或以上版本，安装过程中没有提示安装JRE，进入JDK安装路径下 shift+右键 在此处打开命令窗口</p>
@@ -580,27 +581,27 @@ File &gt; Settings &gt; Plugins 搜索Subversion Integration</p>
 <pre><code> bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre   
 </code></pre>
 <p>执行完成就会生成JRE</p>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/2025676-092ee2d81fb4e15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569573855494.png" alt=""></figure>
 <h2 id="jdk8">jdk8</h2>
 <p>正常安装</p>
 <h2 id="环境变量配置">环境变量配置</h2>
 <p>我的电脑右键，点击属性，点击高级系统设置，点击环境变量</p>
-<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/2025676-80d9883df2172e7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569573876482.png" alt=""></figure>
 <p>新建系统变量，变量名写 JAVA_HOME 变量值 填写你JDK安装的路径</p>
-<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/2025676-14e4cad6e48b11de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569573893452.png" alt=""></figure>
 <p>双击系统变量path编辑变量值 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
-<figure data-type="image" tabindex="4"><img src="https://upload-images.jianshu.io/upload_images/2025676-b05e6e5352c1876b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569573915023.png" alt=""></figure>
 <p>在系统变量中新建 classpath 变量名，变量值为  %JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</p>
-<figure data-type="image" tabindex="5"><img src="https://upload-images.jianshu.io/upload_images/2025676-84140d49e227ae06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569573938408.png" alt=""></figure>
 <p>win+R运行输入cmd，输入java -version查看JDK版本和JVM信息</p>
-<figure data-type="image" tabindex="6"><img src="https://upload-images.jianshu.io/upload_images/2025676-b5bff947bcc4d526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1569573946973.png" alt=""></figure>
 <h1 id="sdk">sdk</h1>
 <p>新建系统变量ANDROID_HOME，变量值D:\xx\sdk（以你安装目录为准,确认里面有tools和add-ons等多个文件夹）</p>
-<figure data-type="image" tabindex="7"><img src="https://upload-images.jianshu.io/upload_images/2025676-7c4474ac5ea494cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="7"><img src="https://ouluqiang.github.io//post-images/1569573974734.png" alt=""></figure>
 <p>在系统变量PATH后面加上变量值;%ANDROID_HOME%\platform-tools;</p>
-<figure data-type="image" tabindex="8"><img src="https://upload-images.jianshu.io/upload_images/2025676-95aa820c636c3cd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="8"><img src="https://ouluqiang.github.io//post-images/1569573987528.png" alt=""></figure>
 <p>win+R运行输入cmd，输入adb 查看</p>
-<figure data-type="image" tabindex="9"><img src="https://upload-images.jianshu.io/upload_images/2025676-a43222dcc6f1aa70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+<figure data-type="image" tabindex="9"><img src="https://ouluqiang.github.io//post-images/1569574016688.png" alt=""></figure>
 ]]></content>
     </entry>
     <entry>
