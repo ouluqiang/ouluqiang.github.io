@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-10-07T09:30:23.323Z</updated>
+    <updated>2019-10-07T09:48:25.257Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -11,7 +11,25 @@
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
     <entry>
-        <title type="html"><![CDATA[1. Jetpack源码解析---看完你就知道Navigation是什么了？]]></title>
+        <title type="html"><![CDATA[转载文章]]></title>
+        <id>https://ouluqiang.github.io//post/zhuan-zai-wen-zhang</id>
+        <link href="https://ouluqiang.github.io//post/zhuan-zai-wen-zhang">
+        </link>
+        <updated>2019-10-07T09:32:45.000Z</updated>
+        <summary type="html"><![CDATA[<p>记得无论怎么转载，都要注明“转载”并且说明出处一定要选择【转载】，尊重原创！！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>记得无论怎么转载，都要注明“转载”并且说明出处一定要选择【转载】，尊重原创！！</p>
+<!-- more -->
+<p>在浏览器打开文章，右键 -&gt; 检查,或者直接F12看html代码<br>
+<img src="https://ouluqiang.github.io//post-images/1570441106069.png" alt=""></p>
+<p>再复制文章内容的代码<br>
+<img src="https://ouluqiang.github.io//post-images/1570441466035.png" alt=""></p>
+<p>将html直接粘贴到markdown也是可以的，但是我发现代码块的样式会乱掉，所以可以先将html转换成md，<a href="https://tool.lu/markdown/">https://tool.lu/markdown/</a><br>
+<img src="https://ouluqiang.github.io//post-images/1570441613122.png" alt=""></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[转载] 1. Jetpack源码解析---看完你就知道Navigation是什么了？]]></title>
         <id>https://ouluqiang.github.io//post/jetpack-navigation</id>
         <link href="https://ouluqiang.github.io//post/jetpack-navigation">
         </link>
@@ -1469,66 +1487,6 @@ cat id_rsa.pub
 <p>在AndroidManifest.xml添加配置</p>
 <figure data-type="image" tabindex="7"><img src="https://ouluqiang.github.io//post-images/1569302899586.png" alt="networkSecurityConfig"></figure>
 <pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[正则表达式]]></title>
-        <id>https://ouluqiang.github.io//post/zheng-ze-biao-da-shi</id>
-        <link href="https://ouluqiang.github.io//post/zheng-ze-biao-da-shi">
-        </link>
-        <updated>2019-09-23T10:29:08.000Z</updated>
-        <summary type="html"><![CDATA[<p>一些常用正则表达式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>一些常用正则表达式</p>
-<!-- more -->
-<h2 id="正则判断函数">正则判断函数</h2>
-<pre><code>Pattern.matches(regex, pass);
-</code></pre>
-<h2 id="搜索中文">搜索中文</h2>
-<pre><code>^((?!(\*|//)).)+[\u4e00-\u9fa5]
-</code></pre>
-<h2 id="验证密码首位为字母或数字">验证密码首位为字母或数字</h2>
-<pre><code>[0-9 a-z A-Z]\w*
-</code></pre>
-<h2 id="验证email">验证Email</h2>
-<pre><code>\w+@\w+\.[a-z]+(\.[a-z]+)?
-</code></pre>
-<h2 id="验证身份证号码">验证身份证号码</h2>
-<pre><code>(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)
-</code></pre>
-<h2 id="验证手机号码">验证手机号码</h2>
-<pre><code>(\+\d+)?1[3456789]\d{9}$
-</code></pre>
-<h2 id="验证固定电话号码">验证固定电话号码</h2>
-<pre><code>(\+\d+)?(\d{3,4}\-?)?\d{7,8}$
-</code></pre>
-<h2 id="验证整数正整数和负整数">验证整数（正整数和负整数）</h2>
-<pre><code>\-?[1-9]\d+
-</code></pre>
-<h2 id="验证整数和浮点数正负整数和正负浮点数">验证整数和浮点数（正负整数和正负浮点数）</h2>
-<pre><code>\-?[1-9]\d+(\.\d+)?
-</code></pre>
-<h2 id="验证空白字符">验证空白字符</h2>
-<pre><code>\\s+
-</code></pre>
-<h2 id="验证中文">验证中文</h2>
-<pre><code>^[\u4E00-\u9FA5]+$
-</code></pre>
-<h2 id="验证日期年月日">验证日期（年月日）</h2>
-<pre><code>[1-9]{4}([-./])\d{1,2}\1\d{1,2}
-</code></pre>
-<h2 id="验证url地址">验证URL地址</h2>
-<pre><code>(https?://(w{3}\.)?)?\w+\.\w+(\.[a-zA-Z]+)*(:\d{1,5})?(/\w*)*(\??(.+=.*)?(&amp;.+=.*)?)?
-</code></pre>
-<h2 id="获取网址-url-的一级域名">获取网址 URL 的一级域名</h2>
-<pre><code>(?&lt;=http://|\.)[^.]*?\.(com|cn|net|org|biz|info|cc|tv)
-</code></pre>
-<h2 id="匹配中国邮政编码">匹配中国邮政编码</h2>
-<pre><code>[1-9]\d{5}
-</code></pre>
-<h2 id="匹配ip地址简单匹配格式如19216811127001没有匹配ip段的大小">匹配IP地址(简单匹配，格式，如：192.168.1.1，127.0.0.1，没有匹配IP段的大小)</h2>
-<pre><code>[1-9](\d{1,2})?\.(0|([1-9](\d{1,2})?))\.(0|([1-9](\d{1,2})?))\.(0|([1-9](\d{1,2})?))
 </code></pre>
 ]]></content>
     </entry>
