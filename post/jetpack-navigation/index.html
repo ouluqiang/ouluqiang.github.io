@@ -1,22 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://ouluqiang.github.io/</id>
-    <title>小白记忆屋</title>
-    <updated>2019-10-07T06:39:23.653Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://ouluqiang.github.io/"/>
-    <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://ouluqiang.github.io//images/avatar.png</logo>
-    <icon>https://ouluqiang.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, 小白记忆屋</rights>
-    <entry>
-        <title type="html"><![CDATA[Jetpack---Navigation]]></title>
-        <id>https://ouluqiang.github.io//post/jetpack-navigation</id>
-        <link href="https://ouluqiang.github.io//post/jetpack-navigation">
-        </link>
-        <updated>2019-10-07T06:14:33.000Z</updated>
-        <content type="html"><![CDATA[<article class="baidu_pl">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Jetpack---Navigation | 小白记忆屋</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://ouluqiang.github.io//favicon.ico?v=1570429974105">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ouluqiang.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://ouluqiang.github.io/">
+        <img src="https://ouluqiang.github.io//images/avatar.png?v=1570429974105" class="site-logo">
+        <h1 class="site-title">小白记忆屋</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/ouluqiang" target="_blank">GITHUB</a> | <a class="rss" href="https://ouluqiang.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Jetpack---Navigation</h2>
+            <div class="post-date">2019-10-07</div>
+            
+            <div class="post-content">
+              <article class="baidu_pl">
                 <div id="article_content" class="article_content clearfix">
                                                 <div class="article-copyright">
                 <span class="creativecommons">
@@ -705,866 +791,76 @@ NavDestination destination <span class="token operator">=</span> mNodes<span cla
             &lt;link href=&quot;https://csdnimg.cn/release/phoenix/mdeditor/markdown_views-095d4a0b23.css&quot; rel=&quot;stylesheet&quot;&gt;
                 &lt;/div&gt;
 &lt;/article&gt;</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[kotlin基础]]></title>
-        <id>https://ouluqiang.github.io//post/kotlin-ji-chu</id>
-        <link href="https://ouluqiang.github.io//post/kotlin-ji-chu">
-        </link>
-        <updated>2019-09-27T05:17:32.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="kotlin函数">kotlin函数</h3>
-<p>main函数</p>
-<pre><code>fun main(args:array&lt;String&gt;){
-    
-}
-</code></pre>
-<p>带参数带返回值</p>
-<pre><code>fun sum(a:Int,b:Int):Int{
-    return a+b
-}
-</code></pre>
-<p>表达式做函数体，返回值类型自动推断的函数</p>
-<pre><code>fun sum(a:Int,b:Int)=a+b
-</code></pre>
-<p>函数无返回值</p>
-<pre><code>fun sum(a:Int,b:Int){
-    println(&quot;sun is ${a+b}&quot;)
-}
-</code></pre>
-<p>变量</p>
-<p>val 只读</p>
-<pre><code>val a:Int=1 //立即赋值
-val b=2 //自动推断出int类型
-val c:Int //类型
-c=3  //明确赋值
-</code></pre>
-<p>var 读写</p>
-<pre><code>var a=5
-a+=1
-</code></pre>
-<p>注释跟java一样</p>
-<p>表达式</p>
-<pre><code>fun sum(a:Int,b:Int):Int{
-    if(a&gt;b){
-        return a
-    }else{
-        return b
-    }
-}
-</code></pre>
-<p>if作为表达式</p>
-<pre><code>fun sum(a:Int,b:Int)=if(a&gt;b) a else b
-</code></pre>
-<p>可空值 null检测</p>
-<p>变量的值可以为null，必须在声明处的类型后添加?标识该引用可以为空</p>
-<p>str的值不是数字返回null</p>
-<pre><code>fun parseInt(str:String):Int?{
-    
-}
-</code></pre>
-<p>使用返回可空值的函数</p>
-<pre><code>fun parseInt(str:String):Int?{
-    return str.toIntOrNull()
-}
 
-fun printInt(a:String,b:String){
-    val x=parseInt(a)
-    val y=parseInt(b)
-    
-    
-    //直接使用x y 可能会报错，因为可能为空
-    if(x!=null&amp;&amp;y!=null){
-        println(x*y)
-    }else{
-        println(&quot;error&quot;)    
-    }
-    
-    //或者检测空值，x y会自动转换成非空值
-    if(x==null){
-        println(&quot;error&quot;)
-        return
-    }
-    if(y==null){
-        println(&quot;error&quot;)
-        return
-    }
-    println(x*y)
-}
-</code></pre>
-<p>使用类型检测及自动类型转换</p>
-<p>is运算符检测一个表达式是否某类型的一个实例，如果一个不可变的局部变量或属性已经判断出为某类型，检测后的分支中可以直接当作该类型使用，不需显示转换：</p>
-<pre><code>fun getStringLength(obj:Any):Int?{
-    if(obj is String){
-        return obj.length
-    }
-    return null
-}
-</code></pre>
-<p>或者</p>
-<pre><code>fun getStringLength(obj:Any):Int?{
-        if(obj !is String){
-            return null
-        }
-        //自动转换为 string
-        return obj.length
-    }
-    
-fun getStringLength(obj:Any):Int?{
-    if(obj is String&amp;&amp;obj.length&gt;0){
-        return obj.length
-    }
-    return null
-}
-</code></pre>
-<p>for循环.</p>
-<pre><code>val list= listOf&lt;String&gt;(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://ouluqiang.github.io//post/kotlin-ji-chu">
+                  <h3 class="post-title">
+                    kotlin基础
+                  </h3>
+                </a>
+              </div>
+            
 
-//直接循环
-for (l in list){
-    println(l)
-}
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
 
-//根据下标找数据  
-for (index in list.indices){
-    println(&quot;index ${list[index]}&quot;)
-}
+              
+            
 
-//while循环  
-var i=0
-while (i&lt;list.size){
-    println(&quot;while ${list[i]}&quot;)
-    i++
-}
-</code></pre>
-<p>when表达式</p>
-<p>类似java的</p>
-<pre><code>    switch (){
-        case 0:
-            break;
-    }
+          </div>
 
-fun getWhen(s:String):String?{
-    when(s){
-        &quot;a&quot;-&gt; return &quot;a1&quot;
-        &quot;b&quot;-&gt; return &quot;b1&quot;
-        &quot;c&quot;-&gt; return &quot;c1&quot;
-    }
-    return null
-}
-</code></pre>
-<p>range 使用区间</p>
-<pre><code>val x=1
-val y=10
-if (x in 1..y+1){
-    println(&quot;range&quot;)
-}
-</code></pre>
-<p>检测某个数字是否在区间内</p>
-<pre><code>val list= arrayListOf&lt;String&gt;(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
-val i=-1
-if (i !in 0..list.lastIndex){
-    println(&quot;${i}&quot;)
-}
+        </div>
+      </div>
+    </div>
 
-//list.indices 指list 0..list.size-1的长度
-if (list.size !in list.indices){
-    println(&quot;${list.indices}---${list.size}&quot;)
-}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-//打印 0-10的数
-//包含10
-for (x in 0..10){
-    println(x)
-}
-//不包含10
- for (x in  0 until 10){
-    println(x)
-}
+<script type="application/javascript">
 
-//0-10中,顺序隔3个打印
-for (x in 0..11 step 3){
-    println(x)
-}
+AOS.init();
 
-//倒叙隔4个排序
-for (x in 11 downTo 0 step 4){
-    println(x)
-}
-</code></pre>
-<p>循环迭代</p>
-<pre><code>for (x in list){
-    println(x)
-}
-</code></pre>
-<p>用in判断集合是否包含实例</p>
-<pre><code>//如果包含set就进判断，不走后续判断，类似java switch ()
-val set= setOf&lt;String&gt;(&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;)
-when{
-    &quot;a&quot; in set -&gt; println(&quot;这是 a&quot;)
-    &quot;bb&quot; in set -&gt; println(&quot;这是 b&quot;)
-    &quot;cc&quot; in set -&gt; println(&quot;这是 c&quot;)
-}
-</code></pre>
-<p>用lambada过滤（filter）,映射（map）</p>
-<pre><code>list.filter { it.startsWith(&quot;a&quot;) }
-        .sortedBy { it }
-        .map { it.toUpperCase() }
-        .forEach { println(it) }
-</code></pre>
-<p>创建数据类</p>
-<pre><code>data class UserBean(val uid:Int=0,var username:String?=null,var password:String?=null)
-</code></pre>
-<p>包含  get ,  set ,   toString , equals , hashCode , copy</p>
-<p>函数参数默认值</p>
-<pre><code>fun getWhen(s:String=&quot;&quot;,i:Int=0){}
-</code></pre>
-<p>过滤list</p>
-<pre><code>val list= arrayListOf&lt;Int&gt;(1,2,3,41,5,16,5,3,21,1)
-//val s=list.filter { x-&gt; x &gt; 9 }
-val s=list.filter { it&gt;3}
-for (l in s){
-    println(l)
-}
-</code></pre>
-<p>String内插</p>
-<pre><code>println(&quot;${list.indices}---${list.size}&quot;)
-</code></pre>
-<p>类型判断</p>
-<pre><code>when(s){
-   is UserBean -&gt; return &quot;a1&quot;
-    &quot;b&quot; -&gt; return &quot;b1&quot;
-   is BaseBean&lt;*&gt; -&gt; return &quot;c1&quot;
-}
-</code></pre>
-<p>map 遍历map</p>
-<pre><code>val map= mapOf(&quot;a&quot; to &quot;aa&quot;,&quot;b&quot; to &quot;bb&quot;,&quot;c&quot; to &quot;cc&quot;)
-for ((k,v) in map){
-    println(&quot;${k}-----${v}&quot;)
-}
+hljs.initHighlightingOnLoad()
 
-//打印map的value
-println(map[&quot;a&quot;])
-//给map赋值
-var map= HashMap&lt;String,String&gt;()
-map[&quot;a&quot;]=&quot;asdfas&quot;
-println(map[&quot;a&quot;])
-</code></pre>
-<p>lateinit 和 lazy 是 Kotlin 中的两种不同的延迟初始化的实现</p>
-<pre><code>lateinit 只用于变量 var，而 lazy 只用于常量 val
-</code></pre>
-<p>创建单例模式</p>
-<pre><code>//object修改类，为单例模式
-object Bean{}
-</code></pre>
-<p>用 ? 修饰代表可以为null</p>
-<pre><code>val file=File(&quot;T&quot;).listFiles()
-println(file?.size)
-</code></pre>
-<p>kotlin 类型</p>
-<pre><code>Double
-Float
-Long
-Int
-Short
-Byte
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-Long类型在后面加L：  123L
-Float类型在后面加F： 123F
-</code></pre>
-<p>kotlin 1.1起<br>
-使用下划线使常量易读</p>
-<pre><code>val a=1_000_000
-val b=1_0000_0000L
-val c=1_000.000_001
-</code></pre>
-<p>显式转换</p>
-<pre><code>//a为int,b为long类型,编译不通过需要显式转换
-if (a==b)
-
-if (a==b.toInt()){}
-</code></pre>
-<p>运算</p>
-<pre><code>位运算符只用 Int Long:
-
-shl(bits) -有符号左移（java的&lt;&lt;）
-shr(bits) -有符号右移（java的&gt;&gt;）
-ushr(bits) -无符号右移（java的&gt;&gt;&gt;）
-and(bits) -位与
-or(bits) -位或
-xor(bits) -位异或
-inv() -位非
-</code></pre>
-<p>字符 char</p>
-<pre><code>//char显示转换 int
-val s='1'
-s.toInt()
-</code></pre>
-<p>Boolean</p>
-<pre><code>||    或
-&amp;&amp;    与
-!     非
-</code></pre>
-<p>数组</p>
-<pre><code>Array
-</code></pre>
-<p>字符串</p>
-<pre><code>//字符串添加转义字符
-val s=&quot;hello\nworld&quot;
-</code></pre>
-<p>字符串模板</p>
-<pre><code>// $
- val s=&quot;hello\nworld&quot;
-val sa=&quot;x= ${s}&quot;
-println(sa)
-</code></pre>
-<p>if 表达式</p>
-<pre><code>if(true){
-    
-}elese{
-    
-}
-</code></pre>
-<p>when 表达式</p>
-<pre><code>val s=1
-//when取代了switch操作符
-when(s){
-    1 -&gt; println(&quot;aa&quot;)
-    //多个分支放一起，用,分隔
-    2,3 -&gt; println(&quot;bb&quot;)
-    //用表达式做条件
-    getInt() -&gt; println(&quot;cc&quot;)
-    //检测是否在区间
-    in 5..10 -&gt; println(&quot;dd&quot;)
-    //其他分支不满足进else
-    else -&gt;{
-        println(&quot;else&quot;)
-    }
-}
-</code></pre>
-<p>for循环</p>
-<p>while , do while</p>
-<pre><code>while(s&gt;0){
-
-}
-
-do{
-    val y=1
-}while(y!=null)
-</code></pre>
-<p>返回和跳转</p>
-<pre><code>return: 从最直接包围他的函数或匿名函数返回
-break:终止直接包围他的循环
-continue:继续下一次直接包围他的循环
-</code></pre>
-<p>类</p>
-<pre><code>class修饰
-</code></pre>
-<p>构造函数</p>
-<pre><code>//constructor主构造函数，一个或多个次构造函数  
-//主构造函数有注解或可见性修饰符，不可以省略
-//主构造函数可以省略，主构造函数不能包含任何代码
-class Test constructor(string: String){
-
-    //初始化块代码，主构造参数可以在init中使用
-    init {
-
-    }
+</script>
 
 
-class Test(val string: String,age:Int) {
 
-    //初始化块代码，主构造参数可以在init中使用
-    init {
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
 
-    }
+      var gitalk = new Gitalk({
+        clientID: '4cb03ab310ad62ef1078',
+        clientSecret: '8c04030bf365023e81c4ae9481977a50a8bd4765',
+        repo: 'ouluqiang.github.io',
+        owner: 'ouluqiang',
+        admin: ['ouluqiang'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
 
-    //次级构造函数,次级构造函数委托给主构造函数需要添加this
-    constructor(s: String):this(s,0)
-    }
-}
-</code></pre>
-<p>创建类的实例</p>
-<pre><code>//调用构造函数，kotlin没有new
-val text=Test(&quot;a&quot;,0)
-</code></pre>
-<p>继承</p>
-<pre><code>覆盖函数
-覆盖属性
-覆盖规则
-下次再学    
-</code></pre>
-<p>抽象类</p>
-<pre><code>abstract修饰
-</code></pre>
-<p>伴生对象</p>
-<p>属性和字段</p>
-<pre><code>属性用var是可变，val是只读
+      gitalk.render('gitalk-container')
 
-class Test(var string: String?=null,var age:Int?=0) 
+    </script>
+  
 
-//用其中某个属性，用名称引用他
-val text=Test()
-text.age
-</code></pre>
-<p>get set</p>
-<p>幕后字段， 幕后属性，编译器常量，惰性初始化属性，覆盖属性，委托属性</p>
-<p>接口</p>
-<pre><code>用interface修饰
-一个类或对象可以实现一个或多个接口
-</code></pre>
-<p>接口中的属性<br>
-解决覆盖冲突</p>
-<pre><code>interface A{
-    fun getA(){
-        println(&quot;a&quot;)
-    }
-}
+  
 
-interface B{
-    fun getA(){
-        println(&quot;ba&quot;)
-    }
-    fun getB(){
-        println(&quot;bb&quot;)
-    }
-}
 
-class C:A,B{
-    override fun getA() {
-        //TODO(&quot;not implemented&quot;) //To change body of created functions use File | Settings | File Templates.
-        //指定实现哪个父类的接口
-        super&lt;A&gt;.getA()
-        super&lt;B&gt;.getA()
-    }
 
-    override fun getB() {
-        super.getB()
-    }
 
-}
-</code></pre>
-<p>可见性修饰符</p>
-<pre><code>默认是public
-prublic 声明随处可见
-private 声明的文件内可见，类内部可见
-protected 不适用于顶层声明，和private一样+在子类中可见
-internal 相同模块随处可见
-</code></pre>
-<p>构造函数</p>
-<pre><code>//指定类的主构造函数的可见性，必须添加显示的 constrector
-
-class Test private constructor(var string: String?=null,var age:Int?=0) 
-</code></pre>
-<p>默认所有构造函数是public</p>
-<p>局部声明</p>
-<pre><code>局部变量，函数和类不能有可见性修饰符
-</code></pre>
-<p>模块</p>
-<pre><code>可见性修饰符 internal 只在相同模块内可见，一个模块是编译在一起的一套kotlin文件
-一个idea模块
-一个maven或者gradle项目
-一次&lt;kotlinc&gt;Ant人物执行所编译的一套文件
-</code></pre>
-<p>扩展</p>
-<p>扩展函数</p>
-<p>扩展是静态解析</p>
-<pre><code>（有空在学吧）
-</code></pre>
-<p>可空接收者</p>
-<p>扩展属性</p>
-<p>伴生对象的扩展</p>
-<p>扩展的作用</p>
-<p>扩展声明为成员</p>
-<p>动机</p>
-<pre><code>下次学
-</code></pre>
-<p>数据类</p>
-<p>生成的类含有一个无参的构造函数，所有的属性必须指定默认值</p>
-<pre><code>数据类标记为 data
-data class Test (var string: String?=null,var age:Int?=0) 
-</code></pre>
-<p>复制</p>
-<p>复制一个对象改变一些属性，保持其他属性不变</p>
-<pre><code>var text=Test()
-text.string=&quot;as&quot;
-text.age=11
-text=text.copy(age = 14)
-println(text.toString())
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Android Studio 配置SVN，GIT]]></title>
-        <id>https://ouluqiang.github.io//post/android-studio-pei-zhi-svngit</id>
-        <link href="https://ouluqiang.github.io//post/android-studio-pei-zhi-svngit">
-        </link>
-        <updated>2019-09-24T09:56:27.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="svngit下载地址">svn,git下载地址</h1>
-<pre><code>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
-提取码：xktl 
-</code></pre>
-<h1 id="svn">SVN</h1>
-<h2 id="svn安装需注意安装-command-line功能">svn安装需注意安装 command line功能</h2>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569568588046.png" alt=""></figure>
-<p>在studio的File &gt; Settings &gt; Version Control &gt; Subversion 添加svn路径</p>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569568609300.png" alt=""></figure>
-<h1 id="git">GIT</h1>
-<p>在studio的File &gt; Settings &gt; Version Control &gt; Git 添加git路径，Test测试git版本</p>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569568633842.png" alt=""></figure>
-<p>GitHub直接输入账号密码即可</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569568657529.png" alt=""></figure>
-<h2 id="androidstudio-看不到svn的工具小图标">androidstudio 看不到svn的工具小图标</h2>
-<p>先看androidstudio是否安装svn<br>
-File &gt; Settings &gt; Plugins 搜索Subversion Integration</p>
-<p>如果有Subversion Integration 则安装好svn工具；如果没有安装，则进行安装。</p>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569568783281.png" alt=""></figure>
-<p>再选择Subversion即可</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Android Studio常用设置]]></title>
-        <id>https://ouluqiang.github.io//post/android-studio-chang-yong-she-zhi</id>
-        <link href="https://ouluqiang.github.io//post/android-studio-chang-yong-she-zhi">
-        </link>
-        <updated>2019-09-24T09:19:41.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1设置编辑界面和代码主题">1.设置编辑界面和代码主题</h2>
-<p>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Appearance &gt; Theme&quot;，默认可以选择Light和Darcula，分别为白色和黑色主题，选择之后点击Apply应用。</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569570829889.png" alt=""></figure>
-<h2 id="2修改字体大小和字体样式">2.修改字体大小和字体样式</h2>
-<p>File &gt; Settings &gt; Editor &gt; Color Scheme &gt; Color Scheme Font，先选择一个Scheme主题，打勾设置size然后Apply就好了。在Font下可以选择各种字体。</p>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569570855113.png" alt=""></figure>
-<h2 id="3设置文件注释模板">3.设置文件注释模板</h2>
-<p>File &gt; Settings &gt; Editor &gt; File and Code Templates，切换到Includes下，在File Header里面设置注释模板。</p>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569570879010.png" alt=""></figure>
-<h2 id="4默认文件编码">4.默认文件编码</h2>
-<p>File &gt; Settings &gt; Editor &gt; File Encodings。建议将 IDE Encoding 、 Project Encoding 、 Properties Fiels 都设置成统一的UTB-8编码。</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569570937484.png" alt=""></figure>
-<h2 id="5显示行号">5.显示行号</h2>
-<p>File | Settings | Editor | General | Appearance，勾选show line numbers</p>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569570972769.png" alt=""></figure>
-<h2 id="6自动导入">6.自动导入</h2>
-<p>File &gt; Settings &gt; Editor &gt; General &gt; Auto Import,修改不区分大小写提示，勾选导包和删除无用包</p>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1569570998987.png" alt=""></figure>
-<h2 id="鼠标悬停显示方法说明">鼠标悬停显示方法说明</h2>
-<p>File &gt; Settings &gt; Editor &gt; General<br>
-可修改悬停多久，才显示方法说明(单位：毫秒)。</p>
-<figure data-type="image" tabindex="7"><img src="https://ouluqiang.github.io//post-images/1569571044992.png" alt=""></figure>
-<h2 id="删除的类的历史记录与未修改前的类对比">删除的类的历史记录，与未修改前的类对比</h2>
-<figure data-type="image" tabindex="8"><img src="https://ouluqiang.github.io//post-images/1569572112977.png" alt=""></figure>
-<h2 id="导出导入studio设置属性">导出，导入studio设置属性</h2>
-<p>File &gt; Export Settings 导出设置</p>
-<figure data-type="image" tabindex="9"><img src="https://ouluqiang.github.io//post-images/1569572137353.png" alt=""></figure>
-<p>File &gt; Import Settings 导入设置</p>
-<figure data-type="image" tabindex="10"><img src="https://ouluqiang.github.io//post-images/1569572165039.png" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[jdk sdk环境配置 Android下载]]></title>
-        <id>https://ouluqiang.github.io//post/jdk-sdk-huan-jing-pei-zhi-android-xia-zai</id>
-        <link href="https://ouluqiang.github.io//post/jdk-sdk-huan-jing-pei-zhi-android-xia-zai">
-        </link>
-        <updated>2019-09-24T09:16:07.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="下载">下载</h1>
-<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">jdk下载地址</a></p>
-<p>jdk下载</p>
-<pre><code>链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag 
-提取码：t8ci 
-</code></pre>
-<p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
-<h2 id="jdk12">jdk12</h2>
-<p>安装JDK11或以上版本，安装过程中没有提示安装JRE，进入JDK安装路径下 shift+右键 在此处打开命令窗口</p>
-<p>输入</p>
-<pre><code> bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre   
-</code></pre>
-<p>执行完成就会生成JRE</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569573855494.png" alt=""></figure>
-<h2 id="jdk8">jdk8</h2>
-<p>正常安装</p>
-<h2 id="环境变量配置">环境变量配置</h2>
-<p>我的电脑右键，点击属性，点击高级系统设置，点击环境变量</p>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569573876482.png" alt=""></figure>
-<p>新建系统变量，变量名写 JAVA_HOME 变量值 填写你JDK安装的路径</p>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569573893452.png" alt=""></figure>
-<p>双击系统变量path编辑变量值 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569573915023.png" alt=""></figure>
-<p>在系统变量中新建 classpath 变量名，变量值为  %JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</p>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569573938408.png" alt=""></figure>
-<p>win+R运行输入cmd，输入java -version查看JDK版本和JVM信息</p>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1569573946973.png" alt=""></figure>
-<h1 id="sdk">sdk</h1>
-<p>新建系统变量ANDROID_HOME，变量值D:\xx\sdk（以你安装目录为准,确认里面有tools和add-ons等多个文件夹）</p>
-<figure data-type="image" tabindex="7"><img src="https://ouluqiang.github.io//post-images/1569573974734.png" alt=""></figure>
-<p>在系统变量PATH后面加上变量值;%ANDROID_HOME%\platform-tools;</p>
-<figure data-type="image" tabindex="8"><img src="https://ouluqiang.github.io//post-images/1569573987528.png" alt=""></figure>
-<p>win+R运行输入cmd，输入adb 查看</p>
-<figure data-type="image" tabindex="9"><img src="https://ouluqiang.github.io//post-images/1569574016688.png" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[gson type封装泛型]]></title>
-        <id>https://ouluqiang.github.io//post/gson-type-feng-zhuang-fan-xing</id>
-        <link href="https://ouluqiang.github.io//post/gson-type-feng-zhuang-fan-xing">
-        </link>
-        <updated>2019-09-24T08:33:44.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="type封装获取泛型的实际类型">type封装获取泛型的实际类型</h2>
-<blockquote>
-<p>通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type</p>
-</blockquote>
-<p>getClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type<br>
-然后将其转换ParameterizedType。。<br>
-getActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。<br>
-[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。</p>
-<pre><code>        Type genericSuperclass = getClass().getGenericSuperclass();
-        if (genericSuperclass instanceof ParameterizedType) {
-            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-        } else {
-            this.type = Object.class; 
-            // 基本不会走这个判断
-        }
-</code></pre>
-<h2 id="解决-gson反序列化自动将int类型转化成double类型">解决 gson反序列化自动将int类型转化成double类型</h2>
-<pre><code>    private static Gson gson=new GsonBuilder().
-        registerTypeAdapter(Double.class, new JsonSerializer&lt;Double&gt;() {
-
-            @Override
-            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {
-                if (src == src.longValue())
-                    return new JsonPrimitive(src.longValue());
-                return new JsonPrimitive(src);
-            }
-        }).create();
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Gridea保存源文件]]></title>
-        <id>https://ouluqiang.github.io//post/gridea-bao-cun-yuan-wen-jian</id>
-        <link href="https://ouluqiang.github.io//post/gridea-bao-cun-yuan-wen-jian">
-        </link>
-        <updated>2019-09-24T07:55:55.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="创建分支">创建分支</h2>
-<p>在GitHub的博客项目中新建一个分支</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569311927040.jpg" alt=""></figure>
-<p>克隆项目到本地</p>
-<pre><code>git clone https://github.com/xxx/xxx.github.io.git
-</code></pre>
-<h2 id="切换分支">切换分支</h2>
-<p>到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支</p>
-<pre><code># 列出所有本地分支
-$ git branch
-
-# 列出所有远程分支
-$ git branch -r
-
-# 列出所有本地分支和远程分支
-$ git branch -a
-
-# 切换到指定分支，并更新工作区
-$ git checkout [branch-name]
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569311864422.jpg" alt=""></figure>
-<p>把源文件复制到分支项目,再打开Git Bash 提交代码<br>
-<img src="https://ouluqiang.github.io//post-images/1569311872576.jpg" alt=""></p>
-<pre><code># 添加当前目录的所有文件到暂存区
-$ git add .
-
-# 提交暂存区到仓库区
-$ git commit -m ‘修改说明，随便写’
-
-# 提交到远程仓库
-git push
-</code></pre>
-<p>提交成功<br>
-<img src="https://ouluqiang.github.io//post-images/1569311915447.jpg" alt=""></p>
-<p>但是提交完会因为提交的源文件有token，GitHub会给你发邮件token泄漏，将原先生成的token移除，原先的token已经失效了，你需要重新申请token,在Gridea的配置修改token,后续如果要提交源文件有1种方法就是不提交有token的文件，也就是源文件/config/setting.json，不提交这个文件就即可</p>
-<!-- ## 生成ssh-key的私钥和公钥
-生成key,看C盘用户目录SSH
-
-```
-ssh-keygen -t rsa      //一路回车下来
-```
-![](https://ouluqiang.github.io//post-images/1569314857492.jpg)
-
-测试是否能连接上GitHub服务器
-```
-ssh -T git@github.com
-```
-输出是.........
-Permission denied (publickey).
-需要将上面生成的public key(id_rsa.pub文件内容)拷贝到github服务器的SSH Keys中，
-再.ssh目录下打开终端输入下面代码查看内容，或者直接记事本打开查看
-
-```
-cat id_rsa.pub
-```
-
-![](https://ouluqiang.github.io//post-images/1569315446419.jpg)
-
-头像 > settings > ssh
-![](https://ouluqiang.github.io//post-images/1569315521381.jpg)
-
-再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功
-![](https://ouluqiang.github.io//post-images/1569315793106.jpg) -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[常用开发工具]]></title>
-        <id>https://ouluqiang.github.io//post/chang-yong-kai-fa-gong-ju</id>
-        <link href="https://ouluqiang.github.io//post/chang-yong-kai-fa-gong-ju">
-        </link>
-        <updated>2019-09-24T05:22:26.000Z</updated>
-        <summary type="html"><![CDATA[<p>Android常用的开发工具</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Android常用的开发工具</p>
-<!-- more -->
-<h2 id="android-stidosdkjdk">Android stido，sdk，jdk</h2>
-<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">jdk下载地址</a></p>
-<p>jdk下载</p>
-<pre><code>链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag 
-提取码：t8ci 
-</code></pre>
-<p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
-<h2 id="svngit下载地址">svn,git下载地址</h2>
-<p><a href="https://git-scm.com/downloads">git下载</a></p>
-<pre><code>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
-提取码：xktl 
-</code></pre>
-<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
-<pre><code>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ 
-提取码：sj13 
-</code></pre>
-<h2 id="sqlite数据库工具">sqlite数据库工具</h2>
-<pre><code>链接：https://pan.baidu.com/s/1I_w-rARDcKocKBXGOMbJdg 
-提取码：trl1
-</code></pre>
-<h2 id="颜色获取">颜色获取</h2>
-<pre><code>链接：https://pan.baidu.com/s/1-sLi9-PVYksCiE-RHSXquw 
-提取码：tyrw 
-</code></pre>
-<h2 id="获取sha1值">获取SHA1值</h2>
-<pre><code>链接：https://pan.baidu.com/s/15AvGDv-WjzU7jvLhJeLvhg 
-提取码：081p 
-</code></pre>
-<h1 id="idea-学习版">idea 学习版</h1>
-<p>http://idea.toocruel.net</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[charles使用]]></title>
-        <id>https://ouluqiang.github.io//post/charles-shi-yong</id>
-        <link href="https://ouluqiang.github.io//post/charles-shi-yong">
-        </link>
-        <updated>2019-09-23T10:38:43.000Z</updated>
-        <summary type="html"><![CDATA[<p>charles基本设置使用</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>charles基本设置使用</p>
-<!-- more -->
-<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
-<pre><code>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ 
-提取码：sj13 
-</code></pre>
-<h2 id="http抓包">http抓包</h2>
-<p>代理 &gt; 代理设置中设置端口号 8888 ,勾选启用HTTP代理<br>
-<img src="https://ouluqiang.github.io//post-images/1569304039210.jpg" alt="代理设置"></p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569303949066.jpg" alt="端口"></figure>
-<p>帮助 &gt; 本地ip 查看电脑ip<br>
-<img src="https://ouluqiang.github.io//post-images/1569304145156.jpg" alt="帮助"></p>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569304186481.jpg" alt="ip"></figure>
-<p>手机和电脑在一个网段(连接同一个路由器)，在手机网络设置里面填写代理服务地址信息<br>
-电脑ip ,  端口号</p>
-<figure data-type="image" tabindex="3"><img src="https://ouluqiang.github.io//post-images/1569304740083.jpg" alt="代理"></figure>
-<p>在使用手机进行网络请求时，charles会有一个提示，允许即可</p>
-<h2 id="https抓包">https抓包</h2>
-<p>https需要安装证书，注意电脑安装证书需要安装到受信任的颁发机构</p>
-<figure data-type="image" tabindex="4"><img src="https://ouluqiang.github.io//post-images/1569305139356.jpg" alt="证书"></figure>
-<figure data-type="image" tabindex="5"><img src="https://ouluqiang.github.io//post-images/1569305350226.jpg" alt="安装证书"></figure>
-<p>手机也需要安装证书，在浏览器下载证书,如果不识别，不能安装，建议用谷歌浏览器app下载安装</p>
-<pre><code>chls.pro/ssl
-</code></pre>
-<figure data-type="image" tabindex="6"><img src="https://ouluqiang.github.io//post-images/1569305456616.jpg" alt="手机证书"></figure>
-<p>勾选Windows代理，打开ssl代理设置<br>
-<img src="https://ouluqiang.github.io//post-images/1569305597175.jpg" alt="ssl设置"></p>
-<p>添加主机和端口号， 主机用*，端口号443抓取https，也可以用*<br>
-<img src="https://ouluqiang.github.io//post-images/1569305786428.jpg" alt=""></p>
-<h2 id="android-70抓https失败的解决方案">Android 7.0抓https失败的解决方案</h2>
-<p>新建network_security_config.xml文件<br>
-<img src="https://ouluqiang.github.io//post-images/1569302838764.png" alt="network_security_config"></p>
-<p>在network_security_config.xml文件写入以下代码</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;network-security-config&gt;
-    &lt;base-config cleartextTrafficPermitted=&quot;true&quot;&gt;
-        &lt;trust-anchors&gt;
-            &lt;certificates src=&quot;system&quot; overridePins=&quot;true&quot; /&gt;
-            &lt;certificates src=&quot;user&quot; overridePins=&quot;true&quot; /&gt;
-        &lt;/trust-anchors&gt;
-    &lt;/base-config&gt;
-&lt;/network-security-config&gt;
-</code></pre>
-<p>在AndroidManifest.xml添加配置</p>
-<figure data-type="image" tabindex="7"><img src="https://ouluqiang.github.io//post-images/1569302899586.png" alt="networkSecurityConfig"></figure>
-<pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[正则表达式]]></title>
-        <id>https://ouluqiang.github.io//post/zheng-ze-biao-da-shi</id>
-        <link href="https://ouluqiang.github.io//post/zheng-ze-biao-da-shi">
-        </link>
-        <updated>2019-09-23T10:29:08.000Z</updated>
-        <summary type="html"><![CDATA[<p>一些常用正则表达式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>一些常用正则表达式</p>
-<!-- more -->
-<h2 id="正则判断函数">正则判断函数</h2>
-<pre><code>Pattern.matches(regex, pass);
-</code></pre>
-<h2 id="搜索中文">搜索中文</h2>
-<pre><code>^((?!(\*|//)).)+[\u4e00-\u9fa5]
-</code></pre>
-<h2 id="验证密码首位为字母或数字">验证密码首位为字母或数字</h2>
-<pre><code>[0-9 a-z A-Z]\w*
-</code></pre>
-<h2 id="验证email">验证Email</h2>
-<pre><code>\w+@\w+\.[a-z]+(\.[a-z]+)?
-</code></pre>
-<h2 id="验证身份证号码">验证身份证号码</h2>
-<pre><code>(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)
-</code></pre>
-<h2 id="验证手机号码">验证手机号码</h2>
-<pre><code>(\+\d+)?1[3456789]\d{9}$
-</code></pre>
-<h2 id="验证固定电话号码">验证固定电话号码</h2>
-<pre><code>(\+\d+)?(\d{3,4}\-?)?\d{7,8}$
-</code></pre>
-<h2 id="验证整数正整数和负整数">验证整数（正整数和负整数）</h2>
-<pre><code>\-?[1-9]\d+
-</code></pre>
-<h2 id="验证整数和浮点数正负整数和正负浮点数">验证整数和浮点数（正负整数和正负浮点数）</h2>
-<pre><code>\-?[1-9]\d+(\.\d+)?
-</code></pre>
-<h2 id="验证空白字符">验证空白字符</h2>
-<pre><code>\\s+
-</code></pre>
-<h2 id="验证中文">验证中文</h2>
-<pre><code>^[\u4E00-\u9FA5]+$
-</code></pre>
-<h2 id="验证日期年月日">验证日期（年月日）</h2>
-<pre><code>[1-9]{4}([-./])\d{1,2}\1\d{1,2}
-</code></pre>
-<h2 id="验证url地址">验证URL地址</h2>
-<pre><code>(https?://(w{3}\.)?)?\w+\.\w+(\.[a-zA-Z]+)*(:\d{1,5})?(/\w*)*(\??(.+=.*)?(&amp;.+=.*)?)?
-</code></pre>
-<h2 id="获取网址-url-的一级域名">获取网址 URL 的一级域名</h2>
-<pre><code>(?&lt;=http://|\.)[^.]*?\.(com|cn|net|org|biz|info|cc|tv)
-</code></pre>
-<h2 id="匹配中国邮政编码">匹配中国邮政编码</h2>
-<pre><code>[1-9]\d{5}
-</code></pre>
-<h2 id="匹配ip地址简单匹配格式如19216811127001没有匹配ip段的大小">匹配IP地址(简单匹配，格式，如：192.168.1.1，127.0.0.1，没有匹配IP段的大小)</h2>
-<pre><code>[1-9](\d{1,2})?\.(0|([1-9](\d{1,2})?))\.(0|([1-9](\d{1,2})?))\.(0|([1-9](\d{1,2})?))
-</code></pre>
-]]></content>
-    </entry>
-</feed>
+  </body>
+</html>
