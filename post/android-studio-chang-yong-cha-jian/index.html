@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>gson type封装泛型 | 小白记忆屋</title>
+<title>Android studio常用插件 | 小白记忆屋</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,59 +98,57 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">gson type封装泛型</h2>
-            <div class="post-date">2019-09-24</div>
+            <h2 class="post-title">Android studio常用插件</h2>
+            <div class="post-date">2019-10-10</div>
             
             <div class="post-content">
-              <h2 id="type封装获取泛型的实际类型">type封装获取泛型的实际类型</h2>
-<blockquote>
-<p>通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type</p>
-</blockquote>
-<p>getClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type<br>
-然后将其转换ParameterizedType。。<br>
-getActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。<br>
-[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。</p>
-<pre><code>        Type genericSuperclass = getClass().getGenericSuperclass();
-        if (genericSuperclass instanceof ParameterizedType) {
-            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-        } else {
-            this.type = Object.class; 
-            // 基本不会走这个判断
-        }
-</code></pre>
-<h2 id="解决-gson反序列化自动将int类型转化成double类型">解决 gson反序列化自动将int类型转化成double类型</h2>
-<pre><code>    private static Gson gson=new GsonBuilder().
-        registerTypeAdapter(Double.class, new JsonSerializer&lt;Double&gt;() {
-
-            @Override
-            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {
-                if (src == src.longValue())
-                    return new JsonPrimitive(src.longValue());
-                return new JsonPrimitive(src);
-            }
-        }).create();
-</code></pre>
+              <h2 id="gsonformat">GsonFormat</h2>
+<p>将json字符串转换成一个Java Bean</p>
+<h2 id="jsontokotlin">JsonToKotlin</h2>
+<p>将json字符串转换成一个Java Bean</p>
+<h2 id="findviewbyme">findViewByMe</h2>
+<p>快速自动生成findViewById</p>
+<h2 id="jsononlineviewer">JsonOnlineViewer</h2>
+<p>在Android Studio中请求、调试接口。</p>
+<h2 id="gradledependencyhelper">GradleDependencyHelper</h2>
+<p>maven gradle 依赖支持自动补全插件。</p>
+<h2 id="jimu-mirror">jimu Mirror</h2>
+<p>一个可以让你在真实的设备上迅速测试布局的插件。jimu Mirror允许在设备上预览随同编码更新的Android布局。</p>
+<h2 id="drawable-importer">Drawable Importer</h2>
+<p>添加了一个在不同分辨率导入画板或缩放指定图像到定义分辨率的选项</p>
+<h2 id="androidproguardplugin">AndroidProguardPlugin</h2>
+<p>一键生成项目混淆代码插件，值得你安装。</p>
+<h2 id="folding-plugin">folding-plugin</h2>
+<p>布局文件分组的插件。</p>
+<h2 id="androidlocalizationer">AndroidLocalizationer</h2>
+<p>可用于将项目中的 string 资源自动翻译为其他语言的 Android Studio/IntelliJ IDEA 插件。</p>
+<h2 id="permissionsdispatcher-plugin">PermissionsDispatcher plugin</h2>
+<p>自动生成6.0权限的代码。</p>
+<h2 id="androidpixeldimengenerator">AndroidPixelDimenGenerator</h2>
+<p>Android Studio自动生成dimen.xml文件插件。</p>
+<h2 id="adb-wifi">adb wifi</h2>
+<p>使用wifi无线调试你的app，无需root权限。</p>
+<h1 id="findbugs-idea">findBugs-IDEA</h1>
+<p>查找bug的插件，Android Studio也提供了代码审查的功能（Analyze-Inspect Code…）</p>
+<h2 id="android-parcelable-code-generator">Android Parcelable code generator</h2>
+<p>Parcelable是Android实体类的一种实例化方式。</p>
+<h2 id="apkmultichannelplugin">ApkMultiChannelPlugin</h2>
+<p>这是一个为了方便 Android 多渠道打包的 Android Studio / IDEA 插件</p>
+<h2 id="lint-cleaner-plugin">lint-cleaner-plugin</h2>
+<p>移除Android中无用资源</p>
+<h2 id="translation">Translation</h2>
+<p>翻译</p>
+<h2 id="findbugs">findBugs</h2>
+<p>查找bug的插件</p>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://ouluqiang.github.io//tag/uPl9IEkHz" class="tag">
-                    Android
-                  </a>
-                
-                  <a href="https://ouluqiang.github.io//tag/13AEsKm6N" class="tag">
-                    gson
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://ouluqiang.github.io//post/gridea-bao-cun-yuan-wen-jian">
+                <a href="https://ouluqiang.github.io//post/zhuan-zai-wen-zhang">
                   <h3 class="post-title">
-                    Gridea保存源文件
+                    转载文章
                   </h3>
                 </a>
               </div>
