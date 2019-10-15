@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-10-10T07:33:36.985Z</updated>
+    <updated>2019-10-15T08:59:49.375Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
     <entry>
-        <title type="html"><![CDATA[Android studio常用插件]]></title>
+        <title type="html"><![CDATA[Android Studio常用插件]]></title>
         <id>https://ouluqiang.github.io//post/android-studio-chang-yong-cha-jian</id>
         <link href="https://ouluqiang.github.io//post/android-studio-chang-yong-cha-jian">
         </link>
@@ -255,7 +255,7 @@ popEnter = R.anim.slide_in_left<br>
 popExit = R.anim.slide_out_right<br>
 }<br>
 }<br>
-view.findViewById<Button>(R.id.navigate_destination_button)?.setOnClickListener {<br>
+view.findViewById&lt; Button&gt;(R.id.navigate_destination_button)?.setOnClickListener {<br>
 findNavController().navigate(R.id.flow_step_one_dest, null, options)<br>
 }</p>
 </li>
@@ -1454,6 +1454,7 @@ cat id_rsa.pub
 提取码：t8ci 
 </code></pre>
 <p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
+<p><a href="https://developer.android.google.cn/studio">Android studio sdk 下载地址</a></p>
 <h2 id="svngit下载地址">svn,git下载地址</h2>
 <p><a href="https://git-scm.com/downloads">git下载</a></p>
 <pre><code>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
