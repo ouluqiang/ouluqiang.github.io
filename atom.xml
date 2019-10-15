@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-10-15T09:05:39.348Z</updated>
+    <updated>2019-10-15T09:13:21.125Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -10,6 +10,867 @@
     <logo>https://ouluqiang.github.io//images/avatar.png</logo>
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
+    <entry>
+        <title type="html"><![CDATA[[转载] 2. Jetpack源码解析---Navigation为什么切换Fragment会重绘？]]></title>
+        <id>https://ouluqiang.github.io//post/zhuan-zai-2-jetpack-yuan-ma-jie-xi-navigation-wei-shi-me-qie-huan-fragment-hui-chong-hui</id>
+        <link href="https://ouluqiang.github.io//post/zhuan-zai-2-jetpack-yuan-ma-jie-xi-navigation-wei-shi-me-qie-huan-fragment-hui-chong-hui">
+        </link>
+        <updated>2019-10-15T09:12:29.000Z</updated>
+        <summary type="html"><![CDATA[<p><a href="http://creativecommons.org/licenses/by-sa/4.0/"></a>版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接：<a href="https://blog.csdn.net/lyhhj/article/details/94003014">https://blog.csdn.net/lyhhj/article/details/94003014</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><a href="http://creativecommons.org/licenses/by-sa/4.0/"></a>版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接：<a href="https://blog.csdn.net/lyhhj/article/details/94003014">https://blog.csdn.net/lyhhj/article/details/94003014</a></p>
+<!-- more -->
+<blockquote>
+<p>上篇文章我们简单的介绍了<strong>Navigation组件</strong>的使用，以及深入分析了源码中的具体实现，基本原理我们已经很清晰了。本篇文章主要介绍下我在项目中遇到的问题，以及目前关于<strong>Navigation</strong>实现的一些探讨。还没有看过上篇文章的可以查看一下：</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/lyhhj/article/details/93757755">1. Jetpack源码解析—看完你就知道Navigation是什么了？</a></p>
+<h1 id="1-背景">1. 背景</h1>
+<p>先来看一下<code>Navigation</code>组件在官方文档上的介绍：</p>
+<blockquote>
+<p>今天，我们宣布推出Navigation组件，作为构建您的应用内界面的框架，重点是让单 Activity 应用成为首选架构。利用Navigation组件对 Fragment 的原生支持，您可以获得架构组件的所有好处（例如生命周期和 ViewModel），同时让此组件为您处理 FragmentTransaction 的复杂性。此外，Navigation组件还可以让您声明我们为您处理的转场。它可以自动构建正确的“向上”和“返回”行为，包含对深层链接的完整支持，并提供了帮助程序，用于将导航关联到合适的 UI 小部件，例如抽屉式导航栏和底部导航。</p>
+</blockquote>
+<p>确实经过源码分析我们就可以发现，<code>Navigation</code>组件封装了<code>Menu</code>菜单栏、<code>Fragment</code>的切换、<code>NavigationView</code>、<code>Drawerlayout</code>等一系列涉及到的组件，为了更方便的让我们使用单Activity多Fragment的架构。</p>
+<p>但是我在使用的时候发现，当一个<code>Fragment</code>中的布局稍微复杂一些，切换<code>Fragment</code>的时候会顿卡，而且如果再配合<code>DrawrLayout</code>使用的话，还会闪一下屏，效果体验不是很好，本着这个问题，我又再次对<code>Navigation</code>组件进行了分析。</p>
+<h1 id="2fragment切换">2.Fragment切换</h1>
+<p>通过现象分析，发现当切换<code>NavigationView</code>中的menu菜单来切换<code>Fragment</code>时，<code>DrawerLayout</code>抽屉关闭有一个短暂的动画(具体的这里就不分析了,感兴趣的可以自行查看，但是这不是根本原因)，同时<code>Fragment</code>切换，发生顿卡和闪屏的现象。所以…还是看源码吧：</p>
+<h2 id="21-navcontroller">2.1 NavController</h2>
+<pre><code>private void navigate(@NonNull NavDestination node, @Nullable Bundle args,
+            @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
+        boolean popped = false;
+        ....
+        Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider.getNavigator(
+                node.getNavigatorName());
+        Bundle finalArgs = node.addInDefaultArgs(args);
+        NavDestination newDest = navigator.navigate(node, finalArgs,
+                navOptions, navigatorExtras);
+       ....
+    }
+</code></pre>
+<h2 id="22-fragmentnavigator">2.2 FragmentNavigator</h2>
+<pre><code>public NavDestination navigate(@NonNull Destination destination, @Nullable Bundle args,
+            @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
+        ...
+        //根据classname反射获取Fragmnent
+        final Fragment frag = instantiateFragment(mContext, mFragmentManager,
+                className, args);
+        frag.setArguments(args);
+        //获取Fragment事务
+        final FragmentTransaction ft = mFragmentManager.beginTransaction();
+        //切换动画设置
+        int enterAnim = navOptions != null ? navOptions.getEnterAnim() : -1;
+        int exitAnim = navOptions != null ? navOptions.getExitAnim() : -1;
+        int popEnterAnim = navOptions != null ? navOptions.getPopEnterAnim() : -1;
+        int popExitAnim = navOptions != null ? navOptions.getPopExitAnim() : -1;
+        if (enterAnim != -1 || exitAnim != -1 || popEnterAnim != -1 || popExitAnim != -1) {
+            enterAnim = enterAnim != -1 ? enterAnim : 0;
+            exitAnim = exitAnim != -1 ? exitAnim : 0;
+            popEnterAnim = popEnterAnim != -1 ? popEnterAnim : 0;
+            popExitAnim = popExitAnim != -1 ? popExitAnim : 0;
+            ft.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim);
+        }
+        //切换Fragment
+        ft.replace(mContainerId, frag);
+        ft.setPrimaryNavigationFragment(frag);
+        ......
+        
+        ft.addToBackStack(generateBackStackName(mBackStack.size(), destId));
+        ........
+    }
+</code></pre>
+<p>看到这里就很清楚了吧，<code>Fragment</code>的切换是通过<code>replace</code>方式来切换的，并且加入回退栈，也就是说每次切换<code>Fragment</code>,都会销毁视图和重新创建视图。至于为什么用这种方式我是真的想不到，也没搞清楚初衷是什么？按照我们目前的开发来说，<code>Fragment</code>的切换通常都会使用<code>hide()</code>、<code>show()</code>，而<code>replcae()</code>的方式很少用，替换会把容器中的所有内容全都替换掉，有一些app会使用这样的做法，保持只有一个fragment在显示，减少了界面的层级关系。</p>
+<blockquote>
+<p>不仅仅是这样，上篇文章有小伙伴问切换了<code>Fragment</code>之后，点击返回按钮，发现之前的<code>Fragment</code>重走了<code>onCreateView</code>流程，这就意味着之前的状态没了。对于这个问题其实根据上面的分析，也能大概想到是因为什么，但是返回按钮的操作我之前还真没有看过源码，所以这次顺便了解一下：</p>
+</blockquote>
+<h1 id="3-返回都做了什么">3. 返回都做了什么</h1>
+<h2 id="31-onbackpressed">3.1 onBackPressed</h2>
+<p>我们同样从首页的<code>onBackPressed</code>入手：</p>
+<pre><code>override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
+public void onBackPressed() {
+        mOnBackPressedDispatcher.onBackPressed();
+    }
+</code></pre>
+<p>最终调用了<code>mOnBackPressedDispatcher</code>的<code>onBackPressed()</code>方法。我们查看这个类，通过<strong>Debug</strong>调试，我们跟到了<code>FragmentManagerImpl</code>类：</p>
+<pre><code>private final OnBackPressedCallback mOnBackPressedCallback =
+            new OnBackPressedCallback(false) {
+        @Override
+        public void handleOnBackPressed() {
+            FragmentManagerImpl.this.handleOnBackPressed();
+        }
+    };
+</code></pre>
+<p>发现点击返回按钮之后就走到这个，执行<code>handleOnBackPressed()</code>方法。</p>
+<h2 id="32-fragmentmanagerimpl">3.2 FragmentManagerImpl</h2>
+<p>继续跟踪源码，中间的一些过程我这里就忽略掉了，大部分都是一些<code>popBackStack</code>的操作，这里我们直接跟踪到关键点：</p>
+<pre><code>//在BackStackRecords中进行入栈出栈操作。
+private static void executeOps(ArrayList&lt;BackStackRecord&gt; records,
+                                   ArrayList&lt;Boolean&gt; isRecordPop, int startIndex, int endIndex) {
+        for (int i = startIndex; i &lt; endIndex; i++) {
+            final BackStackRecord record = records.get(i);
+            final boolean isPop = isRecordPop.get(i);
+            if (isPop) {
+                record.bumpBackStackNesting(-1);
+                // Only execute the add operations at the end of
+                // all transactions.
+                boolean moveToState = i == (endIndex - 1);
+                record.executePopOps(moveToState);
+            } else {
+                record.bumpBackStackNesting(1);
+                record.executeOps();
+            }
+        }
+    }
+</code></pre>
+<p>我们可以看到通过遍历栈数组，对<code>record</code>做<code>executePopOps()</code>操作，通过cmd来让<code>FragmentManager</code>做相关操作。</p>
+<pre><code>void executePopOps(boolean moveToState) {
+        for (int opNum = mOps.size() - 1; opNum &gt;= 0; opNum--) {
+            final Op op = mOps.get(opNum);
+            Fragment f = op.mFragment;
+            if (f != null) {
+                f.setNextTransition(FragmentManagerImpl.reverseTransit(mTransition),
+                        mTransitionStyle);
+            }
+            switch (op.mCmd) {
+                case OP_ADD:
+                    f.setNextAnim(op.mPopExitAnim);
+                    mManager.removeFragment(f);
+                    break;
+                case OP_REMOVE:
+                    f.setNextAnim(op.mPopEnterAnim);
+                    mManager.addFragment(f, false);
+                    break;
+                case OP_HIDE:
+                    f.setNextAnim(op.mPopEnterAnim);
+                    mManager.showFragment(f);
+                    break;
+                case OP_SHOW:
+                    f.setNextAnim(op.mPopExitAnim);
+                    mManager.hideFragment(f);
+                    break;
+                case OP_DETACH:
+                    f.setNextAnim(op.mPopEnterAnim);
+                    mManager.attachFragment(f);
+                    break;
+                case OP_ATTACH:
+                    f.setNextAnim(op.mPopExitAnim);
+                    mManager.detachFragment(f);
+                    break;
+                case OP_SET_PRIMARY_NAV:
+                    mManager.setPrimaryNavigationFragment(null);
+                    break;
+                case OP_UNSET_PRIMARY_NAV:
+                    mManager.setPrimaryNavigationFragment(f);
+                    break;
+                case OP_SET_MAX_LIFECYCLE:
+                    mManager.setMaxLifecycle(f, op.mOldMaxState);
+                    break;
+                default:
+                    throw new IllegalArgumentException(&quot;Unknown cmd: &quot; + op.mCmd);
+            }
+            if (!mReorderingAllowed &amp;&amp; op.mCmd != OP_REMOVE &amp;&amp; f != null) {
+                mManager.moveFragmentToExpectedState(f);
+            }
+        }
+        if (!mReorderingAllowed &amp;&amp; moveToState) {
+            mManager.moveToState(mManager.mCurState, true);
+        }
+    }
+</code></pre>
+<p>同时重新设置<code>PrimaryNavigationFragment</code>，add我们的首页<code>Fragment</code>，最后执行<code>moveToState</code>方法：</p>
+<pre><code>public void addFragment(Fragment fragment, boolean moveToStateNow) {
+        if (DEBUG) Log.v(TAG, &quot;add: &quot; + fragment);
+        makeActive(fragment);
+        if (!fragment.mDetached) {
+            if (mAdded.contains(fragment)) {
+                throw new IllegalStateException(&quot;Fragment already added: &quot; + fragment);
+            }
+            synchronized (mAdded) {
+                mAdded.add(fragment);
+            }
+            fragment.mAdded = true;
+            fragment.mRemoving = false;
+            if (fragment.mView == null) {
+                fragment.mHiddenChanged = false;
+            }
+            if (isMenuAvailable(fragment)) {
+                mNeedMenuInvalidate = true;
+            }
+            if (moveToStateNow) {
+                moveToState(fragment);
+            }
+        }
+    }
+</code></pre>
+<p>当我们继续跟踪的时候就会发现，在<code>moveToState</code>方法中，<code>Fragment</code>的state是<code>Fragment.CREATED</code>，并且会执行<code>performCreateView()</code>中的<code>onCreateView()</code>方法：</p>
+<pre><code>    f.mContainer = container;
+    f.performCreateView(f.performGetLayoutInflater(f.mSavedFragmentState), container, f.mSavedFragmentState);
+
+
+void performCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+        mChildFragmentManager.noteStateNotSaved();
+        mPerformedCreateView = true;
+        mViewLifecycleOwner = new FragmentViewLifecycleOwner();
+        mView = onCreateView(inflater, container, savedInstanceState);
+        ....
+    }
+</code></pre>
+<p>到这里就基本结束了，我只分析了一个大概，可以了解到点击返回按钮，同样也会重新创建视图，也就是<code>onCreateView</code>会重新走一遍。</p>
+<h1 id="4-总结">4. 总结</h1>
+<p>对于<code>Navigation</code>组件的这种切换方式，我也很无奈，而且也并没有暴露出来API供我们使用其他切换方式，我也询问了很多大佬，他们也不是很清楚，也有的发现这也是<code>Navigation</code>的一个很大的诟病。那么有没有解决办法呢？很遗憾我目前还没有想到比较好的办法。</p>
+<blockquote>
+<p>基于<code>Navigation</code>用来承载<code>Fragment</code>的容器是<code>NavHostFragment</code>，所以我们并不能使用<code>ViewPager+Fragment</code>的通过<code>setUserVisibleHint</code>实现懒加载的方式；同样我们也没办法使用<code>onHiddenChanged</code>的方式来实现复杂逻辑的加载；但是你可以在进入<code>Fragment</code>的时候先显示一个Loading框，加载完数据之后再渲染布局，这样的话可以减少一些尴尬。</p>
+</blockquote>
+<h2 id="41-建议">4.1 建议</h2>
+<p>这里我的建议是：如果你的每个<code>Fragment</code>真的每次都需要重新绘制的话，你可以考虑使用<code>Navigation</code>组件来实现，毕竟通过<code>Navgation</code>组件真的很方便帮助我们切换导航，而且虽然布局会重新绘制，但是Google的官方Demo–<a href="https://github.com/googlesamples/android-sunflower">SunFlower</a>还是使用了这种方式，所以这里面我觉得：官方推荐我们使用Jetpack组件中的<strong>ViewModel</strong>、<strong>LiveData</strong>…等，可以发现<strong>SunFlower</strong>demo中，即便是切换Fragmengt也不会有很明显的卡顿现象，因为每个Fragment即便重新绘制，但是View所对应的<strong>ViewModel</strong>还在，数据并不需要重新加载或者请求，当然这仅仅是我自己的看法啊.</p>
+<p>但是如果你没有这种场景的话，建议还是用普通的方式我们自己来控制切换吧，这样无论是基于<code>Drawerlayout</code>还是<code>BottomNaivgationView</code>的话，我们可以自己实现切换。这块我也不是很确定哈，也希望听取大家的意见和建议。</p>
+<blockquote>
+<p>我还发现一个问题，就是Play商店，现在就是这样的情况，抽屉栏中的<code>Item</code>每个基本都是重新绘制，而且第一个<code>Item</code><strong>我的应用和游戏</strong>切换的时候就会有很明显的卡顿和闪屏，猜测Google play 商店具体是不是使用的<code>Navigation</code>组件不敢确定，但是它很大几率是通过<code>replace</code>方式来做的切换。感兴趣的话可以看一下，我这贴一个GIF图，不一定能看清楚，不过确实是这个效果。</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAxOS82LzI2LzE2YjkzMTIzMjZlYzRmZDY" alt=""></figure>
+<p>最后，如果有不对的地方或者更好的解决办法，可以一起讨论一下哈！</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[转载] 3. Jetpack源码解析---用Lifecycles管理生命周期]]></title>
+        <id>https://ouluqiang.github.io//post/zhuan-zai-3-jetpack-yuan-ma-jie-xi-yong-lifecycles-guan-li-sheng-ming-zhou-qi</id>
+        <link href="https://ouluqiang.github.io//post/zhuan-zai-3-jetpack-yuan-ma-jie-xi-yong-lifecycles-guan-li-sheng-ming-zhou-qi">
+        </link>
+        <updated>2019-10-15T09:09:17.000Z</updated>
+        <summary type="html"><![CDATA[<p><a href="http://creativecommons.org/licenses/by-sa/4.0/"></a>版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接：<a href="https://blog.csdn.net/lyhhj/article/details/91440191">https://blog.csdn.net/lyhhj/article/details/91440191</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><a href="http://creativecommons.org/licenses/by-sa/4.0/"></a>版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接：<a href="https://blog.csdn.net/lyhhj/article/details/91440191">https://blog.csdn.net/lyhhj/article/details/91440191</a></p>
+<!-- more -->
+<h1 id="1-背景">1. 背景</h1>
+<blockquote>
+<p>上一篇我门对Jetpack组件中的<code>Navigation</code>做了介绍，并且对其做了源码分析，相信看过之后已经对此有了一定的了解，本篇文章我们会对<code>Lifecycles</code>进行使用及源码的介绍，还没看上篇的可以看一下：</p>
+</blockquote>
+<p><strong>系列文章</strong>：</p>
+<p><a href="https://blog.csdn.net/lyhhj/article/details/93757755">1. Jetpack源码解析—看完你就知道Navigation是什么了？</a></p>
+<p><a href="https://blog.csdn.net/lyhhj/article/details/94003014">2. Jetpack源码解析—Navigation为什么切换Fragment会重绘？</a></p>
+<h1 id="2-基础">2. 基础</h1>
+<h2 id="21-简介">2.1 简介</h2>
+<p><code>Lifecycles</code>是一个持有组件生命周期状态（如Activity、Fragment）信息的类，并允许其他对象观察此状态。可以帮助我们方便的管理<code>Activity</code>和<code>Fragment</code>的生命周期。</p>
+<p><code>Lifecycle组件</code>中通过两个枚举类来跟踪其关联组件的生命周期：</p>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdn.net/20180610101922250?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsZXh3bGw=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#align=left&amp;display=inline&amp;height=381&amp;originHeight=381&amp;originWidth=700&amp;status=done&amp;width=700" alt=""></figure>
+<h2 id="22-基本使用">2.2 基本使用</h2>
+<blockquote>
+<p>在我们的日常开发中，经常需要我们在Activity或者Fragment的生命周期方法中手动去管理一下资源的释放等行为。举个简单的例子，当我们做自定义相机扫描的时候，camera相关的资源就需要我们手动的去释放及开启预览；或者我们在使用MVP模式去开发的时候，P的创建和销毁也需要我们在生命周期方法中去操作。</p>
+</blockquote>
+<p>通过<code>Lifecycles组件</code>我们可以这样使用：</p>
+<p>我们可以定义一个Observer实现<code>LifecycleObserver</code>，并且在<code>Activity</code>或者<code>Fragment</code>中进行观察：</p>
+<pre><code>/**
+ * created by ${Hankkin}
+ * on 2019-06-10
+ */
+
+class MyObserver : LifecycleObserver {
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart() {
+        Log.e(javaClass.name, &quot;-------onStart&quot;)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun onCreate() {
+        Log.e(javaClass.name, &quot;-------onCreate&quot;)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    fun onResume() {
+        Log.e(javaClass.name, &quot;-------onResume&quot;)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    fun onPause() {
+        Log.e(javaClass.name, &quot;-------onPause&quot;)
+    }
+
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onStop() {
+        Log.e(javaClass.name, &quot;-------onStop&quot;)
+    }
+
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun onDestroy() {
+        Log.e(javaClass.name, &quot;-------onDestroy&quot;)
+    }
+
+}
+</code></pre>
+<p>下面是Activity：</p>
+<pre><code>class MainActivity : AppCompatActivity() {
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+        lifecycle.addObserver(MyObserver())
+        Log.e(javaClass.name, &quot;-------onCreate&quot;)
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.e(javaClass.name, &quot;-------onStart&quot;)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e(javaClass.name, &quot;-------onResume&quot;)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e(javaClass.name, &quot;-------onPause&quot;)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.e(javaClass.name, &quot;-------onStop&quot;)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.e(javaClass.name, &quot;-------onDestroy&quot;)
+    }
+}
+</code></pre>
+<p>启动Activity，我们可以看到控制台中的打印日志：</p>
+<pre><code>MainActivity: -------onCreate
+MyObserver: -------onCreate
+MainActivity: -------onStart
+MyObserver: -------onStart
+MainActivity: -------onResume
+MyObserver: -------onResume
+......
+</code></pre>
+<p>通过控制台打印我们可以看到我们的观察者Activity和被观察者的日志均被打印了。具体是怎么实现的呢？</p>
+<h1 id="3-源码分析">3. 源码分析</h1>
+<p>通过代码我们大概能看出来<code>Lifecycles</code>组件是通过观察者模式来实现的，接下来我们具体分析实现原理，我们发现在<code>Activity</code>和<code>Fragment</code>中可以直接通过<code>getLifecycle()</code>方法获取到<code>Lifecycle</code>，那么我们就从这里入手:</p>
+<h2 id="31-getlifecycle">3.1 getLifecycle()</h2>
+<p>我们点击进去发现<strong>ComponentActivity</strong>中实现了<code>LifecycleOwner</code>接口，<code>LifecycleOwner</code>接口中则声明了<code>getLifecycle()</code>方法，而<strong>ComponentActivity</strong>中直接返回了<strong>mLifecycleRegistry</strong>：</p>
+<pre><code>public class ComponentActivity extends androidx.core.app.ComponentActivity implements
+        LifecycleOwner,
+        ViewModelStoreOwner,
+        SavedStateRegistryOwner,
+        OnBackPressedDispatcherOwner {
+
+    private final LifecycleRegistry mLifecycleRegistry = new LifecycleRegistry(this);
+    ......
+    @NonNull
+    @Override
+    public Lifecycle getLifecycle() {
+        return mLifecycleRegistry;
+    }
+</code></pre>
+<p><code>LifecycleRegistry</code>是个什么东西呢？原来它继承了<strong>Lifecycle</strong></p>
+<pre><code>public class LifecycleRegistry extends Lifecycle
+</code></pre>
+<h2 id="32-lifecycle和lifecycleregistry">3.2 Lifecycle和LifecycleRegistry</h2>
+<p>我们看一下Lifecycle类：</p>
+<pre><code>public abstract class Lifecycle {
+
+        //注册LifecycleObserver （比如Presenter）
+        public abstract void addObserver(@NonNull LifecycleObserver observer);
+        //移除LifecycleObserver 
+        public abstract void removeObserver(@NonNull LifecycleObserver observer);
+        //获取当前状态
+        public abstract State getCurrentState();
+
+        public enum Event {
+            ON_CREATE,
+            ON_START,
+            ON_RESUME,
+            ON_PAUSE,
+            ON_STOP,
+            ON_DESTROY,
+            ON_ANY
+        }
+        
+       public enum State {
+            DESTROYED,
+            INITIALIZED,
+            CREATED,
+            STARTED,
+            RESUMED;
+
+            public boolean isAtLeast(@NonNull State state) {
+                return compareTo(state) &gt;= 0;
+            }
+       }
+}
+</code></pre>
+<p><strong>Lifecycle</strong>中就是声明了一些抽象方法和两个状态的枚举类，具体的实现看<strong>LifecycleRegistry</strong>：</p>
+<pre><code>public class LifecycleRegistry extends Lifecycle {
+
+// LifecycleObserver Map，每一个Observer都有一个State
+    private FastSafeIterableMap&lt;LifecycleObserver, ObserverWithState&gt; mObserverMap = new FastSafeIterableMap&lt;&gt;();
+    // 当前的状态
+    private State mState;
+    // 生命周期拥有者，ComponentActivity继承了LifecycleOwner
+    private final WeakReference&lt;LifecycleOwner&gt; mLifecycleOwner;
+
+    //修改State值
+    private void moveToState(State next) {
+        if (mState == next) {
+            return;
+        }
+        mState = next;
+        if (mHandlingEvent || mAddingObserverCounter != 0) {
+            mNewEventOccurred = true;
+            // we will figure out what to do on upper level.
+            return;
+        }
+        mHandlingEvent = true;
+        sync();
+        mHandlingEvent = false;
+    }
+
+    /**
+    * 添加LifecycleObserver观察者，并将之前的状态分发给这个Observer,例如我们在onResume之后注册这个Observer，
+    * 该Observer依然能收到ON_CREATE事件
+    */
+    @Override
+    public void addObserver(@NonNull LifecycleObserver observer) {
+        State initialState = mState == DESTROYED ? DESTROYED : INITIALIZED;
+        //新建带有状态的观察者
+        ObserverWithState statefulObserver = new ObserverWithState(observer, initialState);
+        ObserverWithState previous = mObserverMap.putIfAbsent(observer, statefulObserver);
+        ......
+        // 例如：Observer初始状态是INITIALIZED，当前状态是RESUMED，需要将INITIALIZED到RESUMED之间的
+        // 所有事件分发给Observer
+        while ((statefulObserver.mState.compareTo(targetState) &lt; 0
+                &amp;&amp; mObserverMap.contains(observer))) {
+            pushParentState(statefulObserver.mState);
+            statefulObserver.dispatchEvent(lifecycleOwner, upEvent(statefulObserver.mState));
+            popParentState();
+            targetState = calculateTargetState(observer);
+        }
+        ......
+}
+
+/**
+     * 同步Observer状态，并分发事件
+     */
+    private void sync() {
+        LifecycleOwner lfecycleOwner = mLifecycleOwner.get();
+        if (lifecycleOwner == null) {
+            Log.w(LOG_TAG, &quot;LifecycleOwner is garbage collected, you shouldn't try dispatch &quot;
+                    + &quot;new events from it.&quot;);
+            return;
+        }
+        while (!isSynced()) {
+            mNewEventOccurred = false;
+            // State中，状态值是从DESTROYED-INITIALIZED-CREATED-STARTED-RESUMED增大
+            // 如果当前状态值 &lt; Observer状态值，需要通知Observer减小状态值，直到等于当前状态值
+            if (mState.compareTo(mObserverMap.eldest().getValue().mState) &lt; 0) {
+                backwardPass(lifecycleOwner);
+            }
+            Entry&lt;LifecycleObserver, ObserverWithState&gt; newest = mObserverMap.newest();
+            // 如果当前状态值 &gt; Observer状态值，需要通知Observer增大状态值，直到等于当前状态值
+            if (!mNewEventOccurred &amp;&amp; newest != null
+                    &amp;&amp; mState.compareTo(newest.getValue().mState) &gt; 0) {
+                forwardPass(lifecycleOwner);
+            }
+        }
+        mNewEventOccurred = false;
+    }
+
+    /**
+     * 向前传递事件，对应图中的INITIALIZED -&gt; RESUMED
+     * 增加Observer的状态值，直到状态值等于当前状态值
+     */
+    private void forwardPass(LifecycleOwner lifecycleOwner) {
+        Iterator&lt;Entry&lt;LifecycleObserver, ObserverWithState&gt;&gt; ascendingIterator =
+                mObserverMap.iteratorWithAdditions();
+        while (ascendingIterator.hasNext() &amp;&amp; !mNewEventOccurred) {
+            Entry&lt;LifecycleObserver, ObserverWithState&gt; entry = ascendingIterator.next();
+            ObserverWithState observer = entry.getValue();
+            while ((observer.mState.compareTo(mState) &lt; 0 &amp;&amp; !mNewEventOccurred
+                    &amp;&amp; mObserverMap.contains(entry.getKey()))) {
+                pushParentState(observer.mState);
+                // 分发状态改变事件
+                observer.dispatchEvent(lifecycleOwner, upEvent(observer.mState));
+                popParentState();
+            }
+        }
+    }
+
+    /**
+     * 向后传递事件，对应图中的RESUMED -&gt; DESTROYED
+     * 减小Observer的状态值，直到状态值等于当前状态值
+     */
+    private void backwardPass(LifecycleOwner lifecycleOwner) {
+        Iterator&lt;Entry&lt;LifecycleObserver, ObserverWithState&gt;&gt; descendingIterator =
+                mObserverMap.descendingIterator();
+        while (descendingIterator.hasNext() &amp;&amp; !mNewEventOccurred) {
+            Entry&lt;LifecycleObserver, ObserverWithState&gt; entry = descendingIterator.next();
+            ObserverWithState observer = entry.getValue();
+            while ((observer.mState.compareTo(mState) &gt; 0 &amp;&amp; !mNewEventOccurred
+                    &amp;&amp; mObserverMap.contains(entry.getKey()))) {
+                Event event = downEvent(observer.mState);
+                // 分发状态改变事件
+                pushParentState(getStateAfter(event));
+                observer.dispatchEvent(lifecycleOwner, event);
+                popParentState();
+            }
+        }
+    }
+</code></pre>
+<p><code>LifecycleRegistry</code>代码我门看完了，注释也已经很清楚了，基本作用就是添加观察者，响应生命周期事件，分发生命周期事件的作用。</p>
+<h2 id="33-reportfragment">3.3 ReportFragment</h2>
+<p>接下来我们继续分析<code>ComponentActivity</code>，我们在<code>onCreate()</code>声明周期中发现一个比较熟悉<code>ReportFragment</code>，这个fragment我以前在做内存泄漏优化的时候经常碰到，在leakcanary中经常会报出这个类，所以这里面看看<code>ReportFragment.injectIfNeededIn(this);</code>到底做了什么？</p>
+<pre><code>@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP_PREFIX)
+public class ReportFragment extends Fragment {
+    private static final String REPORT_FRAGMENT_TAG = &quot;androidx.lifecycle&quot;
+            + &quot;.LifecycleDispatcher.report_fragment_tag&quot;;
+
+    public static void injectIfNeededIn(Activity activity) {
+        // ProcessLifecycleOwner should always correctly work and some activities may not extend
+        // FragmentActivity from support lib, so we use framework fragments for activities
+        android.app.FragmentManager manager = activity.getFragmentManager();
+        if (manager.findFragmentByTag(REPORT_FRAGMENT_TAG) == null) {
+            manager.beginTransaction().add(new ReportFragment(), REPORT_FRAGMENT_TAG).commit();
+            // Hopefully, we are the first to make a transaction.
+            manager.executePendingTransactions();
+        }
+    }
+    private void dispatchCreate(ActivityInitializationListener listener) {
+        if (listener != null) {
+            listener.onCreate();
+        }
+    }
+
+    private void dispatchStart(ActivityInitializationListener listener) {
+        if (listener != null) {
+            listener.onStart();
+        }
+    }
+
+    private void dispatchResume(ActivityInitializationListener listener) {
+        if (listener != null) {
+            listener.onResume();
+        }
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        dispatchCreate(mProcessListener);
+        dispatch(Lifecycle.Event.ON_CREATE);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        dispatchStart(mProcessListener);
+        dispatch(Lifecycle.Event.ON_START);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dispatchResume(mProcessListener);
+        dispatch(Lifecycle.Event.ON_RESUME);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dispatch(Lifecycle.Event.ON_PAUSE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        dispatch(Lifecycle.Event.ON_STOP);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dispatch(Lifecycle.Event.ON_DESTROY);
+        // just want to be sure that we won't leak reference to an activity
+        mProcessListener = null;
+    }
+
+    private void dispatch(Lifecycle.Event event) {
+        Activity activity = getActivity();
+        if (activity instanceof LifecycleRegistryOwner) {
+            ((LifecycleRegistryOwner) activity).getLifecycle().handleLifecycleEvent(event);
+            return;
+        }
+
+        if (activity instanceof LifecycleOwner) {
+            Lifecycle lifecycle = ((LifecycleOwner) activity).getLifecycle();
+            if (lifecycle instanceof LifecycleRegistry) {
+                ((LifecycleRegistry) lifecycle).handleLifecycleEvent(event);
+            }
+        }
+    }
+</code></pre>
+<p>查看源码我们发现，<code>ReportFragment</code>在每个生命周期中都做了分发事件的处理，通过调用<code>getLifecycle().handleLifecycleEvent(event)</code>来做生命周期的分发。意思也就是在<code>ComponentActivity</code>中添加了一个没有页面的<code>ReportFragment</code>，当Activity生命周期变化的时候，通过调用<code>LifecycleRegistry.handleLifecycleEvent()</code>方法通知LifecycleRegistry改变状态，LifecycleRegistry内部调用<code>moveToState()</code>改变状态，并调用每个LifecycleObserver.onStateChange()方法通知生命周期变化。</p>
+<blockquote>
+<p>我们通过查看ReportFragment调用，发现还有两个类也调用了它，一个是<code>LifecycleDispatcher</code>，一个是<code>ProcessLifecycleOwner</code>，这两个究竟是做什么的呢？</p>
+</blockquote>
+<p>[外链图片转存失败(img-Kmu4o9EL-1562754821909)(<a href="http://psv0rasgi.bkt.clouddn.com/jetpack/_image/2019-06-10/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-11%20%E4%B8%8B%E5%8D%882.19.20%20%282%29.png#align=left&amp;display=inline&amp;height=324&amp;originHeight=648&amp;originWidth=1112&amp;status=done&amp;width=556">http://psv0rasgi.bkt.clouddn.com/jetpack/_image/2019-06-10/屏幕快照 2019-06-11 下午2.19.20 (2).png#align=left&amp;display=inline&amp;height=324&amp;originHeight=648&amp;originWidth=1112&amp;status=done&amp;width=556</a>)]</p>
+<h2 id="34-lifecycledispatcher">3.4 LifecycleDispatcher</h2>
+<pre><code>class LifecycleDispatcher {
+
+    private static AtomicBoolean sInitialized = new AtomicBoolean(false);
+
+    static void init(Context context) {
+        if (sInitialized.getAndSet(true)) {
+            return;
+        }
+        ((Application) context.getApplicationContext())
+                .registerActivityLifecycleCallbacks(new DispatcherActivityCallback());
+    }
+
+    @SuppressWarnings(&quot;WeakerAccess&quot;)
+    @VisibleForTesting
+    static class DispatcherActivityCallback extends EmptyActivityLifecycleCallbacks {
+
+        @Override
+        public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+            ReportFragment.injectIfNeededIn(activity);
+        }
+
+        @Override
+        public void onActivityStopped(Activity activity) {
+        }
+
+        @Override
+        public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+        }
+    }
+
+    private LifecycleDispatcher() {
+    }
+}
+</code></pre>
+<p>我们查看源码，发现在<code>init()</code>方法中，通过<code>Application</code>注册了<code>DispatcherActivityCallback</code>，并且在<code>onActivityCreated</code>中将<code>ReportFragment</code>注入到Activity中。</p>
+<h2 id="35-processlifecycleowner">3.5 ProcessLifecycleOwner</h2>
+<pre><code>public class ProcessLifecycleOwner implements LifecycleOwner {
+
+       private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
+
+    private Runnable mDelayedPauseRunnable = new Runnable() {
+        @Override
+        public void run() {
+            dispatchPauseIfNeeded();
+            dispatchStopIfNeeded();
+        }
+    };
+
+    private ActivityInitializationListener mInitializationListener =
+            new ActivityInitializationListener() {
+                @Override
+                public void onCreate() {
+                }
+
+                @Override
+                public void onStart() {
+                    activityStarted();
+                }
+
+                @Override
+                public void onResume() {
+                    activityResumed();
+                }
+            };
+
+    private static final ProcessLifecycleOwner sInstance = new ProcessLifecycleOwner();
+
+   
+    public static LifecycleOwner get() {
+        return sInstance;
+    }
+
+    static void init(Context context) {
+        sInstance.attach(context);
+    }
+
+    void activityStarted() {
+        mStartedCounter++;
+        if (mStartedCounter == 1 &amp;&amp; mStopSent) {
+            mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
+            mStopSent = false;
+        }
+    }
+
+    void activityResumed() {
+        mResumedCounter++;
+        if (mResumedCounter == 1) {
+            if (mPauseSent) {
+                mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+                mPauseSent = false;
+            } else {
+                mHandler.removeCallbacks(mDelayedPauseRunnable);
+            }
+        }
+    }
+
+   ......
+    private void dispatchStopIfNeeded() {
+        if (mStartedCounter == 0 &amp;&amp; mPauseSent) {
+            mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+            mStopSent = true;
+        }
+    }
+
+    private ProcessLifecycleOwner() {
+    }
+    //监听Application生命周期，并分发给Activity
+    void attach(Context context) {
+        mHandler = new Handler();
+        mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+        Application app = (Application) context.getApplicationContext();
+        app.registerActivityLifecycleCallbacks(new EmptyActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                ReportFragment.get(activity).setProcessListener(mInitializationListener);
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+                activityPaused();
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+                activityStopped();
+            }
+        });
+    }
+}
+</code></pre>
+<p>根据官方注释，我们可以了解到：</p>
+<ul>
+<li>ProcessLifecycleOwner是用来监听Application生命周期的，因此它只会分发一次ON_CREATE事件，并且不会分发ON_DESTROY事件。</li>
+<li>ProcessLifecycleOwner在Activity的onResume和onStop方法中都采用了Handle.postDelayed()方法，是为了处理Activity重建时比如横竖屏幕切换时，不会发送事件。</li>
+<li>ProcessLifecycleOwner一般用来判断应用是在前台还是后台。但由于使用了Handle.postDelayed()，因此这个判断不是即时的，有默认700ms的延迟。</li>
+<li>ProcessLifecycleOwner与LifecycleDispatcher一样，都是通过注册Application.registerActivityLifecycleCallbacks来监听Activity的生命周期回调，来给每个Activity添加ReportFragment的。</li>
+</ul>
+<p>看了着两个类我们发现它们的入口均为<code>init()</code>,所以看一下谁调用了？</p>
+<h2 id="36-processlifecycleownerinitializer">3.6 ProcessLifecycleOwnerInitializer</h2>
+<pre><code>public class ProcessLifecycleOwnerInitializer extends ContentProvider {
+    @Override
+    public boolean onCreate() {
+        LifecycleDispatcher.init(getContext());
+        ProcessLifecycleOwner.init(getContext());
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public Cursor query(@NonNull Uri uri, String[] strings, String s, String[] strings1,
+            String s1) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public String getType(@NonNull Uri uri) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Uri insert(@NonNull Uri uri, ContentValues contentValues) {
+        return null;
+    }
+
+    @Override
+    public int delete(@NonNull Uri uri, String s, String[] strings) {
+        return 0;
+    }
+
+    @Override
+    public int update(@NonNull Uri uri, ContentValues contentValues, String s, String[] strings) {
+        return 0;
+    }
+}
+</code></pre>
+<p>果真，在<code>ProcessLifecycleOwnerInitializer</code> 的<code>onCreate()</code>中对这两个进行了初始化，看类名可以翻译成_进程生命周期初始化_，到这里我们对该类就找不到调用者或者使用者了，所以不得不百度一下，发现有人说这个类是在<code>AndroidManifest.xml</code>中声明的，在构建APK过程中，AS会将多个模块的<code>AndroidManifest.xml</code>合并到一起，所以查看build目录，具体路径为<code>build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml</code>，果真在里面：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.hankkin.reading_aac&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion=&quot;19&quot;
+        android:targetSdkVersion=&quot;28&quot; /&gt;
+
+    &lt;application
+        android:appComponentFactory=&quot;androidx.core.app.CoreComponentFactory&quot;
+        android:debuggable=&quot;true&quot;
+        android:icon=&quot;@mipmap/ic_launcher&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;
+        android:supportsRtl=&quot;true&quot;
+        android:testOnly=&quot;true&quot;
+        android:theme=&quot;@style/AppTheme&quot; &gt;
+        &lt;activity android:name=&quot;com.hankkin.reading_aac.ui.LoginActivity&quot; &gt;
+        &lt;/activity&gt;
+        &lt;activity android:name=&quot;com.hankkin.reading_aac.MainActivity&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+
+        &lt;provider
+            android:name=&quot;androidx.lifecycle.ProcessLifecycleOwnerInitializer&quot;
+            android:authorities=&quot;com.hankkin.reading_aac.lifecycle-process&quot;
+            android:exported=&quot;false&quot;
+            android:multiprocess=&quot;true&quot; /&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</code></pre>
+<p>到这里整个Lifecycle初始化的过程就结束了。</p>
+<h1 id="4-总结">4. 总结</h1>
+<p>经过上面的源码分析，我们可以大概给整个<strong>Lifecycle组件</strong>分为三部分：</p>
+<h2 id="41-lifecycle的初始化">4.1 Lifecycle的初始化</h2>
+<pre><code>通过在manifest中声明provider，`ProcessLifecycleOwnerInitializer`注册Activity和fragment.的声明周期回调并做监听，同时向Activity中添加一个空白的`ReportFragment`，使用它作为生命周期的事件分发。而当Activity和Fragment生命周期状态发生改变时，都通过LifecycleRegistryOwner来处理生命周期状态的改变。
+</code></pre>
+<h2 id="42-lifecycle的状态改变及状态分发">4.2 Lifecycle的状态改变及状态分发</h2>
+<pre><code>在`ReportFragment`中调用`LifecycleRegister.handleLifecycleEvent(Lifecycle.Event)`，通过**获取事件对应的下一个状态**以及**改变当前状态到下一个状态**，同步分发事件；最后将各个观察者的生命周期状态依次移动到正确状态。
+</code></pre>
+<p>可以查看下面的时序图：</p>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdn.net/20180922213240512?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JpZXpoaWh1YQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70#align=left&amp;display=inline&amp;height=185&amp;originHeight=185&amp;originWidth=703&amp;status=done&amp;width=703" alt=""></figure>
+<h2 id="43-lifecycle解析生命周期">4.3 Lifecycle解析生命周期</h2>
+<p>我们声明的<strong>MyObserver</strong>中的方法都是带有注解的，查看<code>OnLifecycleEvent</code>：</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface OnLifecycleEvent {
+    Lifecycle.Event value();
+}
+</code></pre>
+<p>注解修饰的方法会通过反射的方式获取，并且保存在<code>ClassesInfoCache</code>中，然后在生命周期发生改变的时候再找到对应 Event 的方法，通过反射来调用方法。</p>
+<h1 id="5-参考链接">5. 参考链接：</h1>
+<p><a href="https://juejin.im/post/5cd81634e51d453af7192b87#heading-10">https://juejin.im/post/5cd81634e51d453af7192b87#heading-10</a></p>
+<p>https://yuqirong.me/2018/07/15/Android%20Architecture%20Component%E4%B9%8BLifecycle%E8%A7%A3%E6%9E%90/</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Android Studio常用插件]]></title>
         <id>https://ouluqiang.github.io//post/android-studio-chang-yong-cha-jian</id>
@@ -1364,120 +2225,6 @@ getActualTypeArguments()返回表示此类型实际类型参数的 Type 对象�
             }
         }).create();
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Gridea保存源文件]]></title>
-        <id>https://ouluqiang.github.io//post/gridea-bao-cun-yuan-wen-jian</id>
-        <link href="https://ouluqiang.github.io//post/gridea-bao-cun-yuan-wen-jian">
-        </link>
-        <updated>2019-09-24T07:55:55.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="创建分支">创建分支</h2>
-<p>在GitHub的博客项目中新建一个分支</p>
-<figure data-type="image" tabindex="1"><img src="https://ouluqiang.github.io//post-images/1569311927040.jpg" alt=""></figure>
-<p>克隆项目到本地</p>
-<pre><code>git clone https://github.com/xxx/xxx.github.io.git
-</code></pre>
-<h2 id="切换分支">切换分支</h2>
-<p>到本地项目中打开Git Bash, 切换到项目分支，查看分支，用 git checkout XXX 切换分支</p>
-<pre><code># 列出所有本地分支
-$ git branch
-
-# 列出所有远程分支
-$ git branch -r
-
-# 列出所有本地分支和远程分支
-$ git branch -a
-
-# 切换到指定分支，并更新工作区
-$ git checkout [branch-name]
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://ouluqiang.github.io//post-images/1569311864422.jpg" alt=""></figure>
-<p>把源文件复制到分支项目,再打开Git Bash 提交代码<br>
-<img src="https://ouluqiang.github.io//post-images/1569311872576.jpg" alt=""></p>
-<pre><code># 添加当前目录的所有文件到暂存区
-$ git add .
-
-# 提交暂存区到仓库区
-$ git commit -m ‘修改说明，随便写’
-
-# 提交到远程仓库
-git push
-</code></pre>
-<p>提交成功<br>
-<img src="https://ouluqiang.github.io//post-images/1569311915447.jpg" alt=""></p>
-<p>但是提交完会因为提交的源文件有token，GitHub会给你发邮件token泄漏，将原先生成的token移除，原先的token已经失效了，你需要重新申请token,在Gridea的配置修改token,后续如果要提交源文件有1种方法就是不提交有token的文件，也就是源文件/config/setting.json，不提交这个文件就即可</p>
-<!-- ## 生成ssh-key的私钥和公钥
-生成key,看C盘用户目录SSH
-
-```
-ssh-keygen -t rsa      //一路回车下来
-```
-![](https://ouluqiang.github.io//post-images/1569314857492.jpg)
-
-测试是否能连接上GitHub服务器
-```
-ssh -T git@github.com
-```
-输出是.........
-Permission denied (publickey).
-需要将上面生成的public key(id_rsa.pub文件内容)拷贝到github服务器的SSH Keys中，
-再.ssh目录下打开终端输入下面代码查看内容，或者直接记事本打开查看
-
-```
-cat id_rsa.pub
-```
-
-![](https://ouluqiang.github.io//post-images/1569315446419.jpg)
-
-头像 > settings > ssh
-![](https://ouluqiang.github.io//post-images/1569315521381.jpg)
-
-再测试下是否连接GitHub服务器 ssh -T git@github.com 能显示GitHub用户名就表示连接成功
-![](https://ouluqiang.github.io//post-images/1569315793106.jpg) -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[常用开发工具]]></title>
-        <id>https://ouluqiang.github.io//post/chang-yong-kai-fa-gong-ju</id>
-        <link href="https://ouluqiang.github.io//post/chang-yong-kai-fa-gong-ju">
-        </link>
-        <updated>2019-09-24T05:22:26.000Z</updated>
-        <summary type="html"><![CDATA[<p>Android常用的开发工具</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Android常用的开发工具</p>
-<!-- more -->
-<h2 id="android-stidosdkjdk">Android stido，sdk，jdk</h2>
-<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">jdk下载地址</a></p>
-<p>jdk下载</p>
-<pre><code>链接：https://pan.baidu.com/s/1AVshFeP9ZkT05xk_FIINag 
-提取码：t8ci 
-</code></pre>
-<p><a href="http://www.android-studio.org/index.php">Android studio sdk 下载地址</a></p>
-<p><a href="https://developer.android.google.cn/studio">Android studio sdk 下载地址</a></p>
-<h2 id="svngit下载地址">svn,git下载地址</h2>
-<p><a href="https://git-scm.com/downloads">git下载</a></p>
-<pre><code>链接：https://pan.baidu.com/s/1C6hn1S-hBzdduEoIm7-4XA 
-提取码：xktl 
-</code></pre>
-<h2 id="抓包工具charles学习版">抓包工具charles学习版</h2>
-<pre><code>链接：https://pan.baidu.com/s/1aDRIDVu9y66niOZOnPcMDQ 
-提取码：sj13 
-</code></pre>
-<h2 id="sqlite数据库工具">sqlite数据库工具</h2>
-<pre><code>链接：https://pan.baidu.com/s/1I_w-rARDcKocKBXGOMbJdg 
-提取码：trl1
-</code></pre>
-<h2 id="颜色获取">颜色获取</h2>
-<pre><code>链接：https://pan.baidu.com/s/1-sLi9-PVYksCiE-RHSXquw 
-提取码：tyrw 
-</code></pre>
-<h2 id="获取sha1值">获取SHA1值</h2>
-<pre><code>链接：https://pan.baidu.com/s/15AvGDv-WjzU7jvLhJeLvhg 
-提取码：081p 
-</code></pre>
-<h1 id="idea-学习版">idea 学习版</h1>
-<p>http://idea.toocruel.net</p>
 ]]></content>
     </entry>
 </feed>

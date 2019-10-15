@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>[转载] 2. Jetpack源码解析---Navigation为什么切换Fragment会重绘？ | 小白记忆屋</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://ouluqiang.github.io//favicon.ico?v=1571130779769">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ouluqiang.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://ouluqiang.github.io/">
+        <img src="https://ouluqiang.github.io//images/avatar.png?v=1571130779769" class="site-logo">
+        <h1 class="site-title">小白记忆屋</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/ouluqiang" target="_blank">GITHUB</a> | <a class="rss" href="https://ouluqiang.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">[转载] 2. Jetpack源码解析---Navigation为什么切换Fragment会重绘？</h2>
+            <div class="post-date">2019-10-15</div>
+            
+            <div class="post-content">
+              <p><a href="http://creativecommons.org/licenses/by-sa/4.0/"></a>版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接：<a href="https://blog.csdn.net/lyhhj/article/details/94003014">https://blog.csdn.net/lyhhj/article/details/94003014</a></p>
+<!-- more -->
+<blockquote>
+<p>上篇文章我们简单的介绍了<strong>Navigation组件</strong>的使用，以及深入分析了源码中的具体实现，基本原理我们已经很清晰了。本篇文章主要介绍下我在项目中遇到的问题，以及目前关于<strong>Navigation</strong>实现的一些探讨。还没有看过上篇文章的可以查看一下：</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/lyhhj/article/details/93757755">1. Jetpack源码解析—看完你就知道Navigation是什么了？</a></p>
+<h1 id="1-背景">1. 背景</h1>
+<p>先来看一下<code>Navigation</code>组件在官方文档上的介绍：</p>
+<blockquote>
+<p>今天，我们宣布推出Navigation组件，作为构建您的应用内界面的框架，重点是让单 Activity 应用成为首选架构。利用Navigation组件对 Fragment 的原生支持，您可以获得架构组件的所有好处（例如生命周期和 ViewModel），同时让此组件为您处理 FragmentTransaction 的复杂性。此外，Navigation组件还可以让您声明我们为您处理的转场。它可以自动构建正确的“向上”和“返回”行为，包含对深层链接的完整支持，并提供了帮助程序，用于将导航关联到合适的 UI 小部件，例如抽屉式导航栏和底部导航。</p>
+</blockquote>
+<p>确实经过源码分析我们就可以发现，<code>Navigation</code>组件封装了<code>Menu</code>菜单栏、<code>Fragment</code>的切换、<code>NavigationView</code>、<code>Drawerlayout</code>等一系列涉及到的组件，为了更方便的让我们使用单Activity多Fragment的架构。</p>
+<p>但是我在使用的时候发现，当一个<code>Fragment</code>中的布局稍微复杂一些，切换<code>Fragment</code>的时候会顿卡，而且如果再配合<code>DrawrLayout</code>使用的话，还会闪一下屏，效果体验不是很好，本着这个问题，我又再次对<code>Navigation</code>组件进行了分析。</p>
+<h1 id="2fragment切换">2.Fragment切换</h1>
+<p>通过现象分析，发现当切换<code>NavigationView</code>中的menu菜单来切换<code>Fragment</code>时，<code>DrawerLayout</code>抽屉关闭有一个短暂的动画(具体的这里就不分析了,感兴趣的可以自行查看，但是这不是根本原因)，同时<code>Fragment</code>切换，发生顿卡和闪屏的现象。所以…还是看源码吧：</p>
+<h2 id="21-navcontroller">2.1 NavController</h2>
+<pre><code>private void navigate(@NonNull NavDestination node, @Nullable Bundle args,
+            @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
+        boolean popped = false;
+        ....
+        Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider.getNavigator(
+                node.getNavigatorName());
+        Bundle finalArgs = node.addInDefaultArgs(args);
+        NavDestination newDest = navigator.navigate(node, finalArgs,
+                navOptions, navigatorExtras);
+       ....
+    }
+</code></pre>
+<h2 id="22-fragmentnavigator">2.2 FragmentNavigator</h2>
+<pre><code>public NavDestination navigate(@NonNull Destination destination, @Nullable Bundle args,
+            @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
+        ...
+        //根据classname反射获取Fragmnent
+        final Fragment frag = instantiateFragment(mContext, mFragmentManager,
+                className, args);
+        frag.setArguments(args);
+        //获取Fragment事务
+        final FragmentTransaction ft = mFragmentManager.beginTransaction();
+        //切换动画设置
+        int enterAnim = navOptions != null ? navOptions.getEnterAnim() : -1;
+        int exitAnim = navOptions != null ? navOptions.getExitAnim() : -1;
+        int popEnterAnim = navOptions != null ? navOptions.getPopEnterAnim() : -1;
+        int popExitAnim = navOptions != null ? navOptions.getPopExitAnim() : -1;
+        if (enterAnim != -1 || exitAnim != -1 || popEnterAnim != -1 || popExitAnim != -1) {
+            enterAnim = enterAnim != -1 ? enterAnim : 0;
+            exitAnim = exitAnim != -1 ? exitAnim : 0;
+            popEnterAnim = popEnterAnim != -1 ? popEnterAnim : 0;
+            popExitAnim = popExitAnim != -1 ? popExitAnim : 0;
+            ft.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim);
+        }
+        //切换Fragment
+        ft.replace(mContainerId, frag);
+        ft.setPrimaryNavigationFragment(frag);
+        ......
+        
+        ft.addToBackStack(generateBackStackName(mBackStack.size(), destId));
+        ........
+    }
+</code></pre>
+<p>看到这里就很清楚了吧，<code>Fragment</code>的切换是通过<code>replace</code>方式来切换的，并且加入回退栈，也就是说每次切换<code>Fragment</code>,都会销毁视图和重新创建视图。至于为什么用这种方式我是真的想不到，也没搞清楚初衷是什么？按照我们目前的开发来说，<code>Fragment</code>的切换通常都会使用<code>hide()</code>、<code>show()</code>，而<code>replcae()</code>的方式很少用，替换会把容器中的所有内容全都替换掉，有一些app会使用这样的做法，保持只有一个fragment在显示，减少了界面的层级关系。</p>
+<blockquote>
+<p>不仅仅是这样，上篇文章有小伙伴问切换了<code>Fragment</code>之后，点击返回按钮，发现之前的<code>Fragment</code>重走了<code>onCreateView</code>流程，这就意味着之前的状态没了。对于这个问题其实根据上面的分析，也能大概想到是因为什么，但是返回按钮的操作我之前还真没有看过源码，所以这次顺便了解一下：</p>
+</blockquote>
+<h1 id="3-返回都做了什么">3. 返回都做了什么</h1>
+<h2 id="31-onbackpressed">3.1 onBackPressed</h2>
+<p>我们同样从首页的<code>onBackPressed</code>入手：</p>
+<pre><code>override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
+public void onBackPressed() {
+        mOnBackPressedDispatcher.onBackPressed();
+    }
+</code></pre>
+<p>最终调用了<code>mOnBackPressedDispatcher</code>的<code>onBackPressed()</code>方法。我们查看这个类，通过<strong>Debug</strong>调试，我们跟到了<code>FragmentManagerImpl</code>类：</p>
+<pre><code>private final OnBackPressedCallback mOnBackPressedCallback =
+            new OnBackPressedCallback(false) {
+        @Override
+        public void handleOnBackPressed() {
+            FragmentManagerImpl.this.handleOnBackPressed();
+        }
+    };
+</code></pre>
+<p>发现点击返回按钮之后就走到这个，执行<code>handleOnBackPressed()</code>方法。</p>
+<h2 id="32-fragmentmanagerimpl">3.2 FragmentManagerImpl</h2>
+<p>继续跟踪源码，中间的一些过程我这里就忽略掉了，大部分都是一些<code>popBackStack</code>的操作，这里我们直接跟踪到关键点：</p>
+<pre><code>//在BackStackRecords中进行入栈出栈操作。
+private static void executeOps(ArrayList&lt;BackStackRecord&gt; records,
+                                   ArrayList&lt;Boolean&gt; isRecordPop, int startIndex, int endIndex) {
+        for (int i = startIndex; i &lt; endIndex; i++) {
+            final BackStackRecord record = records.get(i);
+            final boolean isPop = isRecordPop.get(i);
+            if (isPop) {
+                record.bumpBackStackNesting(-1);
+                // Only execute the add operations at the end of
+                // all transactions.
+                boolean moveToState = i == (endIndex - 1);
+                record.executePopOps(moveToState);
+            } else {
+                record.bumpBackStackNesting(1);
+                record.executeOps();
+            }
+        }
+    }
+</code></pre>
+<p>我们可以看到通过遍历栈数组，对<code>record</code>做<code>executePopOps()</code>操作，通过cmd来让<code>FragmentManager</code>做相关操作。</p>
+<pre><code>void executePopOps(boolean moveToState) {
+        for (int opNum = mOps.size() - 1; opNum &gt;= 0; opNum--) {
+            final Op op = mOps.get(opNum);
+            Fragment f = op.mFragment;
+            if (f != null) {
+                f.setNextTransition(FragmentManagerImpl.reverseTransit(mTransition),
+                        mTransitionStyle);
+            }
+            switch (op.mCmd) {
+                case OP_ADD:
+                    f.setNextAnim(op.mPopExitAnim);
+                    mManager.removeFragment(f);
+                    break;
+                case OP_REMOVE:
+                    f.setNextAnim(op.mPopEnterAnim);
+                    mManager.addFragment(f, false);
+                    break;
+                case OP_HIDE:
+                    f.setNextAnim(op.mPopEnterAnim);
+                    mManager.showFragment(f);
+                    break;
+                case OP_SHOW:
+                    f.setNextAnim(op.mPopExitAnim);
+                    mManager.hideFragment(f);
+                    break;
+                case OP_DETACH:
+                    f.setNextAnim(op.mPopEnterAnim);
+                    mManager.attachFragment(f);
+                    break;
+                case OP_ATTACH:
+                    f.setNextAnim(op.mPopExitAnim);
+                    mManager.detachFragment(f);
+                    break;
+                case OP_SET_PRIMARY_NAV:
+                    mManager.setPrimaryNavigationFragment(null);
+                    break;
+                case OP_UNSET_PRIMARY_NAV:
+                    mManager.setPrimaryNavigationFragment(f);
+                    break;
+                case OP_SET_MAX_LIFECYCLE:
+                    mManager.setMaxLifecycle(f, op.mOldMaxState);
+                    break;
+                default:
+                    throw new IllegalArgumentException(&quot;Unknown cmd: &quot; + op.mCmd);
+            }
+            if (!mReorderingAllowed &amp;&amp; op.mCmd != OP_REMOVE &amp;&amp; f != null) {
+                mManager.moveFragmentToExpectedState(f);
+            }
+        }
+        if (!mReorderingAllowed &amp;&amp; moveToState) {
+            mManager.moveToState(mManager.mCurState, true);
+        }
+    }
+</code></pre>
+<p>同时重新设置<code>PrimaryNavigationFragment</code>，add我们的首页<code>Fragment</code>，最后执行<code>moveToState</code>方法：</p>
+<pre><code>public void addFragment(Fragment fragment, boolean moveToStateNow) {
+        if (DEBUG) Log.v(TAG, &quot;add: &quot; + fragment);
+        makeActive(fragment);
+        if (!fragment.mDetached) {
+            if (mAdded.contains(fragment)) {
+                throw new IllegalStateException(&quot;Fragment already added: &quot; + fragment);
+            }
+            synchronized (mAdded) {
+                mAdded.add(fragment);
+            }
+            fragment.mAdded = true;
+            fragment.mRemoving = false;
+            if (fragment.mView == null) {
+                fragment.mHiddenChanged = false;
+            }
+            if (isMenuAvailable(fragment)) {
+                mNeedMenuInvalidate = true;
+            }
+            if (moveToStateNow) {
+                moveToState(fragment);
+            }
+        }
+    }
+</code></pre>
+<p>当我们继续跟踪的时候就会发现，在<code>moveToState</code>方法中，<code>Fragment</code>的state是<code>Fragment.CREATED</code>，并且会执行<code>performCreateView()</code>中的<code>onCreateView()</code>方法：</p>
+<pre><code>    f.mContainer = container;
+    f.performCreateView(f.performGetLayoutInflater(f.mSavedFragmentState), container, f.mSavedFragmentState);
+
+
+void performCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+        mChildFragmentManager.noteStateNotSaved();
+        mPerformedCreateView = true;
+        mViewLifecycleOwner = new FragmentViewLifecycleOwner();
+        mView = onCreateView(inflater, container, savedInstanceState);
+        ....
+    }
+</code></pre>
+<p>到这里就基本结束了，我只分析了一个大概，可以了解到点击返回按钮，同样也会重新创建视图，也就是<code>onCreateView</code>会重新走一遍。</p>
+<h1 id="4-总结">4. 总结</h1>
+<p>对于<code>Navigation</code>组件的这种切换方式，我也很无奈，而且也并没有暴露出来API供我们使用其他切换方式，我也询问了很多大佬，他们也不是很清楚，也有的发现这也是<code>Navigation</code>的一个很大的诟病。那么有没有解决办法呢？很遗憾我目前还没有想到比较好的办法。</p>
+<blockquote>
+<p>基于<code>Navigation</code>用来承载<code>Fragment</code>的容器是<code>NavHostFragment</code>，所以我们并不能使用<code>ViewPager+Fragment</code>的通过<code>setUserVisibleHint</code>实现懒加载的方式；同样我们也没办法使用<code>onHiddenChanged</code>的方式来实现复杂逻辑的加载；但是你可以在进入<code>Fragment</code>的时候先显示一个Loading框，加载完数据之后再渲染布局，这样的话可以减少一些尴尬。</p>
+</blockquote>
+<h2 id="41-建议">4.1 建议</h2>
+<p>这里我的建议是：如果你的每个<code>Fragment</code>真的每次都需要重新绘制的话，你可以考虑使用<code>Navigation</code>组件来实现，毕竟通过<code>Navgation</code>组件真的很方便帮助我们切换导航，而且虽然布局会重新绘制，但是Google的官方Demo–<a href="https://github.com/googlesamples/android-sunflower">SunFlower</a>还是使用了这种方式，所以这里面我觉得：官方推荐我们使用Jetpack组件中的<strong>ViewModel</strong>、<strong>LiveData</strong>…等，可以发现<strong>SunFlower</strong>demo中，即便是切换Fragmengt也不会有很明显的卡顿现象，因为每个Fragment即便重新绘制，但是View所对应的<strong>ViewModel</strong>还在，数据并不需要重新加载或者请求，当然这仅仅是我自己的看法啊.</p>
+<p>但是如果你没有这种场景的话，建议还是用普通的方式我们自己来控制切换吧，这样无论是基于<code>Drawerlayout</code>还是<code>BottomNaivgationView</code>的话，我们可以自己实现切换。这块我也不是很确定哈，也希望听取大家的意见和建议。</p>
+<blockquote>
+<p>我还发现一个问题，就是Play商店，现在就是这样的情况，抽屉栏中的<code>Item</code>每个基本都是重新绘制，而且第一个<code>Item</code><strong>我的应用和游戏</strong>切换的时候就会有很明显的卡顿和闪屏，猜测Google play 商店具体是不是使用的<code>Navigation</code>组件不敢确定，但是它很大几率是通过<code>replace</code>方式来做的切换。感兴趣的话可以看一下，我这贴一个GIF图，不一定能看清楚，不过确实是这个效果。</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAxOS82LzI2LzE2YjkzMTIzMjZlYzRmZDY" alt=""></figure>
+<p>最后，如果有不对的地方或者更好的解决办法，可以一起讨论一下哈！</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://ouluqiang.github.io//post/zhuan-zai-3-jetpack-yuan-ma-jie-xi-yong-lifecycles-guan-li-sheng-ming-zhou-qi">
+                  <h3 class="post-title">
+                    [转载] 3. Jetpack源码解析---用Lifecycles管理生命周期
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4cb03ab310ad62ef1078',
+        clientSecret: '8c04030bf365023e81c4ae9481977a50a8bd4765',
+        repo: 'ouluqiang.github.io',
+        owner: 'ouluqiang',
+        admin: ['ouluqiang'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
