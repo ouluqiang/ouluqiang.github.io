@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouluqiang.github.io/</id>
     <title>小白记忆屋</title>
-    <updated>2019-10-15T09:13:21.125Z</updated>
+    <updated>2019-11-18T01:53:51.421Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouluqiang.github.io/"/>
     <link rel="self" href="https://ouluqiang.github.io//atom.xml"/>
@@ -10,6 +10,577 @@
     <logo>https://ouluqiang.github.io//images/avatar.png</logo>
     <icon>https://ouluqiang.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小白记忆屋</rights>
+    <entry>
+        <title type="html"><![CDATA[[转载] 被辞退后，一周面试了 10 家公司]]></title>
+        <id>https://ouluqiang.github.io//post/bei-ci-tui-hou-yi-zhou-mian-shi-liao-10-jia-gong-si-zhuan-zai</id>
+        <link href="https://ouluqiang.github.io//post/bei-ci-tui-hou-yi-zhou-mian-shi-liao-10-jia-gong-si-zhuan-zai">
+        </link>
+        <updated>2019-11-18T01:49:56.000Z</updated>
+        <content type="html"><![CDATA[<hr>
+<p>以下文章来源于Android波斯湾 ，作者jeanboy</p>
+<figure data-type="image" tabindex="1"><img src="http://wx.qlogo.cn/mmhead/Q3auHgzwzM6sNIsuR2eBkbdurCKgNSMxicyZq9XribCL6U3GxQdkBkQA/0" alt="Android波斯湾"></figure>
+<p><strong>Android波斯湾</strong></p>
+<p>Android | 大前端 技术干货、学习资料、职业发展、行业动态。](#)</p>
+<hr>
+<p>注意文末的准备与建议，大家周一快乐~</p>
+<h2 id="优贝在线">优贝在线</h2>
+<ul>
+<li>
+<p>Android 项目中 asset 目录和 res 目录有什么区别</p>
+</li>
+<li>
+<p>面向对象的特征，并举例说明面向对象的过程</p>
+</li>
+<li>
+<p>如何结束一个正在运行的线程</p>
+</li>
+<li>
+<p>简述 MVC 和 MVP，并说一下 MVP 的优点</p>
+</li>
+<li>
+<p>如何获取某个 View 的大小并动态改变 View 的大小</p>
+</li>
+<li>
+<p>join()、wait()、interrupt()</p>
+</li>
+<li>
+<p>二维数组旋转</p>
+</li>
+<li>
+<p>有一群人A与B有关系，B与C有关系...分成两队，让彼此都有关系</p>
+</li>
+</ul>
+<p>这是一个神奇的公司，只怪自己太菜笔试都没有过，出师不利啊。然而奇怪的是国庆后，该公司的HR找了我不下3次。</p>
+<h2 id="三节课">三节课</h2>
+<ul>
+<li>
+<p>String、StringBuilder、StringBuffer 区别</p>
+</li>
+<li>
+<p>ArrayMap、HashMap、SparseArray 原理</p>
+</li>
+<li>
+<p>Fragment 添加方式，add、replace、show 区别</p>
+</li>
+<li>
+<p>volatile 关键字作用</p>
+</li>
+<li>
+<p>Binder 机制</p>
+</li>
+<li>
+<p>HTTP 版本之间区别</p>
+</li>
+<li>
+<p>invalidate()、requestLayout() 区别</p>
+</li>
+<li>
+<p>View 绘制流程</p>
+</li>
+<li>
+<p>事件分发机制</p>
+</li>
+<li>
+<p>渲染优化</p>
+</li>
+<li>
+<p>ArrayList 怎么实现线程安全</p>
+</li>
+</ul>
+<h2 id="必要商城">必要商城</h2>
+<ul>
+<li>
+<p>Android 线程间通讯方式有哪些？</p>
+</li>
+<li>
+<p>类B继承A，A、B两个类中都有静态变量、成员变量、静态代码块、构造方法执行顺序是什么？</p>
+</li>
+<li>
+<p>Java代码执行时内存状况</p>
+</li>
+<li>
+<p>Activity生命周期其他函数</p>
+</li>
+<li>
+<p>View什么时候绘制完成？</p>
+</li>
+<li>
+<p>如何获取一个View的尺寸？</p>
+</li>
+</ul>
+<h2 id="展心展力">展心展力</h2>
+<ul>
+<li>
+<p>Handler 机制，一个线程几个 Looper，几个 Handler，Looper 如何确定是哪个 Handler？</p>
+</li>
+<li>
+<p>内存溢出、内存泄漏的关系</p>
+</li>
+<li>
+<p>volatile、synchronized关键字的区别</p>
+</li>
+<li>
+<p>垃圾回收机制，垃圾回收算法优缺点</p>
+</li>
+<li>
+<p>Java内存模型的理解</p>
+</li>
+<li>
+<p>HashMap实现原理，如何计算key的index，存储方式</p>
+</li>
+<li>
+<p>一个无限单向链表如何计算长度，如果有环如何计算长度</p>
+</li>
+<li>
+<p>RelativeLayout与LinerLayout的区别</p>
+</li>
+<li>
+<p>View绘制原理</p>
+</li>
+<li>
+<p>事件分发机制，Activity怎么处理的</p>
+</li>
+</ul>
+<h2 id="团车网">团车网</h2>
+<ul>
+<li>
+<p>自定义 View 流程</p>
+</li>
+<li>
+<p>View 绘制原理</p>
+</li>
+<li>
+<p>事件分发机制</p>
+</li>
+<li>
+<p>AMS、WMS</p>
+</li>
+<li>
+<p>Handler 机制</p>
+</li>
+<li>
+<p>JMM</p>
+</li>
+<li>
+<p>锁机制</p>
+</li>
+<li>
+<p>AQS</p>
+</li>
+<li>
+<p>内存优化怎么优化</p>
+</li>
+<li>
+<p>项目中遇到的最大的问题是什么？怎么解决的</p>
+</li>
+<li>
+<p>如果遇到项目进度无法推进，你怎么做的</p>
+</li>
+<li>
+<p>你对近五年的规划</p>
+</li>
+</ul>
+<h2 id="某课">某课</h2>
+<ul>
+<li>
+<p>Handler postDelay() 然后finish当前Activity会怎么样？</p>
+</li>
+<li>
+<p>View 绘制流程</p>
+</li>
+<li>
+<p>invalidate()、postInvalidate()、requestLayout()</p>
+</li>
+<li>
+<p>Tinker 为什么需要重启</p>
+</li>
+<li>
+<p>volatile、synchronized</p>
+</li>
+<li>
+<p>Java内存模型</p>
+</li>
+</ul>
+<p>这是我迄今体验最差的面试没有之一，面试官特别装逼，一直问我 API 细节，方法里有什么代码（也怪自己太菜，一年多没做 Android了）。最后面试官竟然 JVM 运行时内存区域和 JMM 都分不清，我实在忍不住了反问了一句：公司难道是在招 API 工程师吗？</p>
+<h2 id="诸葛找房">诸葛找房</h2>
+<ul>
+<li>
+<p>事件分发机制</p>
+</li>
+<li>
+<p>HTTP 响应吗</p>
+</li>
+<li>
+<p>Handler 机制</p>
+</li>
+<li>
+<p>手写排序算法</p>
+</li>
+<li>
+<p>常用设计模式</p>
+</li>
+</ul>
+<h2 id="异乡好居">异乡好居</h2>
+<ul>
+<li>
+<p>http https</p>
+</li>
+<li>
+<p>js webview交互</p>
+</li>
+<li>
+<p>handler为什么不卡死</p>
+</li>
+<li>
+<p>App启动流程</p>
+</li>
+<li>
+<p>自定义view过程</p>
+</li>
+<li>
+<p>动画原理</p>
+</li>
+<li>
+<p>事件分发机制</p>
+</li>
+<li>
+<p>混淆怎么处理</p>
+</li>
+<li>
+<p>设计模式</p>
+</li>
+<li>
+<p>对跨平台技术的了解</p>
+</li>
+</ul>
+<h2 id="finechart">FineChart</h2>
+<ul>
+<li>
+<p>HTTP、HTTPS区别</p>
+</li>
+<li>
+<p>HTTP报文</p>
+</li>
+<li>
+<p>手写反转链表</p>
+</li>
+<li>
+<p>手写单例模式</p>
+</li>
+<li>
+<p>volatile关键字原理</p>
+</li>
+<li>
+<p>事件分发机制</p>
+</li>
+<li>
+<p>App启动流程</p>
+</li>
+<li>
+<p>项目天气曲线实现原理</p>
+</li>
+<li>
+<p>第三方开源库实现原理</p>
+</li>
+<li>
+<p>线程池原理</p>
+</li>
+<li>
+<p>wait()、sleep()区别</p>
+</li>
+<li>
+<p>项目中最大的困难是什么？怎么解决的？</p>
+</li>
+<li>
+<p>常用集合类实现原理</p>
+</li>
+<li>
+<p>ConcurrentHashMap原理</p>
+</li>
+</ul>
+<h2 id="阿里体育">阿里体育</h2>
+<h3 id="电面">电面</h3>
+<ul>
+<li>
+<p>List、Map、Set 哪个能存null，哪个能重复？</p>
+</li>
+<li>
+<p>补间动画与属性动画的区别</p>
+</li>
+<li>
+<p>Handler 机制</p>
+</li>
+</ul>
+<h3 id="一面">一面</h3>
+<ul>
+<li>
+<p>怎么实现View悬停？</p>
+</li>
+<li>
+<p>TCP怎么做长连接？</p>
+</li>
+<li>
+<p>网络优化</p>
+</li>
+<li>
+<p>热修复原理</p>
+</li>
+<li>
+<p>Instant Run原理</p>
+</li>
+<li>
+<p>视频做过吗？</p>
+</li>
+<li>
+<p>相机做过吗？</p>
+</li>
+<li>
+<p>LinkedHashMap、HashMap实现原理，区别是什么？</p>
+</li>
+</ul>
+<h3 id="二面">二面</h3>
+<ul>
+<li>
+<p>Android与iOS相比有什么差别</p>
+</li>
+<li>
+<p>Android与iOS系统内存管理机制了解吗？</p>
+</li>
+<li>
+<p>常见算法了解哪些，时间复杂度是什么？</p>
+</li>
+<li>
+<p>项目中遇到的困难是什么？怎么解决的？</p>
+</li>
+<li>
+<p>你最大的优势是什么？</p>
+</li>
+<li>
+<p>对于其他同事，为什么你觉得你这个优势最突出？</p>
+</li>
+</ul>
+<p>不得不承认阿里实力还是很强的，也可能我投的岗位期望 P7 以上水平的缘故，被虐的很惨。突然感觉这几年都荒废了，选择大于努力，一定要选择好的方向，比如我选择小程序就是一个错误。</p>
+<h2 id="多点科技">多点科技</h2>
+<h3 id="一面-2">一面</h3>
+<ul>
+<li>
+<p>HashMap、ArrayMap</p>
+</li>
+<li>
+<p>Handler、IdleHandler、postDelay</p>
+</li>
+<li>
+<p>View 绘制原理</p>
+</li>
+<li>
+<p>事件分发机制</p>
+</li>
+<li>
+<p>如果子View已经处理了事件，父View怎么拦截子View事件</p>
+</li>
+<li>
+<p>Binder机制</p>
+</li>
+<li>
+<p>线程池原理</p>
+</li>
+<li>
+<p>垃圾回收机制</p>
+</li>
+<li>
+<p>类加载机制</p>
+</li>
+</ul>
+<h3 id="二面-2">二面</h3>
+<ul>
+<li>
+<p>OkHttp、Retrofit、Glide、ButterKnife、EventBus、RxJava</p>
+</li>
+<li>
+<p>Jetpack、LiveData、ViewModel</p>
+</li>
+<li>
+<p>ArrayList、LinkedList</p>
+</li>
+<li>
+<p>Material Design</p>
+</li>
+<li>
+<p>Java并发编程（JMM）</p>
+</li>
+<li>
+<p>MVP、MVVM区别</p>
+</li>
+</ul>
+<h3 id="hr面">HR面</h3>
+<ul>
+<li>
+<p>期望什么样的领导？</p>
+</li>
+<li>
+<p>期望加入什么样的公司？</p>
+</li>
+<li>
+<p>拿到几个Offer了？</p>
+</li>
+<li>
+<p>期望薪资？</p>
+</li>
+</ul>
+<h3 id="董事之一">董事之一</h3>
+<ul>
+<li>
+<p>介绍了下公司的发展前景，公司的优势</p>
+</li>
+<li>
+<p>对未来工作的期望？</p>
+</li>
+<li>
+<p>聊了将近一个小时...</p>
+</li>
+</ul>
+<h2 id="美餐网">美餐网</h2>
+<ul>
+<li>
+<p>怎么判断二叉搜索树是否合法，白板手写出解法</p>
+</li>
+<li>
+<p>给出一个业务场景怎么处理</p>
+</li>
+</ul>
+<p>你没有看错，就只有两道面试题，白板手写代码，这是我遇到的最奇葩的公司了，最后还说我代码写的不讲究（这 tm 是面试吧，我已经说了由于篇幅有限，一些细节就忽略了），太浪费时间了。</p>
+<h2 id="360">360</h2>
+<h3 id="一面-3">一面</h3>
+<ul>
+<li>
+<p>线程状态转换图</p>
+</li>
+<li>
+<p>Activity生命周期，一个Activity启动另外一个Activity生命周期函数调用</p>
+</li>
+<li>
+<p>Activity启动模式，onNewIntent() 调用时机</p>
+</li>
+<li>
+<p>动画有哪些，实现原理</p>
+</li>
+<li>
+<p>setContentView()后面的流程</p>
+</li>
+<li>
+<p>Handler机制，Looper与ANR</p>
+</li>
+<li>
+<p>过度重绘、UI卡顿</p>
+</li>
+<li>
+<p>WindowManager.addView()，View.getParent()是谁？</p>
+</li>
+<li>
+<p>JMM理解</p>
+</li>
+<li>
+<p>Lock机制</p>
+</li>
+</ul>
+<h3 id="二面-3">二面</h3>
+<ul>
+<li>
+<p>内存泄露、内存溢出</p>
+</li>
+<li>
+<p>类加载机制、双亲委派模型</p>
+</li>
+<li>
+<p>CAS</p>
+</li>
+<li>
+<p>有多个线程1、2、3、4，1、2、3 并行完后与 4 串行，至少 3 种方式实现</p>
+</li>
+<li>
+<p>网络参考模型</p>
+</li>
+<li>
+<p>HTTP、HTTPS传输过程</p>
+</li>
+<li>
+<p>TCP三次握手、四次挥手</p>
+</li>
+<li>
+<p>用过哪些设计模式</p>
+</li>
+<li>
+<p>根据简历多渠道包怎么构建的</p>
+</li>
+<li>
+<p>反射原理</p>
+</li>
+</ul>
+<h3 id="三面">三面</h3>
+<ul>
+<li>
+<p>一般都是根据简历问</p>
+</li>
+<li>
+<p>对大前端技术的了解</p>
+</li>
+<li>
+<p>类加载机制</p>
+</li>
+<li>
+<p>对JDK各版本差异的了解</p>
+</li>
+<li>
+<p>Android系统启动流程</p>
+</li>
+<li>
+<p>AMS、WMS</p>
+</li>
+<li>
+<p>对Framework层源码的了解，为什么这么设计，优缺点</p>
+</li>
+</ul>
+<h2 id="关于准备">关于准备</h2>
+<p>每个人应聘的职位级别不一样，需要准备的范围也有所不同。我应聘的是高级职位，主要准备了以下几点：</p>
+<p><strong>Java 基础</strong></p>
+<p>一般都会问 Java 虚拟机相关知识：类加载机制、双亲委派模型、垃圾回收机制、运行时内存区域、注解、泛型、反射等等。强烈建议精读一下《深入理解 Java 虚拟机》这本书。</p>
+<p>Java 并发编程也是高级必问知识：Thread生命周期、JMM、volatile、synchronizied、final、JUC、Lock、线程池等等。推荐看一下《Java 并发编程的艺术》。</p>
+<p><strong>Android 基础</strong></p>
+<p>这部分内容比较多，还是需要平时多积累，养成看源码的习惯。</p>
+<p>现在一般都不仅仅问原理是什么了，比如 View 绘制原理会问 requestLayout() 和 invalidate() 什么区别？什么情况下 requestLayout() 会执行 onDraw() 方法？</p>
+<p>Handler 机制大家都会说，网上找找都能找到，现在会问一个线程几个 Looper，几个 Handler？Looper 中的死循环为什么不会卡死主线程？IdleHandler 的原理？发送延时消息怎么处理的？</p>
+<p>如果你能从 Handler 答出 epoll 机制，接下来会问 epoll 机制的原理，有没有看过源码？</p>
+<p>高级岗位 Framework 层原理肯定逃不过的，系统启动流程、Binder、AMS、WMS 都是最基础的，最好有一个自己深入研究的方向，比如 SurfaceFlinger。</p>
+<p>进阶一定要看刚哥的《Android 开发艺术探索》必备，Framework 部分《Android 内核剖析》、《Android 源码情景解析》、《深入理解 Android》系列等都是很不错的书籍。</p>
+<p>另外强烈推荐张绍文的《Android开发高手课》。</p>
+<p><strong>网络基础</strong></p>
+<p>面试中一般会问 HTTP 的三次握手、四次挥手过程，以及为什么？HTTPS 的通讯过程？等等。</p>
+<p>网络是个大方向，对于 Android 工程师来说，常见的概念必须要了解的，当然深入研究一下也是很不错的加分项。就像直播，网络优化等方面都离不开网络知识。</p>
+<p>推荐看一下《图解 HTTP》、《图解 TCP/IP》，向深入研究可以看《TCP/IP 详解》、《UNIX 网络编程》。</p>
+<p><strong>数据结构与算法</strong></p>
+<p>数据结构计算机专业的一般都是必修课，网上资料很多这里就不推荐了。</p>
+<p>面试中数据结构一般会问 Java 集合类：ArrayList、HashMap、ConcurrentHashMap 等等，常见的高频算法题一定要准备下。</p>
+<p>算法可以看看《算法》、《算法导论》、覃超的《算法面试通关 40 讲》、刷下 LeetCode。</p>
+<p><strong>设计模式与架构</strong></p>
+<p>设计模式一般会问你在项目中常用的设计模式有那些？等你说完之后会问你怎么用的，什么场景用的？它的优缺点是什么？遵循了什么原则？违背了什么原则？...</p>
+<p>架构 MVC、MVP、MVVM 烂大街的问题，一般会问它们的优缺点各是什么？</p>
+<h2 id="总结">总结</h2>
+<p>虽然后面还有好几家面试，也有像豹厂这样的很不错的公司。但不得不承认一天面两家，一周面 10 家实在太累了。</p>
+<p>在收到大数字公司的 Offer 后就没有再面了，加上 HR 将近五轮的面试聊得过程都很愉快，大数字公司也是我比较理想的公司。</p>
+<p>虽然在之前也收到了几家很不错 Offer，相比之下还是大数字公司比较适合我，接下里的几年也需要好好沉淀一下技术了。</p>
+<p>经过这一次的被动面试经历，我个人感受有以下几点：</p>
+<p><strong>一定不要裸辞</strong></p>
+<p>如果是裸辞找工作，HR 一般都会问什么时候离职的。如果手里没有 Offer，就很被动了，很有可能被压薪资。主动权一定要掌握在自己手中。</p>
+<p><strong>选择大于努力</strong></p>
+<p>即使很努力如果方向错了就是浪费时间，就像我选择了小程序就是个错误（大前端坑太多，入坑需谨慎）。我的建议是多深入研究一些以不变应万变的技能。</p>
+<p><strong>学历与履历</strong></p>
+<p>虽然说能力很重要，但学历是敲门砖（HR 就看这个）。如果连面试机会都没有，还怎么谈然后？如果学历不突出有很好的大厂履历也很不错，貌似是个蛋生鸡，鸡生蛋的问题。</p>
+<p><strong>充分准备</strong></p>
+<p>一些基础知识和理论肯定是要背的，要理解的背，用自己的语言总结一下背下来。</p>
+<p>虽然 Android 没有前几年火热了，已经过去了会四大组件就能找到高薪职位的时代了。这只能说明 Android 中级以下的岗位饱和了，现在高级工程师还是比较缺少的，我能明显感觉到国庆后多了很多高级职位，所以努力让自己成为高级工程师才是最重要的。</p>
+<p>好了，希望对大家有所帮助。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[转载] 2. Jetpack源码解析---Navigation为什么切换Fragment会重绘？]]></title>
         <id>https://ouluqiang.github.io//post/zhuan-zai-2-jetpack-yuan-ma-jie-xi-navigation-wei-shi-me-qie-huan-fragment-hui-chong-hui</id>
@@ -2189,42 +2760,6 @@ File &gt; Settings &gt; Plugins 搜索Subversion Integration</p>
 <figure data-type="image" tabindex="8"><img src="https://ouluqiang.github.io//post-images/1569573987528.png" alt=""></figure>
 <p>win+R运行输入cmd，输入adb 查看</p>
 <figure data-type="image" tabindex="9"><img src="https://ouluqiang.github.io//post-images/1569574016688.png" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[gson type封装泛型]]></title>
-        <id>https://ouluqiang.github.io//post/gson-type-feng-zhuang-fan-xing</id>
-        <link href="https://ouluqiang.github.io//post/gson-type-feng-zhuang-fan-xing">
-        </link>
-        <updated>2019-09-24T08:33:44.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="type封装获取泛型的实际类型">type封装获取泛型的实际类型</h2>
-<blockquote>
-<p>通过getGenericSuperclass方法可以获取当前对象的直接超类的 Type</p>
-</blockquote>
-<p>getClass().getGenericSuperclass()返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type<br>
-然后将其转换ParameterizedType。。<br>
-getActualTypeArguments()返回表示此类型实际类型参数的 Type 对象的数组。<br>
-[0]就是这个数组中第一个了。。简而言之就是获得超类的泛型参数的实际类型。。</p>
-<pre><code>        Type genericSuperclass = getClass().getGenericSuperclass();
-        if (genericSuperclass instanceof ParameterizedType) {
-            this.type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-        } else {
-            this.type = Object.class; 
-            // 基本不会走这个判断
-        }
-</code></pre>
-<h2 id="解决-gson反序列化自动将int类型转化成double类型">解决 gson反序列化自动将int类型转化成double类型</h2>
-<pre><code>    private static Gson gson=new GsonBuilder().
-        registerTypeAdapter(Double.class, new JsonSerializer&lt;Double&gt;() {
-
-            @Override
-            public JsonElement serialize(Double src, Type typeOfSrc, JsonSerializationContext context) {
-                if (src == src.longValue())
-                    return new JsonPrimitive(src.longValue());
-                return new JsonPrimitive(src);
-            }
-        }).create();
-</code></pre>
 ]]></content>
     </entry>
 </feed>
