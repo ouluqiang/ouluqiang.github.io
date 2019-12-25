@@ -223,7 +223,7 @@ action设置好了之后，我们可以执行下面代码进行跳转：
                     popExit = R.anim.slide_out_right
                 }
             }
-            view.findViewById< Button>(R.id.navigate_destination_button)?.setOnClickListener {
+            view.findViewById < Button >(R.id.navigate_destination_button)?.setOnClickListener {
                 findNavController().navigate(R.id.flow_step_one_dest, null, options)
             }
     
